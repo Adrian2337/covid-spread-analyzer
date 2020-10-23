@@ -1,5 +1,5 @@
 """
-ASGI config for covid_spread_analyzer project.
+ASGI firebase_config for covid_spread_analyzer project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

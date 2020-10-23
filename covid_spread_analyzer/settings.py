@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from firebase_admin import credentials, db, initialize_app
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -26,7 +26,6 @@ SECRET_KEY = 's9izryt0mrx362$sljk!a#%aou-#^%($sgjon8$xjyfd5i*n_^'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,17 +69,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'covid_spread_analyzer.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #   'ENGINE': 'firebase_admin.db',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
-
+########################################################################################################################
+########################### I am almost sure that firebase initialization should not be here ###########################
+########################################################################################################################
+cred = credentials.Certificate('firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
+initialize_app(cred, {
+    'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
+})
+########################################################################################################################
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -100,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -114,10 +118,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# test
-asdasdas = 213123
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static/"),
+]

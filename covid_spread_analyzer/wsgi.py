@@ -1,5 +1,5 @@
 """
-WSGI config for covid_spread_analyzer project.
+WSGI firebase_config for covid_spread_analyzer project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
