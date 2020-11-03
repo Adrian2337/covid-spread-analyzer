@@ -1,3 +1,100 @@
-body{
+body, html {
+    margin: 0;
+    top: 0;
+    left: 0;
     background-color: gray;
+    height: 100%;
+    width: 100%;
+}
+
+.hidden-menu {
+    z-index: -1;
+    display: flex;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hidden-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    transition: all 300ms ease-in-out;
+
+}
+
+.hidden-menu a:hover {
+    color: #333;
+    opacity: 100%;
+    text-decoration: none;
+    font-size: 60px;
+    text-shadow: 1px 1px #222;
+}
+
+.hamburger {
+    animation: showingOn 1s ease-out;
+    position: fixed;
+    cursor: pointer;
+    right: 5%;
+    top: 8%;
+    -webkit-transform: translate(-5%, -50%);
+    z-index: 2;
+}
+
+@keyframes showingOn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen {
+    .line {
+        width: 30px;
+        height: 4px;
+        background: white;
+        margin: 3px;
+    }
+
+    .hamburger {
+        animation: showingOn 1s ease-out;
+        position: fixed;
+        cursor: pointer;
+        right: 5%;
+        top: 8%;
+        -webkit-transform: translate(-5%, -50%);
+        z-index: 2;
+    }
+
+    .hidden-menu {
+        margin:0;
+        zoom: 1;
+        position: fixed;
+        background: linear-gradient(rgba(12, 28, 33, 0.9),
+        rgba(255, 0, 0, 0.95));
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(0px at 93% 8%);
+        -webkit-clip-path: circle(0px at 93% 8%);
+        -webkit-animation-delay: 1s;
+        -webkit-transition: all 1s ease-out;
+        text-transform: uppercase;
+        z-index: 1;
+    }
+
+    .hidden-menu.open {
+        -webkit-animation-delay: 4s;
+        zoom: 1;
+        clip-path: circle(200em at 90% 0%);
+        -webkit-clip-path: circle(200em at 90% 0%);
+    }
 }
