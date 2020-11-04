@@ -16,7 +16,7 @@
         <div id="display-map" class="display-demo-map">
             <div id="map-poland">
                 <ul class="poland">
-                    <li class="pl1"><a href="#section-dolnoslaskie">Lower Silesia</a></li>
+                    <li class="pl1"><a href="#section-dolnoslaskie">Lower Silesia ASDASDASDASD</a></li>
                     <li class="pl2"><a href="#section-kujawsko-pomorskie">Kuyavian-Pomeranian</a></li>
                     <li class="pl3"><a href="#section-lubelskie">Lublin</a></li>
                     <li class="pl4"><a href="#section-lubuskie">Lubusz</a></li>
@@ -167,7 +167,13 @@
     <script type="text/javascript" src="../static/css/cssmap-poland/includes/script.js"></script>
     </body>
     <script>
-        document.getElementById("map-settings-form").style.display = "none";
+        var x = document.getElementsByClassName("poland cssmap")
+        console.log(x)
+        var i;
+        for (i = 0; i < x.length; i++) {
+            console.log(x[i])
+            x[i].style.backgroundColor = "red";
+        }
     </script>
 {% endblock content %}
 </html>
