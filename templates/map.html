@@ -1,11 +1,173 @@
 {% extends "base.html" %}
-{% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 {% block content %}
-asdasd
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/cssmap-poland/includes/style.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/cssmap-poland/cssmap-poland/cssmap-poland.css"
+              media="screen"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/base.css"/>
+        <title> Map </title>
+    </head>
+    <body id="Poland">
+    <section id="section-map">
+        <div id="display-map" class="display-demo-map">
+            <div id="map-poland">
+                <ul class="poland">
+                    <li class="pl1"><a href="#section-dolnoslaskie">Lower Silesia</a></li>
+                    <li class="pl2"><a href="#section-kujawsko-pomorskie">Kuyavian-Pomeranian</a></li>
+                    <li class="pl3"><a href="#section-lubelskie">Lublin</a></li>
+                    <li class="pl4"><a href="#section-lubuskie">Lubusz</a></li>
+                    <li class="pl5"><a href="#section-lodzkie">Lodz</a></li>
+                    <li class="pl6"><a href="#section-malopolskie">Lesser Poland</a></li>
+                    <li class="pl7"><a href="#section-mazowieckie">Masovia</a></li>
+                    <li class="pl8"><a href="#section-opolskie">Opole</a></li>
+                    <li class="pl9"><a href="#section-podkarpackie">Subcarpathia</a></li>
+                    <li class="pl10"><a href="#section-podlaskie">Podlaskie</a></li>
+                    <li class="pl11"><a href="#section-pomorskie">Pomerania</a></li>
+                    <li class="pl12"><a href="#section-slaskie">Silesia</a></li>
+                    <li class="pl13"><a href="#section-swietokrzyskie">Holy Cross Province</a></li>
+                    <li class="pl14"><a href="#section-warminskomazurskie">Warmia-Masuria</a></li>
+                    <li class="pl15"><a href="#section-wielkopolska">Greater Poland</a></li>
+                    <li class="pl16"><a href="#section-zachodniopomorskie">West Pomerania</a></li>
+                </ul>
+            </div>
+            <!-- END OF THE CSSMap - Poland -->
+            <div id="demo-form-fields" class="demo-form-fields">
+                <ul>
+                    <li><label for="demo-select">Select dropdown</label>
+                        <div class="select-field"><select id="demo-select" name="demo-select" class="hidden-field">
+                            <option value="0">-- Select location</option>
+                        </select></div>
+                    </li>
+                    <li><label for="demo-input">Input field</label><input type="text" id="demo-input" name="demo-input"
+                                                                          class="hidden-field"/></li>
+                </ul>
+            </div>
+            <div id="demo-agents" class="demo-agents-list wrapper">
+                <ul>
+                    <li id="dolnoslaskie"><h3>Dolnośląskie</h3>
+                        <p>Some info about Dolnośląskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="kujawsko-pomorskie"><h3>Kujawsko-pomorskie</h3>
+                        <p>Some info about Kujawsko-pomorskie, or list of addresses, or anything else you want to
+                            display here.</p>
+                        <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id
+                            metus massa, ut.</p></li>
+                    <li id="lubelskie"><h3>Lubelskie</h3>
+                        <p>Some info about Lubelskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="lubuskie"><h3>Lubuskie</h3>
+                        <p>Some info about Lubuskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu
+                            sodales feugiat.</p></li>
+                    <li id="lodzkie"><h3>Łódzkie</h3>
+                        <p>Some info about Łódzkie, or list of addresses, or anything else you want to display here.</p>
+                        <p>Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim
+                            in magna semper.</p></li>
+                    <li id="malopolskie"><h3>Małopolskie</h3>
+                        <p>Some info about Małopolskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi a enim
+                            in magna semper.</p></li>
+                    <li id="mazowieckie"><h3>Mazowieckie</h3>
+                        <p>Some info about Mazowieckie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="opolskie"><h3>Opolskie</h3>
+                        <p>Some info about Opolskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu
+                            sodales feugiat.</p></li>
+                    <li id="podkarpackie"><h3>Podkarpackie</h3>
+                        <p>Some info about Podkarpackie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="podlaskie"><h3>Podlaskie</h3>
+                        <p>Some info about Podlaskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="pomorskie"><h3>Pomorskie</h3>
+                        <p>Some info about Pomorskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id
+                            metus massa, ut.</p></li>
+                    <li id="slaskie"><h3>Śląskie</h3>
+                        <p>Some info about Śląskie, or list of addresses, or anything else you want to display here.</p>
+                        <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id
+                            metus massa, ut.</p></li>
+                    <li id="swietokrzyskie"><h3>Świętokrzyskie</h3>
+                        <p>Some info about Świętokrzyskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros
+                            interdum.</p></li>
+                    <li id="warminsko-mazurskie"><h3>Warmińsko-mazurskie</h3>
+                        <p>Some info about Warmińsko-mazurskie, or list of addresses, or anything else you want to
+                            display here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="wielkopolskie"><h3>Wielkopolskie</h3>
+                        <p>Some info about Wielkopolskie, or list of addresses, or anything else you want to display
+                            here.</p>
+                        <p>In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam.</p></li>
+                    <li id="zachodniopomorskie"><h3>Zachodniopomorskie</h3>
+                        <p>Some info about Zachodniopomorskie, or list of addresses, or anything else you want to
+                            display here.</p>
+                        <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id
+                            metus massa, ut.</p></li>
+                </ul>
+            </div>
+            <div id="demo-markers">
+                <ul class="cssmap-pins">
+                    <li class="cssmap-pin" data-cssmap-coords="280,395">
+
+                        <div class="cssmap-tooltip-content">
+                            Vivamus rutrum consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales
+                            feugiat.
+                        </div>
+                        <a href="#" class="cssmap-marker"><img src="includes/pin.png" width="20" height="25" alt="pin"/></a>
+
+                    </li>
+                    <li class="cssmap-pin" data-cssmap-coords="650,420">
+
+                        <div class="cssmap-tooltip-content">
+                            Phasellus quis est sed turpis sollicitudin venenatis. Praesent eget neque eu eros interdum.
+                        </div>
+                        <a href="#" class="cssmap-marker"><img src="includes/pin.png" width="20" height="25" alt="pin"/></a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <form id="map-settings-form" name="map-settings-form" action="#" method="post" novalidate>
+                <fieldset id="options-basic">
+                    <ul class="test_wrap">
+                        <li class="inline-label">
+                            <label for="map-set-size">Size (map width)</label>
+                            <div class="select-field">
+                                <select id="map-set-size" name="map-set-size">
+                                    <option value="210">210 px</option>
+                                    <option value="960" selected>960 px</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cssmapsplugin.com/5/jquery.cssmap.min.js"></script>
+    <script type="text/javascript" src="../static/css/cssmap-poland/includes/script.js"></script>
+    </body>
+    <script>
+        document.getElementById("map-settings-form").style.display = "none";
+    </script>
 {% endblock content %}
 </html>
