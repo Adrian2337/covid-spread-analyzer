@@ -37,30 +37,60 @@ class DataMiner:
     def prepare_dictionary(info_bundle: InfoBundle) -> dict:
         date = info_bundle.date
         daily_cases = NumberParser.int_with_space(search(DataMiner.patterns["daily_cases"], info_bundle.text)["cases"])
-        daily_deaths = {
-            "direct": NumberParser.int_with_space(search(DataMiner.patterns["daily_deaths_direct"], info_bundle.text
-                                                         )["deaths"]),
-            "linked": NumberParser.int_with_space(search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text
-                                                         )["deaths"])
-        }
+        daily_deaths = NumberParser.int_with_space(
+            search(DataMiner.patterns["daily_deaths_direct"], info_bundle.text)["deaths"]) + \
+            NumberParser.int_with_space(
+            search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
         daily_tests = NumberParser.int_with_modifier(search(DataMiner.patterns["daily_tests"], info_bundle.text)[0])
         total_cases = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
         total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
 
-        voivodeship_cases = {}
+        voivodeship_stats = {}
         for v in DataMiner.voivodeships:
             v_cases = 0
             v_match = search(v + "go ({})", info_bundle.text)
             if v_match:
                 v_cases = v_match[0]
-            voivodeship_cases[v] = NumberParser.int_with_space(v_cases)
+            voivodeship_stats[v] = {
+                "daily infected": NumberParser.int_with_space(v_cases),
+                "daily cured": None,
+                "daily deceased": None,
+
+                "total infected": None,
+                "total cured": None,
+                "total deceased": None,
+
+                "infected now": None,
+                "occupied respirators": None,
+                "free respirators": None,
+
+                "infections 7d/100k": None,
+                "deaths 7d/100k": None,
+                "infected now /100k": None
+            }
 
         return {
             "date": date,
-            "daily cases": daily_cases,
-            "daily deaths": daily_deaths,
+
+            "daily infected": daily_cases,
+            "daily cured": None,
+            "daily deceased": daily_deaths,
             "daily tests": daily_tests,
-            "total cases": total_cases,
-            "total deaths": total_deaths,
-            "voivodeship_cases": voivodeship_cases
+
+            "total infected": total_cases,
+            "total cured": None,
+            "total deceased": total_deaths,
+            "total tests": None,
+
+            "infected now": None,
+            "occupied respirators": None,
+            "free respirators": None,
+
+            "infections 7d/100k": None,
+            "deaths 7d/100k": None,
+            "infected now /100k": None,
+
+            "positive tests percent": daily_cases / daily_tests,
+
+            "voivodeship stats": voivodeship_stats
         }
