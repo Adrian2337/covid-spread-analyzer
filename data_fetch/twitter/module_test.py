@@ -4,10 +4,8 @@ from data_fetch.twitter.CovidDataYielder import CovidDataYielder
 
 
 def main():
-    consumer = ""
-    consumer_secret = ""
-    token = ""
-    token_secret = ""
+    with open("../../keys.txt", "r") as f:
+        consumer, consumer_secret, token, token_secret, _ = f.read().split("\n")
 
     api_wrapper = ApiWrapper(consumer, consumer_secret, token, token_secret)
     tweet_collector = TweetCollector(api_wrapper)

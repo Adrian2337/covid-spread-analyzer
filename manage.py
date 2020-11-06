@@ -2,9 +2,13 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from data_fetch.twitter.DataYieldService import DataYieldService
 
 
 def main():
+    # app setup
+    DataYieldService.initialize()
+
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')
     try:
