@@ -70,27 +70,33 @@ class DataMiner:
             }
 
         return {
-            "date": date,
+            date[:4]: {
+                date[5:7]: {
+                    date[8:]: {
+                        "date": date,
 
-            "daily infected": daily_cases,
-            "daily cured": None,
-            "daily deceased": daily_deaths,
-            "daily tests": daily_tests,
+                        "daily infected": daily_cases,
+                        "daily cured": None,
+                        "daily deceased": daily_deaths,
+                        "daily tests": daily_tests,
 
-            "total infected": total_cases,
-            "total cured": None,
-            "total deceased": total_deaths,
-            "total tests": None,
+                        "total infected": total_cases,
+                        "total cured": None,
+                        "total deceased": total_deaths,
+                        "total tests": None,
 
-            "infected now": None,
-            "occupied respirators": None,
-            "free respirators": None,
+                        "infected now": None,
+                        "occupied respirators": None,
+                        "free respirators": None,
 
-            "infections 7d/100k": None,
-            "deaths 7d/100k": None,
-            "infected now /100k": None,
+                        "infections 7d/100k": None,
+                        "deaths 7d/100k": None,
+                        "infected now /100k": None,
 
-            "positive tests percent": daily_cases / daily_tests,
+                        "positive tests percent": daily_cases / daily_tests,
 
-            "voivodeship stats": voivodeship_stats
+                        "voivodeship stats": voivodeship_stats
+                    }
+                }
+            }
         }
