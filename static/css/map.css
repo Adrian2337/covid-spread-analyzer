@@ -10,6 +10,13 @@ body {
     height: 100%;
 }
 
+.svg {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+}
+
 .mapdiv {
     overflow: auto;
     display: table;
