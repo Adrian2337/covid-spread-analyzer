@@ -1,0 +1,53 @@
+{
+	"cases-data": {
+		"Last Update Date": "2020-11-07",
+		
+		"Last 7 days": {
+			"2020-11-06": {
+				"daily infected": 123,
+				"daily deceased": 123,
+				"Voivodeships": {
+					"Dolnośląskie": {
+						"daily deceased": 123,
+						"daily infected": 123
+					}
+					reszta województw
+				}
+			}
+		},
+		
+		"Map Data": {
+			"2020-11-07": {
+				"date": "2020-11-07",
+				"daily infected": 123,
+				"daily cured": 123,
+				"daily deceased": 123,
+				"Voivodeships": {
+					"Dolnośląskie": {
+						"daily infected": 123,
+						"daily cured": 123,
+						"daily deceased": 123
+					}
+					reszta województw
+				}
+			}
+		},
+		
+		"Poland": {
+			"2020-11-07": {
+				"date": "2020-11-07"
+				tu generalnie całe dane dla kraju
+			}
+		},
+		
+		"Voivodeships": {
+			"Dolnośląskie": {
+				"2020-11-07": {
+					"date": "2020-11-07"
+					tu generalnie całe dane dla województwa
+				}
+			}
+			reszta województw
+		}
+	}
+}
