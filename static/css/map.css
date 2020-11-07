@@ -37,5 +37,9 @@ body {
 }
 
 .area:active {
-    fill: greenyellow;
+    fill: red;
+}
+
+.knob {
+    color: #ff3738 !important;
 }

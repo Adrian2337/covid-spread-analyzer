@@ -2,9 +2,10 @@ from parse import search
 from data_fetch.twitter.InfoBundle import InfoBundle
 from data_fetch.twitter.NumberParser import NumberParser
 
+flag = None
+
 
 class DataMiner:
-
     voivodeships = [
         "dolnośląskie",
         "kujawsko-pomorskie",
@@ -39,12 +40,11 @@ class DataMiner:
         daily_cases = NumberParser.int_with_space(search(DataMiner.patterns["daily_cases"], info_bundle.text)["cases"])
         daily_deaths = NumberParser.int_with_space(
             search(DataMiner.patterns["daily_deaths_direct"], info_bundle.text)["deaths"]) + \
-            NumberParser.int_with_space(
-            search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
+                       NumberParser.int_with_space(
+                           search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
         daily_tests = NumberParser.int_with_modifier(search(DataMiner.patterns["daily_tests"], info_bundle.text)[0])
         total_cases = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
         total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
-
         voivodeship_stats = {}
         for v in DataMiner.voivodeships:
             v_cases = 0
@@ -53,20 +53,20 @@ class DataMiner:
                 v_cases = v_match[0]
             voivodeship_stats[v] = {
                 "daily infected": NumberParser.int_with_space(v_cases),
-                "daily cured": None,
-                "daily deceased": None,
+                "daily cured": flag,
+                "daily deceased": flag,
 
-                "total infected": None,
-                "total cured": None,
-                "total deceased": None,
+                "total infected": flag,
+                "total cured": flag,
+                "total deceased": flag,
 
-                "infected now": None,
-                "occupied respirators": None,
-                "free respirators": None,
+                "infected now": flag,
+                "occupied respirators": flag,
+                "free respirators": flag,
 
-                "infections 7d/100k": None,
-                "deaths 7d/100k": None,
-                "infected now /100k": None
+                "infections 7d100k": flag,
+                "deaths 7d100k": flag,
+                "infected now 100k": flag
             }
 
         return {
@@ -76,22 +76,22 @@ class DataMiner:
                         "date": date,
 
                         "daily infected": daily_cases,
-                        "daily cured": None,
+                        "daily cured": flag,
                         "daily deceased": daily_deaths,
                         "daily tests": daily_tests,
 
                         "total infected": total_cases,
-                        "total cured": None,
+                        "total cured": flag,
                         "total deceased": total_deaths,
-                        "total tests": None,
+                        "total tests": flag,
 
-                        "infected now": None,
-                        "occupied respirators": None,
-                        "free respirators": None,
+                        "infected now": flag,
+                        "occupied respirators": flag,
+                        "free respirators": flag,
 
-                        "infections 7d/100k": None,
-                        "deaths 7d/100k": None,
-                        "infected now /100k": None,
+                        "infections 7d100k": flag,
+                        "deaths 7d100k": flag,
+                        "infected now 100k": flag,
 
                         "positive tests percent": daily_cases / daily_tests,
 
