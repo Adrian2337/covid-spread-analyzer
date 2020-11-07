@@ -5,7 +5,6 @@ from data_fetch.twitter.CovidDataYielder import CovidDataYielder
 
 
 class DataYieldService:
-
     covid_data_yielder = None
 
     @staticmethod

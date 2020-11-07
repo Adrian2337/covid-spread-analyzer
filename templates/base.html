@@ -1,14 +1,29 @@
 {% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <html lang="">
-<ul class="cont">
-    <li><a>Report Bug</a></li>
-</ul>
 <body>
-<center>
-    {% block content %}
+<div class="hamburger">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
+<ul class="hidden-menu">
+    <!--<li><a href="/prevention/">Prevention </a></li>-->
+    <li><a href="https://www.google.com">google </a></li>
+</ul>
+{% block content %}
 
-    {% endblock %}
-</center>
+{% endblock %}
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const hidden_menu = document.querySelector(".hidden-menu");
+    const links = document.querySelectorAll(".hidden-menu li");
+    hamburger.addEventListener('click', () => {
+        hidden_menu.classList.toggle("open");
+    });
+</script>
 </body>
 </html>

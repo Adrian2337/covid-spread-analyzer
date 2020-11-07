@@ -81,10 +81,10 @@ DATABASES = {
 ########################################################################################################################
 ########################### I am almost sure that firebase initialization should not be here ###########################
 ########################################################################################################################
-cred = credentials.Certificate('firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
+"""cred = credentials.Certificate('firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
 initialize_app(cred, {
     'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
-})
+})"""
 ########################################################################################################################
 
 # Password validation
