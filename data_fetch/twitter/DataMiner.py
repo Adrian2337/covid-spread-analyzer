@@ -3,6 +3,8 @@ from data_fetch.twitter.InfoBundle import InfoBundle
 from data_fetch.twitter.NumberParser import NumberParser
 from data_fetch.twitter.DataPack import DataPack
 
+flag = None
+
 
 class DataMiner:
 
@@ -56,20 +58,20 @@ class DataMiner:
                 "date": date,
 
                 "daily infected": NumberParser.int_with_space(v_cases),
-                "daily cured": None,
-                "daily deceased": None,
+                "daily cured": flag,
+                "daily deceased": flag,
 
-                "total infected": None,
-                "total cured": None,
-                "total deceased": None,
+                "total infected": flag,
+                "total cured": flag,
+                "total deceased": flag,
 
-                "infected now": None,
-                "occupied respirators": None,
-                "free respirators": None,
+                "infected now": flag,
+                "occupied respirators": flag,
+                "free respirators": flag,
 
-                "infections 7d/100k": None,
-                "deaths 7d/100k": None,
-                "infected now /100k": None
+                "infections 7d100k": flag,
+                "deaths 7d100k": flag,
+                "infected now 100k": flag
             }
 
         return DataPack(date, daily_cases, daily_deaths, daily_tests, total_cases, total_deaths, voivodeship_stats)
