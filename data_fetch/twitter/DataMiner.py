@@ -1,6 +1,7 @@
 from parse import search
 from data_fetch.twitter.InfoBundle import InfoBundle
 from data_fetch.twitter.NumberParser import NumberParser
+from data_fetch.twitter.DataPack import DataPack
 
 
 class DataMiner:
@@ -34,7 +35,7 @@ class DataMiner:
     }
 
     @staticmethod
-    def prepare_dictionary(info_bundle: InfoBundle) -> dict:
+    def prepare_data_pack(info_bundle: InfoBundle) -> DataPack:
         date = info_bundle.date
         daily_cases = NumberParser.int_with_space(search(DataMiner.patterns["daily_cases"], info_bundle.text)["cases"])
         daily_deaths = NumberParser.int_with_space(
@@ -51,7 +52,9 @@ class DataMiner:
             v_match = search(v + "go ({})", info_bundle.text)
             if v_match:
                 v_cases = v_match[0]
-            voivodeship_stats[v] = {
+            voivodeship_stats[v.capitalize()] = {
+                "date": date,
+
                 "daily infected": NumberParser.int_with_space(v_cases),
                 "daily cured": None,
                 "daily deceased": None,
@@ -69,34 +72,4 @@ class DataMiner:
                 "infected now /100k": None
             }
 
-        return {
-            date[:4]: {
-                date[5:7]: {
-                    date[8:]: {
-                        "date": date,
-
-                        "daily infected": daily_cases,
-                        "daily cured": None,
-                        "daily deceased": daily_deaths,
-                        "daily tests": daily_tests,
-
-                        "total infected": total_cases,
-                        "total cured": None,
-                        "total deceased": total_deaths,
-                        "total tests": None,
-
-                        "infected now": None,
-                        "occupied respirators": None,
-                        "free respirators": None,
-
-                        "infections 7d/100k": None,
-                        "deaths 7d/100k": None,
-                        "infected now /100k": None,
-
-                        "positive tests percent": daily_cases / daily_tests,
-
-                        "voivodeship stats": voivodeship_stats
-                    }
-                }
-            }
-        }
+        return DataPack(date, daily_cases, daily_deaths, daily_tests, total_cases, total_deaths, voivodeship_stats)
