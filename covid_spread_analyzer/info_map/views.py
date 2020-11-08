@@ -15,7 +15,6 @@ from django.template import loader
 ########################################################################################################################
 
 def map_view(request):
-    template = loader.get_template('map.html')
     context = {"1": {
         "Dolnośląskie": 123,
         "Kujawsko-pomorskie": 10,

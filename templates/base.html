@@ -3,6 +3,9 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+<script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
 <html lang="">
 <body>
 <div class="hamburger">
@@ -13,7 +16,7 @@
 <ul class="hidden-menu">
     <!--<li><a href="/prevention/">Prevention </a></li>-->
     <li><a href="">Main Page</a></li>
-    <li><a href="https://www.google.com">Tomorrow prediction</a></li>
+    <li><a href="/prediction/">Tomorrow prediction</a></li>
     <li><a href="https://github.com/sqoshi/team-programming-project">Source Code</a></li>
 </ul>
 {% block content %}

@@ -1,0 +1,1 @@
+import {paint_areas} from 'map.js'

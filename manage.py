@@ -16,8 +16,9 @@ def main():
     initialize_app(cred, {
         'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
     })
-    # DataYieldService.initialize()
-    # ex = DataYieldService.yield_data_since("2020-11-02")
+    #DataYieldService.initialize()
+    #ex = DataYieldService.yield_data_since("2020-11-02")
+    #print(ex)
     # load_data("2020", "11", "01", "daily deceased")
     #save_data(ex[0])
     #save_data(ex[1])
