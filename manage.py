@@ -5,6 +5,7 @@ import sys
 
 from firebase_admin import credentials, initialize_app
 
+from covid_spread_analyzer.prediction_app.predictioner import Predictioner
 from data_fetch.twitter.DataYieldService import DataYieldService
 import json
 from covid_spread_analyzer.database_operations import *
