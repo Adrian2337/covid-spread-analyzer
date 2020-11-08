@@ -17,15 +17,9 @@ def main():
     initialize_app(cred, {
         'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
     })
-    #DataYieldService.initialize()
-    #ex = DataYieldService.yield_data_since("2020-11-02")
-    #print(ex)
-    # load_data("2020", "11", "01", "daily deceased")
-    #save_data(ex[0])
-    #save_data(ex[1])
     DataYieldService.initialize()
-    # print(json.dumps(DataYieldService.yield_data_since("2020-11-03", last_relevant_date="2020-11-04",
-    #                                                  include_first_day=True), indent=4, ensure_ascii=False))
+    #save_data_all(
+    #    DataYieldService.yield_data_since("2020-10-24", last_relevant_date="2020-11-08", include_first_day=True))
 
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')

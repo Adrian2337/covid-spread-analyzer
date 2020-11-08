@@ -1,27 +1,21 @@
-var data_p = JSON.parse(data_t.replaceAll(/&quot;/ig, '"'));
-paint_areas(data_p, 1)
 document.getElementById('mapdiv').style.display = "block";
 
+var map_data = jsonify(map_data_raw)
+var dates = jsonify(dates_raw)
+
+
 function color_picker(value) {
-    if (value < 15)
-        return "lime"
-    else if (150 > value > 15)
+    console.log(value)
+    if (value < 1200 && value > 0)
         return "green"
-    else if (500 > value > 150)
+    else if (1700 > value)
+        return "yellow"
+    else if (2300 > value)
         return "orange"
-    else if (800 > value > 500)
-        return "purple"
-    else
+    else if (3500 > value)
         return "red"
-}
-
-
-function paint_areas(data, index) {
-    let areas = document.getElementsByClassName("area")
-    for (let x of areas) {
-        x.style.fill = color_picker(data[index][x.id])
-
-    }
+    else
+        return "purple"
 }
 
 
@@ -35,3 +29,19 @@ function hide_general_info() {
     let panel = document.getElementById('general-voivodeship-info')
     panel.style.transform = "translateX(+500px)";
 }
+
+function jsonify(variable) {
+    return JSON.parse(variable.replaceAll(/&quot;/ig, '"').replaceAll('&#x27;', '"'));
+
+}
+
+function paint_areas(data_json, index) {
+    let areas = document.getElementsByClassName("area")
+    for (let x of areas) {
+        console.log(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'], x.id, dates[index])
+        x.style.fill = color_picker(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'])
+
+    }
+}
+
+paint_areas(map_data, 0)

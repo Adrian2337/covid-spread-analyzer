@@ -42,9 +42,9 @@ class DictPackager:
                 "occupied respirators": None,
                 "free respirators": None,
 
-                "infections 7d/100k": None,
-                "deaths 7d/100k": None,
-                "infected now /100k": None,
+                "infections 7d100k": None,
+                "deaths 7d100k": None,
+                "infected now 100k": None,
 
                 "positive tests percent": dp.daily_cases / dp.daily_tests,
             }

@@ -42,8 +42,12 @@ class Predictioner:
         self.train_y = self.y_scaler.fit_transform(self.train_y)
 
     def setup_model(self):
-        self.model.add(Dense(10, input_dim=1, activation='relu', kernel_initializer='he_uniform'))
-        self.model.add(Dense(10, activation='relu', kernel_initializer='he_uniform'))
+        self.model.add(Dense(99, input_dim=1, activation='softmax', kernel_initializer='he_uniform'))
+        self.model.add(Dense(120, activation='tanh', kernel_initializer='he_uniform'))
+        self.model.add(Dense(256, activation='tanh', kernel_initializer='he_uniform'))
+        self.model.add(Dense(90, activation='relu', kernel_initializer='he_uniform'))
+        self.model.add(Dense(20, activation='tanh', kernel_initializer='he_uniform'))
+        self.model.add(Dense(10, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(1))
 
     def compile_model(self):
