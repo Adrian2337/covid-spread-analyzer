@@ -22,7 +22,8 @@ def main():
     #save_data(ex[0])
     #save_data(ex[1])
     DataYieldService.initialize()
-    # print(json.dumps(DataYieldService.yield_data_since("2020-11-05"), indent=4, ensure_ascii=False))
+    # print(json.dumps(DataYieldService.yield_data_since("2020-11-03", last_relevant_date="2020-11-04",
+    #                                                  include_first_day=True), indent=4, ensure_ascii=False))
 
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')

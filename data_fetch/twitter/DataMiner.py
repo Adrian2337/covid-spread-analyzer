@@ -46,7 +46,7 @@ class DataMiner:
             search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
         daily_tests = NumberParser.int_with_modifier(search(DataMiner.patterns["daily_tests"], info_bundle.text)[0])
         total_cases = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
-        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
+        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_deaths"], info_bundle.text)[0])
 
         voivodeship_stats = {}
         for v in DataMiner.voivodeships:
