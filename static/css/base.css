@@ -2,7 +2,9 @@ body, html {
     margin: 0;
     top: 0;
     left: 0;
-    background-color: gray;
+    background-image: url("/static/bcg3.jpg");
+    background-attachment: fixed;
+    background-size: cover;
     height: 100%;
     width: 100%;
 }

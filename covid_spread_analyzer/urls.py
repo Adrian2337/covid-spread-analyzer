@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('covid_spread_analyzer.info_map.urls')),
+    path('', include('covid_spread_analyzer.prediction_app.urls')),
 ]
