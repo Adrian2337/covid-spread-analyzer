@@ -9,7 +9,7 @@ import json
 def main():
     # app setup
     DataYieldService.initialize()
-    print(json.dumps(DataYieldService.yield_data_since("2020-11-05"), indent=4, ensure_ascii=False))
+    # print(json.dumps(DataYieldService.yield_data_since("2020-11-05"), indent=4, ensure_ascii=False))
 
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')
