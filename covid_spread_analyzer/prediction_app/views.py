@@ -1,27 +1,29 @@
+import random
+
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from chartjs.views.lines import BaseLineChartView
+
+# from covid_spread_analyzer.settings import predictioner
+
+from covid_spread_analyzer.prediction_app.predictioner import Predictioner
 
 
-class LineChartJSONView(BaseLineChartView):
-    def get_labels(self):
-        """Return 7 labels for the x-axis."""
-        return ["January", "February", "March", "April", "May", "June", "July", ]
-
-    def get_providers(self):
-        """Return names of datasets."""
-        return ["Total Cases", "Cured Cases", "Deaths"]
-
-    def get_data(self):
-        """Return 3 datasets to plot."""
-        return [[75, 44, 92, 11, 44, 95, 35],
-                [41, 92, 18, 3, 73, 87, 92],
-                [87, 21, 94, 3, 90, 13, 65]]
+# x = asarray([i for i in range(-100, 100)])
+# predict_x = asarray([i for i in range(-100, 140)])
+# y = asarray([i ** 2.0 for i in range(-100, 100)])
 
 
-line_chart = TemplateView.as_view(template_name='prediction.html')
-line_chart_json = LineChartJSONView.as_view()
+# predictioner.update_input(x, y)
+# predictioner.fit_model()
+# predicted_y = predictioner.predict(predict_x)
 
 
 def prediction_view(request):
-    return render(request=request, template_name='prediction.html')
+    ##
+    # x = asarray([i for i in range(-100, 100)])
+    # predict_x = asarray([i for i in range(-100, 140)])
+    # y = asarray([i ** 2.0 for i in range(-100, 100)])
+    x, y = [i for i in range(-100, 100)], [2 * i for i in range(-100, 100)]
+    return render(request=request, template_name='prediction.html',
+                  context={'x': x, 'total': [random.randint(0, 10) for _ in range(-100, 100)],
+                           'cured': [random.randint(0, 10) for _ in range(-100, 100)],
+                           'deaths': [random.randint(0, 10) for _ in range(-100, 100)]})

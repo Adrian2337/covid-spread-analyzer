@@ -14,6 +14,8 @@ from pathlib import Path
 from firebase_admin import credentials, db, initialize_app
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from covid_spread_analyzer.prediction_app.predictioner import Predictioner
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -127,3 +129,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
 ]
+
+#predictioner = Predictioner()
