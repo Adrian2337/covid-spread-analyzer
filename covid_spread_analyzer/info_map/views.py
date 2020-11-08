@@ -16,8 +16,7 @@ from django.template import loader
 
 def map_view(request):
     template = loader.get_template('map.html')
-    response_body = template.render({'current_user': request.user})
-    context = {"d1": {
+    context = {"1": {
         "Dolnośląskie": 123,
         "Kujawsko-pomorskie": 10,
         "Lubelskie": 12,
@@ -34,7 +33,7 @@ def map_view(request):
         "Warmińsko-mazurskie": 342,
         "Wielkopolskie": 764,
         "Zachodniopomorskie": 90
-    }, "d2": {
+    }, "2": {
         "Dolnośląskie": 10,
         "Kujawsko-pomorskie": 10,
         "Lubelskie": 10,
