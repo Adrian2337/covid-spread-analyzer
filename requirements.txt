@@ -43,3 +43,5 @@ sqlparse==0.4.1
 tweepy==3.9.0
 uritemplate==3.0.1
 urllib3==1.25.11
+parse~=1.18.0
+tweepy~=3.9.0

@@ -1,11 +1,13 @@
 from parse import search
 from data_fetch.twitter.InfoBundle import InfoBundle
 from data_fetch.twitter.NumberParser import NumberParser
+from data_fetch.twitter.DataPack import DataPack
 
 flag = None
 
 
 class DataMiner:
+
     voivodeships = [
         "dolnośląskie",
         "kujawsko-pomorskie",
@@ -35,23 +37,26 @@ class DataMiner:
     }
 
     @staticmethod
-    def prepare_dictionary(info_bundle: InfoBundle) -> dict:
+    def prepare_data_pack(info_bundle: InfoBundle) -> DataPack:
         date = info_bundle.date
         daily_cases = NumberParser.int_with_space(search(DataMiner.patterns["daily_cases"], info_bundle.text)["cases"])
         daily_deaths = NumberParser.int_with_space(
             search(DataMiner.patterns["daily_deaths_direct"], info_bundle.text)["deaths"]) + \
-                       NumberParser.int_with_space(
-                           search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
+            NumberParser.int_with_space(
+            search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
         daily_tests = NumberParser.int_with_modifier(search(DataMiner.patterns["daily_tests"], info_bundle.text)[0])
         total_cases = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
-        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
+        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_deaths"], info_bundle.text)[0])
+
         voivodeship_stats = {}
         for v in DataMiner.voivodeships:
             v_cases = 0
             v_match = search(v + "go ({})", info_bundle.text)
             if v_match:
                 v_cases = v_match[0]
-            voivodeship_stats[v] = {
+            voivodeship_stats[v.capitalize()] = {
+                "date": date,
+
                 "daily infected": NumberParser.int_with_space(v_cases),
                 "daily cured": flag,
                 "daily deceased": flag,
@@ -69,34 +74,4 @@ class DataMiner:
                 "infected now 100k": flag
             }
 
-        return {
-            date[:4]: {
-                date[5:7]: {
-                    date[8:]: {
-                        "date": date,
-
-                        "daily infected": daily_cases,
-                        "daily cured": flag,
-                        "daily deceased": daily_deaths,
-                        "daily tests": daily_tests,
-
-                        "total infected": total_cases,
-                        "total cured": flag,
-                        "total deceased": total_deaths,
-                        "total tests": flag,
-
-                        "infected now": flag,
-                        "occupied respirators": flag,
-                        "free respirators": flag,
-
-                        "infections 7d100k": flag,
-                        "deaths 7d100k": flag,
-                        "infected now 100k": flag,
-
-                        "positive tests percent": daily_cases / daily_tests,
-
-                        "voivodeship stats": voivodeship_stats
-                    }
-                }
-            }
-        }
+        return DataPack(date, daily_cases, daily_deaths, daily_tests, total_cases, total_deaths, voivodeship_stats)
