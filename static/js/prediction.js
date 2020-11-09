@@ -15,6 +15,7 @@ function color_picker(value) {
 
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
+    console.log(data)
     for (let x of areas) {
         console.log(data[x.id], x.id);
         x.style.fill = color_picker(data[x.id]);
@@ -80,11 +81,23 @@ function jsonify(variable) {
 
 }
 
+function clearCanvas(context, canvas) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    var w = canvas.width;
+    canvas.width = 1;
+    canvas.width = w;
+}
+
+var myChart = null;
+
 function draw_chart_onclick(element) {
     var ctx = document.getElementById('predictions-graph').getContext('2d');
     let voi = element.getAttribute("xlink:title")
     var data_array = graph_data[voi]
-    var myChart = new Chart(ctx, {
+    console.log(data_array)
+    if (myChart !== null)
+        myChart.destroy()
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: dates,
@@ -117,6 +130,6 @@ function draw_chart_onclick(element) {
 var predicted_values = jsonify(predicted_values_raw)
 var graph_data = jsonify(graph_data_raw)
 var dates = jsonify(dates_raw)
-draw_chart_onclick(document.getElementById("Mazowieckie"))
 
+draw_chart_onclick(document.getElementById("Mazowieckie-a"))
 paint_areas(predicted_values)

@@ -21,4 +21,4 @@ def save_data(data, *args):
 
 
 def save_data_all(dictionary):
-    db.reference().child(root).set(dictionary)
+    db.reference().child(root).update(dictionary)
