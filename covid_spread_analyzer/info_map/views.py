@@ -18,5 +18,4 @@ from django.template import loader
 def map_view(request):
     map_data = load_data('Map Data')
     dates = list(map_data.keys())[::-1]
-    print(dates)
     return render(request=request, template_name='map.html', context={"map_data": map_data, "dates": dates})
