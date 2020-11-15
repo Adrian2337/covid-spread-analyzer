@@ -21,6 +21,7 @@ def main():
     })
     DataYieldService.initialize()
     UpdateService.start()
+    # todo: resolve bug which double-starts the app (seen in UpdateService and before on DBUpdateService)
     # save_data_all(
     #    DataYieldService.yield_data_since("2020-10-24", last_relevant_date="2020-11-08", include_first_day=True))
     # save_data({"Last Update Date": "2020-10-26"})
