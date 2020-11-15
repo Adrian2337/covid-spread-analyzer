@@ -7,6 +7,7 @@ from firebase_admin import credentials, initialize_app
 
 from covid_spread_analyzer.prediction_app.predictioner import Predictioner
 from data_fetch.twitter.DataYieldService import DataYieldService
+from covid_spread_analyzer.DBUpdateService import DBUpdateService
 import json
 from covid_spread_analyzer.database_operations import *
 
@@ -20,6 +21,9 @@ def main():
     DataYieldService.initialize()
     # save_data_all(
     #    DataYieldService.yield_data_since("2020-10-24", last_relevant_date="2020-11-08", include_first_day=True))
+    # save_data({"Last Update Date": "2020-10-26"})
+    # print(load_data("Last Update Date"))
+    # DBUpdateService.update_database()
 
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')
