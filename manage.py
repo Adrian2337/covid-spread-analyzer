@@ -18,7 +18,7 @@ def main():
         'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
     })
     DataYieldService.initialize()
-    #save_data_all(
+    # save_data_all(
     #    DataYieldService.yield_data_since("2020-10-24", last_relevant_date="2020-11-08", include_first_day=True))
 
     """Run administrative tasks."""
