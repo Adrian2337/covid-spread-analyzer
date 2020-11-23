@@ -1,4 +1,5 @@
 import covid_spread_analyzer.database_operations as db
+from covid_spread_analyzer.prediction_app.predictions_service import predict_and_save_
 from data_fetch.twitter.DataYieldService import DataYieldService
 
 
@@ -10,6 +11,7 @@ class DBUpdateService:
         last_update_date = db.load_data("Last Update Date")
         data = DataYieldService.yield_data_since(last_update_date)
         DBUpdateService.__insert_data(data)
+        predict_and_save_()
 
     @staticmethod
     def __insert_data(data):
