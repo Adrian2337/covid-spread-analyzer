@@ -1,5 +1,4 @@
 from matplotlib import pyplot
-from numpy import asarray
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 from tensorflow.python.keras import Sequential
@@ -75,23 +74,3 @@ class Predictioner:
         pyplot.ylabel('Output Variable (y)')
         pyplot.legend()
         pyplot.show()
-
-
-"""
-x = asarray([i for i in range(-1000, 1000)])
-predict_x = asarray([i for i in range(900, 1400)])
-y = asarray([i ** 2.0 for i in range(-1000, 1000)])
-y2 = asarray([i ** 3.0 for i in range(-1000, 1000)])
-
-p = Predictioner()
-
-p.update_input(x, y)
-p.fit_model()
-p.predict(predict_x)
-p.visualize()
-
-p.update_input(x, y2)
-p.fit_model()
-p.predict(predict_x)
-p.visualize()
-"""
