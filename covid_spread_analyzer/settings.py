@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
+    'covid_spread_analyzer.prediction_app'
 ]
 
 MIDDLEWARE = [
@@ -81,14 +82,6 @@ DATABASES = {
     #    'NAME': BASE_DIR / 'db.sqlite3',
     # }
 }
-########################################################################################################################
-########################### I am almost sure that firebase initialization should not be here ###########################
-########################################################################################################################
-"""cred = credentials.Certificate('firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
-initialize_app(cred, {
-    'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
-})"""
-########################################################################################################################
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -130,4 +123,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
 ]
 
-predictioner = Predictioner()
+
