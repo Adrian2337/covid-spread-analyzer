@@ -44,7 +44,7 @@ When server is running, you have acess to responsive map of Poland (as mentioned
 
 ## Code Example
 
-<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/124272618_364715441464721_794339145435164752_n.png?_nc_cat=106&ccb=2&_nc_sid=ae9488&_nc_ohc=u8ASUek4tvcAX_FzQfh&_nc_oc=AQmoLDmj76hPRyIn7xr1yCjMpRyRv8l1DDRPrSdCLILeoXMmORvgLo_mjcMnNKjuC6k&_nc_ht=scontent-waw1-1.xx&oh=10957cb0bb8d8c5979d9069358c4a6d9&oe=5FCE80E4" alt="Responsive map" width="350" />
+<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/127237487_201293871534429_2373441609104887257_n.png?_nc_cat=102&ccb=2&_nc_sid=ae9488&_nc_ohc=HX6Z3ChBJqIAX-8Wp8g&_nc_ht=scontent-waw1-1.xx&oh=23a7dfa48dafbe62cd6d890a0d41d99f&oe=5FE61EAA" alt="Responsive map" width="350" />
 
 
 <img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/124284961_1754264818072920_7780739928951725391_n.png?_nc_cat=107&ccb=2&_nc_sid=ae9488&_nc_ohc=sAadQoBbe4YAX_t7jSq&_nc_ht=scontent-waw1-1.xx&oh=650d81fd400738aa9cb29d4fccb058e9&oe=5FCE50C6" alt="Menu" width="350" />
