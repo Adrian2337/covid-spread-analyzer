@@ -4,15 +4,18 @@ var map_data = jsonify(map_data_raw)
 var dates = jsonify(dates_raw)
 
 
-function color_picker(value) {
-    console.log(value)
-    if (value < 1200 && value > 0)
+function color_picker(value, sum) {
+    let lim1 = 0.3 * sum
+    let lim2 = 0.5 * sum
+    let lim3 = 0.6 * sum
+    let lim4 = 0.8 * sum
+    if (value < lim1 && value > 0)
         return "green"
-    else if (1700 > value)
+    else if (lim2 > value)
         return "yellow"
-    else if (2300 > value)
+    else if (lim3 > value)
         return "orange"
-    else if (3500 > value)
+    else if (lim4 > value)
         return "red"
     else
         return "purple"
@@ -37,11 +40,15 @@ function jsonify(variable) {
 
 function paint_areas(data_json, index) {
     let areas = document.getElementsByClassName("area")
+    console.log(data_json)
     for (let x of areas) {
-        console.log(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'], x.id, dates[index])
-        x.style.fill = color_picker(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'])
+        x.style.fill = color_picker(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'], 600)
 
     }
+}
+
+function get_sum_all_casses(data, type) {
+    data_json[dates[index]]['Voivodeships'][x.id]['daily infected']
 }
 
 paint_areas(map_data, 0)

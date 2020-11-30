@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from covid_spread_analyzer.database_operations import load_data, save_data
 from covid_spread_analyzer.prediction_app.predictions_service import filter_data, add_days_to_date, \
-    fill_data_with_predictions
+    fill_data_with_predictions, predict_and_save_
 
 
 def prediction_view(request):
-    # predict_and_save_()
+    #predict_and_save_()
     data_voiv = load_data('Voivodeships')
     voivodes = list(data_voiv.keys())
     dates = list(data_voiv[voivodes[0]].keys())
