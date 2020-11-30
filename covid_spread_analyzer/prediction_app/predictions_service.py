@@ -3,7 +3,9 @@ import datetime
 from numpy import asarray, arange
 
 from covid_spread_analyzer.database_operations import load_data, save_data
-from manage import predictioner
+from covid_spread_analyzer.prediction_app.predictioner import Predictioner
+
+predictioner = Predictioner()
 
 
 def add_days_to_date(date, days):

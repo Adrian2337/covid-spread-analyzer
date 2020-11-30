@@ -9,7 +9,7 @@ from firebase_admin import credentials, initialize_app
 from data_fetch.twitter.DataYieldService import DataYieldService
 from covid_spread_analyzer.UpdateService import UpdateService
 
-predictioner = Predictioner()
+
 def main():
     # app setup
     cred = credentials.Certificate('firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
@@ -19,8 +19,6 @@ def main():
 
     DataYieldService.initialize()
     UpdateService.start()
-    # todo: resolve bug which double-starts the app (seen in UpdateService and before on DBUpdateService)
-    print(os.getpid())
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')
     try:
