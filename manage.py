@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from covid_spread_analyzer.prediction_app.predictioner import Predictioner
+from covid_spread_analyzer.prediction_app.PredictionService import PredictionService
 
 from firebase_admin import credentials, initialize_app
 
@@ -16,6 +16,8 @@ def main():
     initialize_app(cred, {
         'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
     })
+
+    PredictionService.initialize()
 
     DataYieldService.initialize()
     UpdateService.start()
