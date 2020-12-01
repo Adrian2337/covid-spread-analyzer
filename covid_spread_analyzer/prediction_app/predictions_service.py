@@ -3,9 +3,7 @@ import datetime
 from numpy import asarray, arange
 
 from covid_spread_analyzer.database_operations import load_data, save_data
-from covid_spread_analyzer.prediction_app.predictioner import Predictioner
-
-predictioner = Predictioner()
+from covid_spread_analyzer.prediction_app.PredictionService import PredictionService
 
 
 def add_days_to_date(date, days):
@@ -13,8 +11,9 @@ def add_days_to_date(date, days):
     return str(date_1 + datetime.timedelta(days=days)).split()[0]
 
 
-# TODO: add this method to our actualization function
-def predict_and_save_(data_voivodeships=load_data('Voivodeships')):
+def predict_and_save_(data_voivodeships=None):
+    if not data_voivodeships:
+        data_voivodeships = load_data('Voivodeships')
     voi_names_list = list(data_voivodeships.keys())
     dates = list(data_voivodeships[voi_names_list[0]].keys())
     filtered_data = filter_data(data_voivodeships, dates, voi_names_list)
@@ -31,6 +30,7 @@ def fill_data_with_predictions(filtered_data, predicted_values):
 
 def get_predictions(filtered_data, x_train):
     predicted_values = dict()
+    predictioner = PredictionService.get_predictioner()
     for k, v in filtered_data.items():
         predictioner.update_input(x_train, asarray(v))
         predictioner.fit_model()
