@@ -52,3 +52,10 @@ function get_sum_all_casses(data, type) {
 }
 
 paint_areas(map_data, 0)
+
+function render_template() {
+    let val = document.getElementById('voivodeship')
+    let el = document.getElementById('statistics-link')
+    el.href = '/statistics/' + val.innerHTML
+    el.click()
+}

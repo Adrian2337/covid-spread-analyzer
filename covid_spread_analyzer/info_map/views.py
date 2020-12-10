@@ -19,3 +19,8 @@ def map_view(request):
     map_data = load_data('Map Data')
     dates = list(map_data.keys())[::-1]
     return render(request=request, template_name='map.html', context={"map_data": map_data, "dates": dates})
+
+
+def statistics_view(request, voivode):
+    data = load_data('Voivodeships', voivode)
+    return render(request=request, template_name='statistics.html', context={"data": data})
