@@ -11,6 +11,7 @@ def add_days_to_date(date, days):
     return str(date_1 + datetime.timedelta(days=days)).split()[0]
 
 
+
 def predict_and_save_(data_voivodeships=None):
     if not data_voivodeships:
         data_voivodeships = load_data('Voivodeships')
