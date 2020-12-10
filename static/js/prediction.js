@@ -1,24 +1,26 @@
 function color_picker(value) {
-    console.log(value)
-    if (value < 1200 && value > 0)
-        return "green"
-    else if (1700 > value)
-        return "yellow"
-    else if (2300 > value)
-        return "orange"
-    else if (3500 > value)
-        return "red"
+    console.log(pred_max)
+    let lim1 = pred_max * 0.3
+    let lim2 = pred_max * 0.6
+    let lim3 = pred_max * 0.75
+    let lim4 = pred_max * 0.9
+    if (value < lim1 && value > 0)
+        return "LightSkyBlue"
+    else if (lim2 > value)
+        return "Blue"
+    else if (lim3 > value)
+        return "MediumBlue"
+    else if (lim4 > value)
+        return "DarkBlue"
     else
-        return "purple"
+        return "Navy"
 }
 
 
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
-    console.log(data)
     for (let x of areas) {
-        console.log(data[x.id], x.id);
-        x.style.fill = color_picker(data[x.id]);
+        x.style.fill = color_picker(data[x.id][data[x.id].length - 1]);
 
     }
 }
@@ -94,7 +96,7 @@ function draw_chart_onclick(element) {
     var ctx = document.getElementById('predictions-graph').getContext('2d');
     let voi = element.getAttribute("xlink:title")
     var data_array = graph_data[voi]
-    console.log(data_array)
+    var pred_arr = predicted_values[voi]
     if (myChart !== null)
         myChart.destroy()
     myChart = new Chart(ctx, {
@@ -102,13 +104,23 @@ function draw_chart_onclick(element) {
         data: {
             labels: dates,
             datasets: [{
-                data: data_array,
-                backgroundColor: "rgba(231, 76, 60, 0.8)",
-                borderColor: "rgba(202, 201, 197, 1)",
-                pointBackgroundColor: "rgba(202, 201, 197, 1)",
+                data: pred_arr,
+                borderColor: "white",
+                backgroundColor: "rgba(86, 215, 152, 0.5)",
+                pointBackgroundColor: "rgba(202, 201, 197, 0.5)",
                 pointBorderColor: "#fff",
                 borderWidth: 1,
-                label: "Total Cases",
+                label: "Predictions",
+                name: "Total Predicted Cases"
+
+            }, {
+                data: data_array,
+                backgroundColor: "rgba(243, 139, 74, 0.6)",
+                borderColor: "rgba(202, 201, 197, 0.6)",
+                pointBackgroundColor: "rgba(202, 201, 197, 0.7)",
+                pointBorderColor: "#fff",
+                borderWidth: 1,
+                label: "Real Cases",
                 name: "Total Cases"
 
             }]
@@ -124,12 +136,35 @@ function draw_chart_onclick(element) {
                 }]
             }
         }
-    });
+    })
+    ;
+}
+
+function get_max_case(data) {
+    let max = 0
+    for (let x in data) {
+        let val = data[x][data[x].length - 1]
+        if (max < val) {
+            max = val
+        }
+    }
+    return max
+}
+
+function fill_date() {
+    let el = document.getElementById('date-div')
+    el.innerHTML = 'Prediction for ' + dates[dates.length - 1]
+    el.style.color = 'white'
+    el.style.fontSize = '28px'
 }
 
 var predicted_values = jsonify(predicted_values_raw)
 var graph_data = jsonify(graph_data_raw)
 var dates = jsonify(dates_raw)
 
+pred_max = get_max_case(predicted_values)
+
 draw_chart_onclick(document.getElementById("Mazowieckie-a"))
 paint_areas(predicted_values)
+
+fill_date()
