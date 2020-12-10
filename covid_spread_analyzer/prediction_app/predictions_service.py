@@ -13,7 +13,6 @@ def add_days_to_date(date, days):
     return str(date_1 + datetime.timedelta(days=days)).split()[0]
 
 
-# TODO: add this method to our actualization function
 def predict_and_save_(data_voivodeships=load_data('Voivodeships')):
     voi_names_list = list(data_voivodeships.keys())
     dates = list(data_voivodeships[voi_names_list[0]].keys())
@@ -31,6 +30,7 @@ def fill_data_with_predictions(filtered_data, predicted_values):
 
 def get_predictions(filtered_data, x_train):
     predicted_values = dict()
+    print(filtered_data)
     for k, v in filtered_data.items():
         predictioner.update_input(x_train, asarray(v))
         predictioner.fit_model()

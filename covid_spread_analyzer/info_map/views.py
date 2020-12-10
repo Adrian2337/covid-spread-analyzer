@@ -22,5 +22,5 @@ def map_view(request):
 
 
 def statistics_view(request, voivode):
-    data = load_data('Voivodeships', voivode)
+    data = load_data('Voivodeships', voivode) if voivode != 'Polska' else load_data('Poland')
     return render(request=request, template_name='statistics.html', context={"data": data})

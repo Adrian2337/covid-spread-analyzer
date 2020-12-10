@@ -29,3 +29,8 @@
 .mapdiv {
     min-width: 300px;
 }
+
+#canvas-place {
+    position: relative;
+    right: 8%;
+}
