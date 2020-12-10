@@ -7,8 +7,8 @@ var dates = jsonify(dates_raw)
 function color_picker(value, sum) {
     let lim1 = 0.3 * sum
     let lim2 = 0.5 * sum
-    let lim3 = 0.6 * sum
-    let lim4 = 0.8 * sum
+    let lim3 = 0.75 * sum
+    let lim4 = 0.9 * sum
     if (value < lim1 && value > 0)
         return "green"
     else if (lim2 > value)
@@ -18,7 +18,7 @@ function color_picker(value, sum) {
     else if (lim4 > value)
         return "red"
     else
-        return "purple"
+        return "darkred"
 }
 
 
@@ -41,8 +41,13 @@ function jsonify(variable) {
 function paint_areas(data_json, index) {
     let areas = document.getElementsByClassName("area")
     console.log(data_json)
+    sum = 0
+    for (let voivoid of areas) {
+        sum += data_json[dates[index]]['Voivodeships'][voivoid.id]['daily infected'];
+
+    }
     for (let x of areas) {
-        x.style.fill = color_picker(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'], 600)
+        x.style.fill = color_picker(data_json[dates[index]]['Voivodeships'][x.id]['daily infected'], sum/16)
 
     }
 }
