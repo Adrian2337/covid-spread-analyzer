@@ -34,3 +34,8 @@
     position: relative;
     right: 8%;
 }
+#date-div{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
