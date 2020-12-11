@@ -5,6 +5,17 @@ body {
     height: 100%;
 }
 
+#date-div {
+    font-size: large;
+    font-weight: 700;
+    color: blanchedalmond;
+    background-color: black;
+    text-align: center;
+    border: 25px solid #004414;
+    opacity: 0.8;
+    border-radius: 25px; 
+}
+
 .map-container {
     position: fixed;
     height: 100%;
@@ -54,17 +65,19 @@ body {
     position: fixed;
     height: 100%;
     width: 500px;
-    background-color: lightcoral;
+    background-color: rgb(4, 95, 27);
     right: -500px;
     top: 0;
     padding-left: 15px;
     bottom: 0;
-
+    opacity: 0.6;
     display: table;
+    font-weight: 900;
 }
 
 
 .general-voivodeship-info p {
+    
     padding: 10px;
     width: 50%;
 }

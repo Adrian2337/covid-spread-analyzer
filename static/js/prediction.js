@@ -1,26 +1,32 @@
-function color_picker(value) {
-    console.log(pred_max)
-    let lim1 = pred_max * 0.3
-    let lim2 = pred_max * 0.6
-    let lim3 = pred_max * 0.75
-    let lim4 = pred_max * 0.9
+function color_picker(value, sum) {
+    console.log(value)
+
+    let lim1 = 0.25 * sum
+    let lim2 = 0.35 * sum
+    let lim3 = 0.50 * sum
+    let lim4 = 0.7 * sum
+
     if (value < lim1 && value > 0)
-        return "LightSkyBlue"
+        return "green"
     else if (lim2 > value)
-        return "Blue"
+        return "yellow"
     else if (lim3 > value)
-        return "MediumBlue"
+        return "orange"
     else if (lim4 > value)
-        return "DarkBlue"
+        return "red"
     else
-        return "Navy"
+        return "darkred"
 }
 
 
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
+    console.log(data)
+    sum = 100_000
     for (let x of areas) {
-        x.style.fill = color_picker(data[x.id][data[x.id].length - 1]);
+        console.log(data[x.id], x.id);
+        // below sum all predicted cases as input value
+        x.style.fill = color_picker(data[x.id].reduce((a, b) => a + b, 0), sum);
 
     }
 }
