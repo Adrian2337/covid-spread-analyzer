@@ -42,6 +42,7 @@ body {
     stroke: black;
     stroke-width: 4px;
     transition: fill 0.3s;
+    opacity: 0.6;
 }
 
 .area:hover {

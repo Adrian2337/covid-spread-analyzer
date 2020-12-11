@@ -5,21 +5,39 @@ var dates = jsonify(dates_raw)
 
 
 function color_picker(value, sum) {
-    let lim1 = 0.25 * sum
-    let lim2 = 0.35 * sum
-    let lim3 = 0.50 * sum
-    let lim4 = 0.7 * sum
+    let lim1 = 0.1 * sum
+    let lim2 = 0.2 * sum
+    let lim3 = 0.3 * sum
+    let lim4 = 0.4 * sum
+    let lim5 = 0.5 * sum
+    let lim6 = 0.6 * sum
+    let lim7 = 0.7 * sum
+    let lim8 = 0.8 * sum
+    let lim9 = 0.9 * sum
+    let lim10 = 1.0 * sum
 
     if (value < lim1 && value > 0)
-        return "green"
+        return "#00ffbf"
     else if (lim2 > value)
-        return "yellow"
+        return "#00ff80"
     else if (lim3 > value)
-        return "orange"
+        return "#80ff00"
     else if (lim4 > value)
-        return "red"
+        return "#bfff00"
+    else if (lim5 > value)
+        return "#ffff00"
+    else if (lim6 > value)
+        return "#ffbf00"
+    else if (lim7 > value)
+        return "#ff8000"
+    else if (lim8 > value)
+        return "#ff4000"
+    else if (lim9 > value)
+        return "#d92626"        
+    else if (lim10 > value)
+        return "#b94646"            
     else
-        return "darkred"
+        return "#9f6060"
 }
 
 
