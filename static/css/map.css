@@ -13,7 +13,141 @@ body {
     text-align: center;
     border: 25px solid #004414;
     opacity: 0.8;
-    border-radius: 25px; 
+    border-radius: 25px;
+    position: fixed;
+    left: 25px;
+    top: 50px;
+}
+
+
+#_10000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#00ffbf;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 20%;
+}
+
+#_20000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#00ff80;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 25%;
+}
+
+#_30000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#80ff00;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 30%;
+}
+
+#_40000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#bfff00;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 35%;
+}
+
+#_50000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#ffff00;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 40%;
+}
+
+#_60000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#ffbf00;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 45%;
+}
+
+#_70000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#ff8000;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 50%;
+}
+
+#_80000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#ff4000;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 55%;
+}
+
+#_90000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color: #d92626;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 60%;
+}
+
+#_100000 {
+    font-size: small;
+    font-weight: 700;
+    color: black;
+    background-color:#b94646;
+    text-align: center;
+    opacity: 0.6;
+    border-radius: 25px;
+    position: fixed;
+    left: 80px;
+    top: 65%;
 }
 
 .map-container {
@@ -55,7 +189,7 @@ body {
 
 .knob-container {
     position: fixed;
-    left: 50px;
+    left: 65px;
     bottom: 50px;
 }
 

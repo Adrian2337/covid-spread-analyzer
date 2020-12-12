@@ -78,7 +78,7 @@ function paint_areas(data_json, index) {
     console.log(data_json)
     sum = 100_000
 
-
+    
     for (let x of areas) {
 
         // below count days from beginnig of data collections
@@ -95,8 +95,10 @@ function paint_areas(data_json, index) {
 
         x.style.fill = color_picker(till_today_infected, sum)
 
+        
     }
 
+    
 }
 
 function get_date_from_knob(data_json, index) {
