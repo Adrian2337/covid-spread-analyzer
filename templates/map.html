@@ -138,37 +138,37 @@
                 </script>
             </div>
             <div id="legend">
-                <input type="text" class="scale-table" value="200"   readonly>
-                <input type="text" class="scale-table" value="400"   readonly>
-                <input type="text" class="scale-table" value="600"   readonly>
-                <input type="text" class="scale-table" value="800"   readonly>
-                <input type="text" class="scale-table" value="1000"   readonly>
-                <input type="text" class="scale-table" value="1200"   readonly>
-                <input type="text" class="scale-table" value="1600"   readonly>
-                <input type="text" class="scale-table" value="2000"   readonly>
-                <input type="text" class="scale-table" value="3000"   readonly>
-                <input type="text" class="scale-table" value="5000"  readonly>
+                <input type="text" class="scale-table" value="" id="0.1"  readonly>
+                <input type="text" class="scale-table" value="" id="0.2"  readonly>
+                <input type="text" class="scale-table" value="" id="0.3"  readonly>
+                <input type="text" class="scale-table" value="" id="0.4"  readonly>
+                <input type="text" class="scale-table" value="" id="0.5"  readonly>
+                <input type="text" class="scale-table" value="" id="0.6"  readonly>
+                <input type="text" class="scale-table" value="" id="0.7"  readonly>
+                <input type="text" class="scale-table" value="" id="0.8"  readonly>
+                <input type="text" class="scale-table" value="" id="0.9"  readonly>
+                <input type="text" class="scale-table" value="" id="1.0"  readonly>
           
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        let areas = document.getElementsByClassName("scale-table")
-                        sum = 100_000
-                        for (let x of areas) {
-                            x.style.backgroundColor = color_picker(parseInt(x.value), sum);
-                        }
-                    });
-                </script>
             </div>
             <div class="knob-container">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-                <input type="hidden" value="0" class="knob" data-min="0" data-max="60" id="knob">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>               
+                <input type="hidden" value="1" class="knob" data-min="0" data-max="30" id="knob">
                 <script type="text/javascript">
+
+                    let then = new Date(2020, 10, 01);
+                    let now = new Date();
+                
+                    days =  parseInt(Math.abs((then - now) / (1000*60*60*24))); 
                     $(function () {
+
                         $(".knob").knob({
+                                'min':0,
+                                'max':days,
                             release: function (value) {
                                 hide_general_info()
                                 paint_areas(map_data, value)
                                 get_date_from_knob(map_data, value)
+                               
                             },
                         });
                     });

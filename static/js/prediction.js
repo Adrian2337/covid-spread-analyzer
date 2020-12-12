@@ -1,14 +1,14 @@
 function color_picker(value, sum) {
-    let lim1 = 0.002 * sum
-    let lim2 = 0.004 * sum
-    let lim3 = 0.006 * sum
-    let lim4 = 0.008 * sum
-    let lim5 = 0.01 * sum
-    let lim6 = 0.012 * sum
-    let lim7 = 0.016 * sum
-    let lim8 = 0.02 * sum
-    let lim9 = 0.03 * sum
-    let lim10 = 0.05 * sum
+    let lim1 = 0.1 * sum
+    let lim2 = 0.2 * sum
+    let lim3 = 0.3 * sum
+    let lim4 = 0.4 * sum
+    let lim5 = 0.5 * sum
+    let lim6 = 0.6 * sum
+    let lim7 = 0.7 * sum
+    let lim8 = 0.8 * sum
+    let lim9 = 0.9 * sum
+    let lim10 = 1.0 * sum
 
     if (value < lim1 && value > 0)
         return "#00ffbf"
@@ -35,11 +35,22 @@ function color_picker(value, sum) {
 }
 
 
-
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
     console.log(data)
-    sum = 100_000
+
+    let cases = []
+    let average = (array) => array.reduce((a, b) => a + b) / array.length;
+
+    for (let x of areas) {
+    
+        average_val = average(data[x.id])
+        cases.push(average_val)
+
+    }
+
+    sum = Math.max.apply(null, cases)
+
     for (let x of areas) {
         console.log(data[x.id], x.id);
         // below sum all predicted cases as input value
