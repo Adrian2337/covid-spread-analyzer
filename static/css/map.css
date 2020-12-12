@@ -142,7 +142,6 @@ body {
     opacity: 0.6;
     display: table;
     font-weight: 900;
-    border-radius: 25px;
 }
 
 
@@ -153,8 +152,6 @@ body {
 }
 
 #general-voivodeship-info-items {
-    
-        
     text-align: center;
     height: 300px;
     display: table-cell;
