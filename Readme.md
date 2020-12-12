@@ -13,62 +13,129 @@
 * [Technologies](#technologies)
 
 ## Introduction
-App created for those difficult times, helps people in Poland stay tuned for news about Covid-19. When you become user of this program you'll get access to:
+
+App created for those difficult times, helps people in Poland stay tuned for news about Covid-19. When you become user
+of this program you'll get access to:
 
 * Responsive Poland map
 * Daily positive cases statistics
 * Daily death cases statistics
 * Daily tests cases statistics
 * Available medical tools data
+* Overall statistics
+* Details (history of deaths/ cured/ infected daily cases )for each voivodeship in Poland
 
 And much more, are You interested?
 
 ## Installation
-Before you start enjoying this simple app, you have to go through requirements installation. Dont worry, we created Requirements.txt file with all extensions needed to launch server app.
+
+Before you start enjoying this simple app, you have to go through requirements installation. Dont worry, we created
+Requirements.txt file with all extensions needed to launch server app.
 
 Before launch type in terminal:
-"pip install -r requirements"
+
+```shell
+pip install -r requirements
+```
 
 That's it.
-
 
 ## Launch
 
 To run server type in command line:
-"python manage.py runserver"
+
+```shell
+ python manage.py runserver
+ ```
 
 ## General info
 
-When server is running, you have acess to responsive map of Poland (as mentioned before). Each of voivodeships in map, can be checked for Covid-19 info. Also, you have acess to predictions about upcomig days.
-
+When server is running,
+you have access to responsive map of Poland (as mentioned before). Each of voivodeships in map,
+can be checked for Covid-19 info.
+Also, you have access to predictions about upcoming days.
+![](static/img/screenshots/main_page.png)
+Above is an example main page for 12 December.
+Map is interactive and after clicking on chosen 
+ voivodeship the right general info panel appears and here
+we can move on to page focused totally on statistics (for clicked voivodeship).
 
 ## Code Example
 
-<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/127237487_201293871534429_2373441609104887257_n.png?_nc_cat=102&ccb=2&_nc_sid=ae9488&_nc_ohc=HX6Z3ChBJqIAX-8Wp8g&_nc_ht=scontent-waw1-1.xx&oh=23a7dfa48dafbe62cd6d890a0d41d99f&oe=5FE61EAA" alt="Responsive map" width="350" />
+```javascript
+function draw_chart(dates, total_cases, cured_cases, deaths) {
+    var ctx = document.getElementById('predictions-graph').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                data: total_cases,
+                backgroundColor: "rgba(202, 201, 197, 0.5)",
+                borderColor: "rgba(202, 201, 197, 1)",
+                pointBackgroundColor: "rgba(202, 201, 197, 1)",
+                pointBorderColor: "#fff",
+                borderWidth: 1,
+                label: "Total Cases",
+                name: "Total Cases"
 
+            }, {
+                data: cured_cases,
+                backgroundColor: "rgba(171, 9, 0, 0.5)",
+                borderColor: "rgba(171, 9, 0, 1)",
+                pointBackgroundColor: "rgba(171, 9, 0, 1)",
+                pointBorderColor: "#fff",
+                borderWidth: 1,
+                label: "Cured Cases",
+                name: "Cured Cases"
 
-<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/124284961_1754264818072920_7780739928951725391_n.png?_nc_cat=107&ccb=2&_nc_sid=ae9488&_nc_ohc=sAadQoBbe4YAX_t7jSq&_nc_ht=scontent-waw1-1.xx&oh=650d81fd400738aa9cb29d4fccb058e9&oe=5FCE50C6" alt="Menu" width="350" />
+            }, {
+                data: deaths,
+                backgroundColor: "rgba(166, 78, 46, 0.5)",
+                borderColor: "rgba(12, 74, 0, 1)",
+                pointBackgroundColor: "rgba(123, 76, 0, 1)",
+                pointBorderColor: "#fff",
+                borderWidth: 1,
+                label: "Deaths",
+                name: "Deaths"
 
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 90,
+                        minRotation: 90
+                    }
+                }]
+            }
+        }
+    });
+}
+```
 
 ## Artificial Intelligence
 
-<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.15752-9/124808775_968389327004201_6770594807176546514_n.png?_nc_cat=108&ccb=2&_nc_sid=ae9488&_nc_ohc=VyP62d-MGl4AX--_94O&_nc_ht=scontent-waw1-1.xx&oh=77bf7133e7dfe4ff0a49a28fcfed7eea&oe=5FCF688F" alt="Predictions vs Real values" width="350" />
+Sample predictions vs real data below for 13 December. 
+You could notice our team put a lot of 
+effort to make predictions most efficient and
+almost real.
 
-Here is sample of predictions vs real data, as you can see our team, put a lot of effort to make predictions almost real.
+![](static/img/screenshots/preds_scr.png)
 
+#### Structure of used neural network
+![](static/img/screenshots/cnn.png)
 ## Technologies
-
-USed techonologies:
-
-* Python 3.8
-* Django
-* ChartJs
-* Tensorflow
-* Tweepy
-* Keras
-* Numpy
-* Sklearn
-* Scipy
-* Firebase_admin
+- Python 3.8
+- Django 3.0+
+- ChartJs
+- Tensorflow
+- Tweepy
+- Keras
+- Numpy
+- Sklearn
+- Scipy
 
 
