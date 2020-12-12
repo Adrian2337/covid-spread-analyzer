@@ -1,4 +1,4 @@
-<img align="center" alt="Covid-19" width="70px" src="https://www.iphronline.org/wp-content/uploads/2020/07/Untitled-1-01.png" />
+<img align="center" alt="Covid-19" width="70px" src="./screens/virus.png" />
 
 ## Covid-19 spread analyzer
 
@@ -61,7 +61,6 @@ Map is interactive and after clicking on chosen
 we can move on to page focused totally on statistics (for clicked voivodeship).
 
 ## Code Example
-
 ```javascript
 function draw_chart(dates, total_cases, cured_cases, deaths) {
     var ctx = document.getElementById('predictions-graph').getContext('2d');
@@ -122,7 +121,6 @@ Sample predictions vs real data below for 13 December.
 You could notice our team put a lot of 
 effort to make predictions most efficient and
 almost real.
-
 ![](static/img/screenshots/preds_scr.png)
 
 #### Structure of used neural network
