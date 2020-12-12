@@ -14,13 +14,14 @@ def add_days_to_date(date, days):
 def predict_and_save_(data_voivodeships=None):
     if not data_voivodeships:
         data_voivodeships = load_data('Voivodeships')
-    voi_names_list = list(data_voivodeships.keys())
-    dates = list(data_voivodeships[voi_names_list[0]].keys())
-    filtered_data = filter_data(data_voivodeships, dates, voi_names_list)
-    dates.append(add_days_to_date(dates[-1], 1))
-    x_train = asarray(list(arange(len(filtered_data[list(filtered_data.keys())[0]]))))
-    predictions = get_predictions(filtered_data, x_train, single=False)
-    save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions")
+    for case_type in ['daily infected', 'daily deceased', 'daily cured']:
+        voi_names_list = list(data_voivodeships.keys())
+        dates = list(data_voivodeships[voi_names_list[0]].keys())
+        filtered_data = filter_data(data_voivodeships, dates, voi_names_list, case_type)
+        dates.append(add_days_to_date(dates[-1], 1))
+        x_train = asarray(list(arange(len(filtered_data[list(filtered_data.keys())[0]]))))
+        predictions = get_predictions(filtered_data, x_train, single=False)
+        save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions", case_type)
 
 
 def fill_data_with_predictions(filtered_data, predicted_values):
@@ -39,7 +40,8 @@ def get_predictions(filtered_data, x_train, single=True):
         if single:
             predicted_values[k] = int(list(predictioner.predict(asarray([x_train[-1] + 1]))[0])[0])
         else:
-            predicted_values[k] = [x for x in predictioner.predict(asarray(x_new)).reshape(1, len(x_new)).tolist()[0]]
+            predicted_values[k] = [int(x) for x in
+                                   predictioner.predict(asarray(x_new)).reshape(1, len(x_new)).tolist()[0]]
     return predicted_values
 
 

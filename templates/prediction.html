@@ -117,7 +117,13 @@
                 </div>
             </div>
         </div>
-        <div class="side-content"><p>Wykresy</p>
+        <div class="side-content">
+            <div id="pred-options">
+                <button class="btn" id="daily infected" onclick="set_type(this)">Infected</button>
+                <button class="btn" id="daily cured" onclick="set_type(this)">Cured</button>
+                <button class="btn" id="daily deceased" onclick="set_type(this)">Deaths</button>
+            </div>
+            <p>Wykresy</p>
             <div id="canvas-place">
                 <canvas id="predictions-graph" width="500" height="300"></canvas>
             </div>
