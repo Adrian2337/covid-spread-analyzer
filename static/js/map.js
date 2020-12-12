@@ -124,8 +124,8 @@ function paint_areas(data_json, index) {
     let areasII = document.getElementsByClassName("scale-table")
     
     for (let xII of areasII) {
-        xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
         xII.value =  String(parseInt(xII.id*sum))
+        xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
     }
 
 }
