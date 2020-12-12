@@ -88,7 +88,7 @@ body, html {
         clip-path: circle(0px at 93% 8%);
         -webkit-clip-path: circle(0px at 93% 8%);
         -webkit-animation-delay: 1s;
-        -webkit-transition: all 1s ease-out;
+        -webkit-transition: all 1.6s ease-out;
         text-transform: uppercase;
         z-index: 1;
     }
