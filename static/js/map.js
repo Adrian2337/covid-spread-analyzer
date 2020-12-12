@@ -6,16 +6,16 @@ var voivodes = jsonify(voivodes_raw)
 
 
 function color_picker(value, sum) {
-    let lim1 = 0.002 * sum
-    let lim2 = 0.004 * sum
-    let lim3 = 0.006 * sum
-    let lim4 = 0.008 * sum
-    let lim5 = 0.01 * sum
-    let lim6 = 0.012 * sum
-    let lim7 = 0.016 * sum
-    let lim8 = 0.02 * sum
-    let lim9 = 0.03 * sum
-    let lim10 = 0.05 * sum
+    let lim1 = 0.1 * sum
+    let lim2 = 0.2 * sum
+    let lim3 = 0.3 * sum
+    let lim4 = 0.4 * sum
+    let lim5 = 0.5 * sum
+    let lim6 = 0.6 * sum
+    let lim7 = 0.7 * sum
+    let lim8 = 0.8 * sum
+    let lim9 = 0.9 * sum
+    let lim10 = 1.0 * sum
 
     if (value < lim1 && value > 0)
         return "#00ffbf"
@@ -58,6 +58,9 @@ function color_picker3(value, pred_max) {
         return "Navy"
 }
 
+
+
+
 function show_general_info(element) {
     let panel = document.getElementById('general-voivodeship-info')
     let txt = element.getAttribute("xlink:title");
@@ -81,7 +84,22 @@ function jsonify(variable) {
 
 function paint_areas(data_json, index) {
     let areas = document.getElementsByClassName("area")
-    sum = 100_000
+    let cases = []
+
+    for (let x of areas) {
+
+        week = 7;
+
+        count_from = week + index
+
+        for (count_from; count_from >= index; count_from--) {
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected'])
+        }
+
+    }
+
+    sum = Math.max.apply(null, cases)
 
     for (let x of areas) {
 
@@ -93,6 +111,8 @@ function paint_areas(data_json, index) {
 
         for (count_from; count_from >= index; count_from--) {
             till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected']
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected'])
         }
 
         mid = till_today_infected/week
@@ -101,9 +121,14 @@ function paint_areas(data_json, index) {
 
     }
 
+    let areasII = document.getElementsByClassName("scale-table")
+    
+    for (let xII of areasII) {
+        xII.value =  String(parseInt(xII.id*sum))
+        xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
+    }
 
 }
-
 
 
 function get_date_from_knob(data_json, index) {
