@@ -5,6 +5,33 @@ body {
     height: 100%;
 }
 
+
+.val{
+
+    font-size: large;
+    font-style:normal;
+    color: black;
+    text-align: center;
+    border-style: solid;
+    border-radius: 25px;
+    background-color:white;
+    margin: 20px;
+    margin-left: 130px;
+}
+
+.info{
+    font-size: medium;
+    font-style:normal;
+    color: white;
+    text-align: center;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: black;
+    margin: 20px;
+    margin-left: 130px;
+}
+
+
 #components{
 
     width:min-content;
@@ -100,6 +127,7 @@ body {
 }
 
 .general-voivodeship-info {
+    
     margin-left: 0;
     -webkit-transition: 1s;
     transition: 1s;
@@ -114,19 +142,23 @@ body {
     opacity: 0.6;
     display: table;
     font-weight: 900;
+    border-radius: 25px;
 }
 
 
 .general-voivodeship-info p {
-    
+
     padding: 10px;
     width: 50%;
 }
 
-.general-voivodeship-info-items {
+#general-voivodeship-info-items {
+    
+        
     text-align: center;
     height: 300px;
     display: table-cell;
     vertical-align: middle;
     position: fixed;
+    margin-top: 20%;
 }

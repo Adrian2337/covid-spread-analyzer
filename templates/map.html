@@ -179,15 +179,17 @@
     </body>
     <div class="general-voivodeship-info" id="general-voivodeship-info" onclick="hide_general_info()">
         <div id="general-voivodeship-info-items">
-            <p id="voivodeship"></p>
-            <p>Daily overall statistics: </p>
-            <p id="total">Total Cases: </p>
-            <p id="total-val"></p>
-            <p id="cured">Cured Cases: </p>
-            <p id="cured-val"></p>
-            <p id="deaths">Deaths: </p>
-            <p id="deaths-val"></p>
-            <a href="" id="statistics-link" onclick="render_template()">Details...</a>
+            <p class="info" id="voivodeship"></p>
+            <p class="val">Daily overall statistics: </p>
+            <p class="info" id="total">Total Cases: </p>
+            <p class="val" id="total-val"></p>
+            <p class="info" id="cured">Cured Cases: </p>
+            <p class="val" id="cured-val"></p>
+            <p class="info" id="deaths">Deaths: </p>
+            <p class="val" id="deaths-val"></p>
+            <p class="info">
+                <a href="" id="statistics-link" onclick="render_template()">Details...</a>
+            </p>
         </div>
     </div>
 {% endblock content %}
