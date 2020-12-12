@@ -37,13 +37,13 @@ function color_picker(value, sum) {
 
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
-    console.log(data)
+
 
     let cases = []
     let average = (array) => array.reduce((a, b) => a + b) / array.length;
 
     for (let x of areas) {
-    
+
         average_val = average(data[x.id])
         cases.push(average_val)
 
@@ -51,10 +51,10 @@ function paint_areas(data) {
 
     sum = Math.max.apply(null, cases)
 
+
     for (let x of areas) {
-        console.log(data[x.id], x.id);
         // below sum all predicted cases as input value
-        x.style.fill = color_picker(data[x.id][data[x.id].length-1], sum);
+        x.style.fill = color_picker(data[x.id][data[x.id].length - 1], sum);
 
     }
 }
@@ -125,12 +125,17 @@ function clearCanvas(context, canvas) {
 }
 
 var myChart = null;
+last_clicked = document.getElementById("Mazowieckie-a")
 
 function draw_chart_onclick(element) {
-    var ctx = document.getElementById('predictions-graph').getContext('2d');
+    last_clicked = element
+    let ctx = document.getElementById('predictions-graph').getContext('2d');
     let voi = element.getAttribute("xlink:title")
-    var data_array = graph_data[voi]
-    var pred_arr = predicted_values[voi]
+    let data_array = graph_data[type][voi]
+    console.log(type)
+    console.log(data_array)
+    let pred_arr = predicted_values[type]['Voivodeships'][voi]
+    console.log(pred_arr)
     if (myChart !== null)
         myChart.destroy()
     myChart = new Chart(ctx, {
@@ -185,11 +190,26 @@ function get_max_case(data) {
     return max
 }
 
+
 function fill_date() {
     let el = document.getElementById('date-div')
     el.innerHTML = 'Prediction for ' + dates[dates.length - 1]
     el.style.color = 'white'
     el.style.fontSize = '28px'
+}
+
+type = 'daily infected'
+
+function set_type(ele) {
+    type = ele.id
+    ele.style.backgroundColor = 'green'
+    let btns = document.getElementsByClassName('btn')
+    for (let b of btns) {
+        if (b.id !== ele.id) {
+            b.style.backgroundColor = 'white'
+        }
+    }
+    draw_chart_onclick(last_clicked)
 }
 
 var predicted_values = jsonify(predicted_values_raw)
@@ -199,6 +219,7 @@ var dates = jsonify(dates_raw)
 pred_max = get_max_case(predicted_values)
 
 draw_chart_onclick(document.getElementById("Mazowieckie-a"))
-paint_areas(predicted_values)
+paint_areas(predicted_values[type]['Voivodeships'])
 
 fill_date()
+set_type(document.getElementById(type))
