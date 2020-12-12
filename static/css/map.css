@@ -5,7 +5,16 @@ body {
     height: 100%;
 }
 
+#components{
+
+    width:min-content;
+    position: fixed;
+    float: left;
+}
+
 #date-div {
+    margin: 10px;
+    margin-left: 30px;
     font-size: large;
     font-weight: 700;
     color: blanchedalmond;
@@ -14,141 +23,30 @@ body {
     border: 25px solid #004414;
     opacity: 0.8;
     border-radius: 25px;
-    position: fixed;
-    left: 25px;
-    top: 50px;
+    float: left;
 }
 
-
-#_10000 {
-    font-size: small;
-    font-weight: 700;
+.legend{
+    
+    width: min-content;
+    font-size: medium;
+    font-style:oblique;
     color: black;
-    background-color:#00ffbf;
     text-align: center;
-    opacity: 0.6;
     border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 20%;
+    float: left;
 }
 
-#_20000 {
-    font-size: small;
+.scale-table{
     font-weight: 700;
-    color: black;
-    background-color:#00ff80;
-    text-align: center;
     opacity: 0.6;
+    float: left;
+    margin: 10px;
+    margin-left: 60px;
+    text-align: center;
     border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 25%;
 }
 
-#_30000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#80ff00;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 30%;
-}
-
-#_40000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#bfff00;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 35%;
-}
-
-#_50000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#ffff00;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 40%;
-}
-
-#_60000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#ffbf00;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 45%;
-}
-
-#_70000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#ff8000;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 50%;
-}
-
-#_80000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#ff4000;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 55%;
-}
-
-#_90000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color: #d92626;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 60%;
-}
-
-#_100000 {
-    font-size: small;
-    font-weight: 700;
-    color: black;
-    background-color:#b94646;
-    text-align: center;
-    opacity: 0.6;
-    border-radius: 25px;
-    position: fixed;
-    left: 80px;
-    top: 65%;
-}
 
 .map-container {
     position: fixed;
@@ -195,6 +93,7 @@ body {
 }
 
 .knob-container {
+    float: left;
     position: fixed;
     left: 65px;
     bottom: 50px;
