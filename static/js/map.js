@@ -2,6 +2,7 @@ document.getElementById('mapdiv').style.display = "block";
 
 var map_data = jsonify(map_data_raw)
 var dates = jsonify(dates_raw)
+var voivodes = jsonify(voivodes_raw)
 
 
 function color_picker(value, sum) {
@@ -59,8 +60,13 @@ function color_picker3(value, pred_max) {
 
 function show_general_info(element) {
     let panel = document.getElementById('general-voivodeship-info')
-    panel.querySelector("#voivodeship").innerHTML = element.getAttribute("xlink:title");
+    let txt = element.getAttribute("xlink:title");
+    panel.querySelector("#voivodeship").innerHTML = txt;
     panel.style.transform = "translateX(-500px)";
+    let v = document.getElementById("date-div").value
+    document.getElementById('total-val').innerText = voivodes[txt][v]['daily infected']
+    document.getElementById('cured-val').innerText = voivodes[txt][v]['daily cured']
+    document.getElementById('deaths-val').innerText = voivodes[txt][v]['daily deceased']
 }
 
 function hide_general_info() {
@@ -75,10 +81,8 @@ function jsonify(variable) {
 
 function paint_areas(data_json, index) {
     let areas = document.getElementsByClassName("area")
-    console.log(data_json)
     sum = 100_000
 
-    
     for (let x of areas) {
 
         // below count days from beginnig of data collections
@@ -95,10 +99,10 @@ function paint_areas(data_json, index) {
 
         x.style.fill = color_picker(till_today_infected, sum)
 
-        
+
     }
 
-    
+
 }
 
 function get_date_from_knob(data_json, index) {

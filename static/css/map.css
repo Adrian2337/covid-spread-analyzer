@@ -153,6 +153,7 @@ body {
 .map-container {
     position: fixed;
     height: 100%;
+    width: 100%;
 }
 
 .svg {
@@ -161,13 +162,19 @@ body {
     padding: 0;
 
 }
+#svg-div {
+    position: fixed;
+    margin: 0 auto;
+    left: 120px;
+    right: 100px;
+    height: 100%;
+    width: 100%;
+}
 
 .mapdiv {
     overflow: auto;
     display: table;
     margin: 0;
-    width: 100%;
-    height: 100%;
 }
 
 

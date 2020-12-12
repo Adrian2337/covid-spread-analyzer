@@ -18,7 +18,9 @@ from django.template import loader
 def map_view(request):
     map_data = load_data('Map Data')
     dates = list(map_data.keys())[::-1]
-    return render(request=request, template_name='map.html', context={"map_data": map_data, "dates": dates})
+    voivodes = load_data('Voivodeships')
+    return render(request=request, template_name='map.html',
+                  context={"map_data": map_data, "dates": dates ,"voivodes": voivodes})
 
 
 def statistics_view(request, voivode):
