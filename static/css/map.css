@@ -139,10 +139,11 @@ body {
 }
 
 .knob-container {
+    
     float: left;
     position: fixed;
     margin-top: 30px;
-    left: 75px;
+    left: 100px;
     bottom: 50px;
     
     

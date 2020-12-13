@@ -135,6 +135,7 @@ function btn_infected(){
     document.getElementById("daily infected").value = "True"
     document.getElementById("daily cured").value = "False"
     document.getElementById("daily deceased").value = "False"
+    $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 
 }
@@ -145,6 +146,7 @@ function btn_cured(){
     document.getElementById("daily infected").value = "False"
     document.getElementById("daily cured").value = "True"
     document.getElementById("daily deceased").value = "False"
+    $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 
 }
@@ -155,6 +157,7 @@ function btn_deceased(){
     document.getElementById("daily infected").value = "False"
     document.getElementById("daily cured").value = "False"
     document.getElementById("daily deceased").value = "True"
+    $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 }
 
