@@ -108,13 +108,90 @@ function paint_areas(data_json, index) {
         count_from = week + index
 
         till_today_infected = 0
-
+        
         for (count_from; count_from >= index; count_from--) {
             till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected']
             
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected'])
         }
+        
+        mid = till_today_infected/week
+        x.style.fill = color_picker(mid, sum)
 
+
+    }
+
+    let areasII = document.getElementsByClassName("scale-table")
+    
+    for (let xII of areasII) {
+        xII.value =  String(parseInt(xII.id*sum))
+        xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
+    }
+
+}
+
+function btn_infected(){
+
+    document.getElementById("daily infected").value = "True"
+    document.getElementById("daily cured").value = "False"
+    document.getElementById("daily deceased").value = "False"
+    $('.knob').val(0).trigger('change')
+
+}
+
+
+function btn_cured(){
+
+    document.getElementById("daily infected").value = "False"
+    document.getElementById("daily cured").value = "True"
+    document.getElementById("daily deceased").value = "False"
+    $('.knob').val(0).trigger('change')
+
+}
+
+
+function btn_deceased(){
+
+    document.getElementById("daily infected").value = "False"
+    document.getElementById("daily cured").value = "False"
+    document.getElementById("daily deceased").value = "True"
+    $('.knob').val(0).trigger('change')
+}
+
+
+function paint_areas_death(data_json, index) {
+    let areas = document.getElementsByClassName("area")
+    let cases = []
+
+    for (let x of areas) {
+
+        week = 7;
+
+        count_from = week + index
+
+        for (count_from; count_from >= index; count_from--) {
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased'])
+        }
+
+    }
+
+    sum = Math.max.apply(null, cases)
+
+    for (let x of areas) {
+
+        week = 7;
+
+        count_from = week + index
+
+        till_today_infected = 0
+        
+        for (count_from; count_from >= index; count_from--) {
+            till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased']
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased'])
+        }
+        
         mid = till_today_infected/week
         x.style.fill = color_picker(mid, sum)
 
@@ -131,6 +208,57 @@ function paint_areas(data_json, index) {
 }
 
 
+function paint_areas_cured(data_json, index) {
+    let areas = document.getElementsByClassName("area")
+    let cases = []
+
+    for (let x of areas) {
+
+        week = 7;
+
+        count_from = week + index
+
+        for (count_from; count_from >= index; count_from--) {
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured'])
+        }
+
+    }
+
+    sum = Math.max.apply(null, cases)
+
+    for (let x of areas) {
+
+        week = 7;
+
+        count_from = week + index
+
+        till_today_infected = 0
+        
+        for (count_from; count_from >= index; count_from--) {
+            till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured']
+            
+            cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured'])
+        }
+        
+        mid = till_today_infected/week
+        x.style.fill = color_picker(mid, sum)
+
+
+    }
+
+    let areasII = document.getElementsByClassName("scale-table")
+    
+    for (let xII of areasII) {
+        xII.value =  String(parseInt(xII.id*sum))
+        xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
+    }
+
+}
+
+
+
+
 function get_date_from_knob(data_json, index) {
     date = data_json[dates[index]]['date']
     document.getElementById("date-div").value = date;
@@ -139,6 +267,8 @@ function get_date_from_knob(data_json, index) {
 function get_sum_all_casses(data, type) {
     data_json[dates[index]]['Voivodeships'][x.id]['daily infected']
 }
+
+
 
 paint_areas(map_data, 0)
 
