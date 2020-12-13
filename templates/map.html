@@ -141,7 +141,12 @@
                 <button class="btn" value="True" id="daily infected" onclick="btn_infected()">Infected</button>
                 <button class="btn" value="False" id="daily cured" onclick="btn_cured()">Cured</button>
                 <button class="btn" value="False" id="daily deceased" onclick="btn_deceased()">Deaths</button>
-            </div>
+                
+                <script type="text/javascript">
+                    document.getElementById("daily infected").focus();
+                </script>
+            
+        </div>
             <div id="legend">
                 <input type="text" class="scale-table" value="" id="0.1"  readonly>
                 <input type="text" class="scale-table" value="" id="0.2"  readonly>
