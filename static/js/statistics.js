@@ -4,6 +4,8 @@ function jsonify(variable) {
 
 var voi_data = jsonify(data_raw)
 console.log(voi_data)
+var draw_total_tests=true;
+var draw_daily_tests=true;
 var daily_infected=[]
 var daily_deceased=[]
 var daily_cured=[]
@@ -24,9 +26,12 @@ var used_respirators=[]
 var infected_now=[]
 
 var dates=[]
-var pie_chart_data=[]
+var respirator_pie_data=[]
+var respirators_last_data=0
 var tests_pie_data=[]
+var tests_pie_last_data=0
 var daily_pie_data=[]
+var daily_pie_last_data=0
 
 function getData() {
 
@@ -54,9 +59,7 @@ function getData() {
 
 function draw_daily_Chart() {
     var ctx = document.getElementById('daily-chart').getContext('2d');
-    var myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
+    var data_with_tests = {
             labels: dates,
             datasets: [{
                 data: daily_infected,
@@ -89,7 +92,39 @@ function draw_daily_Chart() {
                 name: "Daily Cured"
             }
             ]
-        },
+        };
+    var data_without_tests = {
+            labels: dates,
+            datasets: [{
+                data: daily_infected,
+                borderColor: "rgba(255, 0, 255, 1)",
+               // backgroundColor: "rgba(255, 0, 255, 1)",
+                pointBackgroundColor: "rgba(255, 0, 255, 1)",
+                pointBorderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 3,
+                label: "Infected",
+                name: "Daily Infected"
+            }
+            ,{
+                data: daily_cured,
+                borderColor: "rgba(255, 255, 0, 1)",
+                //backgroundColor: "rgba(255, 255, 0, 1)",
+                pointBackgroundColor: "rgba(255, 255, 0, 1)",
+                pointBorderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 3,
+                label: "Cured",
+                name: "Daily Cured"
+            }
+            ]
+        };
+    let data
+    if(draw_daily_tests){
+    data=data_with_tests;}else {
+        data=data_without_tests
+    }
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
         options: {
             title: {
             display: true,
@@ -198,7 +233,7 @@ function draw_total_diseased_Chart(){
 
                 data: total_deceased,
                 borderColor: "rgba(0, 125, 255, 1)",
-                backgroundColor: "rgba(0, 125, 255, 1)",
+                //backgroundColor: "rgba(0, 125, 255, 1)",
                 pointBackgroundColor: "rgba(0, 125, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -262,36 +297,51 @@ function draw_daily_diseased_Chart(){
     });
 }
 
-function get_piechart_Data() {
-    pie_chart_data = {
+function get_respirator_pie_Data() {
+    var i=0
+    for(i=free_respirators.length-1; i--; i>0){
+        if(free_respirators[i]!=undefined && used_respirators[i]!=undefined){
+            respirators_last_data=i;
+            break;
+        }
+    }
+
+    respirator_pie_data = {
         datasets: [{
             backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-            data: [free_respirators[5], used_respirators[5]]
+            data: [free_respirators[i], used_respirators[i]]
         }],
 
         labels: [
             'Free',
-            'Occupied',
+            'Ooccupied',
         ]
     };
 }
-function draw_pieChart(){
+function draw_respirator_pieChart(){
     var ctx = document.getElementById('pie-chart').getContext('2d');
     var myDoughnutChart = new Chart(ctx, {
     type: 'doughnut',
-    data: pie_chart_data,
+    data: respirator_pie_data,
 
         options: {
         title:{
             display: true,
-            text: 'Data for '+dates[5],
+            text: 'Respirators ' + dates[respirators_last_data],
         }
     }
     });
 }
 
-function get_testspieData(){
-    let negative=daily_tests[5]-daily_infected[5]
+function get_tests_vs_infected_pie_Data(){
+    var i=0;
+    for(i=daily_tests.length-1; i--; i>0){
+        if(daily_tests[i]!=undefined && daily_infected[i]!=undefined){
+            tests_pie_last_data=i;
+            break
+        }
+    }
+    let negative=daily_tests[tests_pie_last_data]-daily_infected[tests_pie_last_data]
     tests_pie_data = {
         datasets: [{
             backgroundColor: ["rgba(255,255,0)","rgba(140, 100,255)"],
@@ -313,23 +363,30 @@ function draw_testpieChart(){
         options: {
         title:{
             display: true,
-            text: 'Data for '+dates[5],
+            text: 'Tests '+dates[tests_pie_last_data],
         }
     }
     });
 }
 
 function get_dailypieData(){
+    var i=0;
+    for(i=daily_cured.length-1; i--; i>0){
+        if(daily_infected[i]!=undefined && daily_cured[i]!=undefined){
+            daily_pie_last_data=i;
+            break;
+        }
+    }
+
     daily_pie_data = {
         datasets: [{
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-            data: [daily_infected[5], daily_cured[5], daily_deceased[5]]
+            backgroundColor: ["#3e95cd", "#8e5ea2",],
+            data: [daily_infected[daily_pie_last_data], daily_cured[daily_pie_last_data]]
         }],
 
         labels: [
             'Infected',
             'Cured',
-            'Deceased',
         ]
     };
 }
@@ -342,7 +399,7 @@ function draw_dailypie(){
         options: {
         title:{
             display: true,
-            text: 'Data for '+dates[5],
+            text: dates[daily_pie_last_data],
         }
     }
     });
@@ -399,8 +456,19 @@ function drawInfected100ktoday(){
                 borderWidth: 3,
                 label: "Infected/100k daily",
                 name: "Infected/100k daily"
-            }            ]
+            } ,
+                {
+                data: weekavg_infected_100k,
+                borderColor: "rgba(255, 0, 0, 1)",
+              //  backgroundColor: "rgba(0, 0, 255, 1)",
+                pointBackgroundColor: "rgba(255, 0, 0, 1)",
+                pointBorderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 3,
+                label: "Infected/100k week avg",
+                name: "Infected/100k week avg"
+            }]
         },
+
         options: {
             title: {
             display: true,
@@ -419,23 +487,32 @@ function drawInfected100ktoday(){
     });
 }
 
-//TODO ogarnąć w zależności od danych
 function initiate(){
     getData()
-get_piechart_Data()
-get_testspieData()
-get_dailypieData()
-draw_daily_Chart()
-draw_total_Chart()
-draw_total_diseased_Chart()
-draw_daily_diseased_Chart()
-draw_total_tests_Chart()
-draw_pieChart()
-draw_testpieChart()
-draw_dailypie()
-drawInfected100k()
-drawInfected100ktoday()
+    if(total_tests[0]==undefined){
+        draw_total_tests=false;
+    }
+    if(daily_tests[0]==undefined){
+        draw_daily_tests=false;
+    }
+    get_respirator_pie_Data()
+    get_tests_vs_infected_pie_Data()
+    get_dailypieData()
+    draw_daily_Chart()
+    draw_total_Chart()
+    draw_total_diseased_Chart()
+    draw_daily_diseased_Chart()
+    if (draw_total_tests){
+    draw_total_tests_Chart()
+    } else {
+        document.getElementById('total-tests-chart').style.display = 'none';
+    }
+    drawInfected100k()
+    drawInfected100ktoday()
+    draw_respirator_pieChart()
+    if(tests_pie_last_data!=0){
+draw_testpieChart()}
+    draw_dailypie()
 }
 
 initiate()
-
