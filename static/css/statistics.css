@@ -7,8 +7,52 @@ body{
     left: 0;
     float: left;
     padding: 20px;
+    font-size: 16px;
 }
-.first-chart{
+.daily-chart-class{
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.total-chart-class{
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.pie-chart-class{
+    max-width: 20%;
+    float: left;
+}
+.pie-tests-class{
+    max-width: 20%;
+    float: left;
+}
+.pie-daily-class{
+    margin-left: 20%;
+    max-width: 20%;
+    float: left;
+}
+.infected100k-class{
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.total-tests-class{
+   margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.infected100ktoday-class{
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.total-diseased-class{
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+.daily-diseased-class{
     margin-left: 20%;
     padding: 20px;
     width: 60%;
