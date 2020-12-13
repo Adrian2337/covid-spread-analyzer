@@ -2,7 +2,7 @@ import sys
 from datetime import datetime, timedelta
 import json
 import covid_spread_analyzer.database_operations as db
-from firebase_admin import credentials, initialize_app
+import firebase_admin
 
 voivodeships = [
     "Dolnośląskie",
@@ -24,13 +24,16 @@ voivodeships = [
 ]
 
 
-def main():
-    cred = credentials.Certificate('../../firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json')
-    initialize_app(cred, {
-        'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
-    })
+def main(argv):
+    if not firebase_admin._apps:
+        cred = firebase_admin.credentials.Certificate(
+            '../../firebase_files/covid-spread-analyzer-firebase-adminsdk-hxchu-8c78edc7cd.json'
+        )
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': 'https://covid-spread-analyzer.firebaseio.com/'
+        })
 
-    if len(sys.argv) == 1:
+    if len(argv) == 1:
         print(
             """Usage:
 interact -d start_date [end_date]   # downloads database info from given date range
@@ -39,17 +42,17 @@ interact -d start_date [end_date]   # downloads database info from given date ra
 interact -u                         # uploads data present to database
             """
         )
-    elif sys.argv[1] == "-d":
-        download(*get_dates())
-    elif sys.argv[1] == "-u":
+    elif argv[1] == "-d":
+        download(*get_dates(argv))
+    elif argv[1] == "-u":
         upload()
     else:
-        print("Invalid argument:", sys.argv[1])
+        print("Invalid argument:", argv[1])
 
 
-def get_dates():
-    start_date = sys.argv[2]
-    end_date = sys.argv[3] if len(sys.argv) >= 4 else datetime.now().strftime("%Y-%m-%d")
+def get_dates(argv):
+    start_date = argv[2]
+    end_date = argv[3] if len(argv) >= 4 else datetime.now().strftime("%Y-%m-%d")
     return start_date, end_date
 
 
@@ -92,4 +95,4 @@ def upload():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
