@@ -1,4 +1,6 @@
 body{
+    color: white;
+    display: block;
 }
 .side-menu{
     position: fixed;
@@ -56,4 +58,16 @@ body{
     margin-left: 20%;
     padding: 20px;
     width: 60%;
+}
+.table-class{
+    margin-left: 20%;
+    max-width: 60%;
+    width: 60%;
+    display: inline-block;
+    margin-top: 50px;
+    align-content: center;
+}
+table#data-table{
+    color: darkgrey;
+    text-align: center;
 }
