@@ -132,10 +132,8 @@ function draw_chart_onclick(element) {
     let ctx = document.getElementById('predictions-graph').getContext('2d');
     let voi = element.getAttribute("xlink:title")
     let data_array = graph_data[type][voi]
-    console.log(type)
-    console.log(data_array)
     let pred_arr = predicted_values[type]['Voivodeships'][voi]
-    console.log(pred_arr)
+    fill_region_summary(predicted_values)
     if (myChart !== null)
         myChart.destroy()
     myChart = new Chart(ctx, {
@@ -213,6 +211,43 @@ function set_type(ele) {
     paint_areas(predicted_values[type]['Voivodeships'])
 }
 
+function get_sum(data) {
+    let sum_pred = 0
+    console.log(data)
+    for (let x in data) {
+        console.log(x)
+        sum_pred += data[x][data[x].length - 1]
+    }
+    return sum_pred
+}
+
+function fill_region_summary(preds) {
+    let el = document.getElementById('woj-infected')
+    let woj = last_clicked.getAttribute('xlink:title')
+    let part = preds['daily infected']['Voivodeships'][woj]
+    let ind = part.length - 1
+    el.innerText = part[ind]
+    el = document.getElementById('woj-cured')
+    el.innerText = preds['daily cured']['Voivodeships'][woj][ind]
+    el = document.getElementById('woj-deaths')
+    el.innerText = preds['daily deceased']['Voivodeships'][woj][ind]
+    document.getElementById('summary-last-clicked').innerText = woj
+}
+
+function fill_poland_summary(preds) {
+    let el = document.getElementById('polska-infected')
+    el.innerText = get_sum(preds['daily infected']['Voivodeships'])
+    el = document.getElementById('polska-cured')
+    el.innerText = get_sum(preds['daily cured']['Voivodeships'])
+    el = document.getElementById('polska-deaths')
+    el.innerText = get_sum(preds['daily deceased']['Voivodeships'])
+    fill_region_summary(preds)
+}
+
+function setup_table() {
+    let el = document.getElementById('summary-tab')
+}
+
 var predicted_values = jsonify(predicted_values_raw)
 var graph_data = jsonify(graph_data_raw)
 var dates = jsonify(dates_raw)
@@ -224,3 +259,5 @@ paint_areas(predicted_values[type]['Voivodeships'])
 
 fill_date()
 set_type(document.getElementById(type))
+fill_poland_summary(predicted_values)
+setup_table()
