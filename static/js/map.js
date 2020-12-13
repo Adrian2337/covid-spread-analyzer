@@ -133,8 +133,12 @@ function paint_areas(data_json, index) {
 function btn_infected(){
 
     document.getElementById("daily infected").value = "True"
+    document.getElementById("daily infected").style.backgroundColor = "rgba(3, 75, 35, 0.95)"
     document.getElementById("daily cured").value = "False"
+    document.getElementById("daily cured").style.backgroundColor = "black"
     document.getElementById("daily deceased").value = "False"
+    document.getElementById("daily deceased").style.backgroundColor = "black"
+    
     $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 
@@ -144,8 +148,11 @@ function btn_infected(){
 function btn_cured(){
 
     document.getElementById("daily infected").value = "False"
+    document.getElementById("daily infected").style.backgroundColor = "black"
     document.getElementById("daily cured").value = "True"
+    document.getElementById("daily cured").style.backgroundColor = "rgba(3, 75, 35, 0.95)"
     document.getElementById("daily deceased").value = "False"
+    document.getElementById("daily deceased").style.backgroundColor = "black"
     $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 
@@ -155,8 +162,11 @@ function btn_cured(){
 function btn_deceased(){
 
     document.getElementById("daily infected").value = "False"
+    document.getElementById("daily infected").style.backgroundColor = "black"
     document.getElementById("daily cured").value = "False"
+    document.getElementById("daily cured").style.backgroundColor = "black"
     document.getElementById("daily deceased").value = "True"
+    document.getElementById("daily deceased").style .backgroundColor = "rgba(3, 75, 35, 0.95)"
     $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 }

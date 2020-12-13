@@ -143,7 +143,7 @@
                 <button class="btn" value="False" id="daily deceased" onclick="btn_deceased()">Deaths</button>
                 
                 <script type="text/javascript">
-                    document.getElementById("daily infected").focus();
+                    document.getElementById("daily infected").style.backgroundColor = "rgba(3, 75, 35, 0.95)";
                 </script>
             
         </div>
@@ -164,8 +164,9 @@
                 </script>
             </div>
             <div class="knob-container">
+                <h5>Change Date</h5>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>               
-                <input type="hidden" value="0" class="knob" data-min="0" data-max="30" id="knob">
+                <input type="hidden" value="0" class="knob" min="0" max="30" id="knob">
                 <script type="text/javascript">
 
                     let then = new Date(2020, 10, 01);
@@ -177,8 +178,8 @@
                     $(function () {
                        
                         $(".knob").knob({
-                            height:150,
-                            width:150,
+                            height:130,
+                            width:130,
                             'min':0,
                             'max':days,                            
                         release: function (value) {
