@@ -210,6 +210,7 @@ function set_type(ele) {
         }
     }
     draw_chart_onclick(last_clicked)
+    paint_areas(predicted_values[type]['Voivodeships'])
 }
 
 var predicted_values = jsonify(predicted_values_raw)
