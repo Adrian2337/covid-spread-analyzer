@@ -33,19 +33,21 @@ h5{
 
     font-size: large;
     font-style:normal;
-    color: black;
+    color: white;
+    border-color: black;
     text-align: center;
     margin: 20px;
     margin-top: 0;
     margin-left: 130px;
-    border: solid;
+    border-style: solid;
     border-top: thick;
 }
 
 .info{
     font-size: medium;
     font-style:normal;
-    color: black;
+    color: white;
+    border-color: black;
     text-align: center;
     border-style: solid;
     margin: 20px;
