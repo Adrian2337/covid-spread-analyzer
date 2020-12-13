@@ -1,4 +1,4 @@
-<img align="center" alt="Covid-19" width="70px" src="./screens/virus.png" />
+<img align="center" alt="Covid-19" width="70px" src="./static/img/screenshots/virus.png" />
 
 ## Covid-19 spread analyzer
 
