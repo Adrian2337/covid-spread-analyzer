@@ -11,7 +11,6 @@
 </head>
 
 {% block content %}
-    <body>
 
     <div class="page-content">
         <div id="date-div"></div>
@@ -118,12 +117,11 @@
             </div>
         </div>
         <div class="side-content">
-            <div id="pred-options">
+            <div id="cases-switcher">
                 <button class="btn" id="daily infected" onclick="set_type(this)">Infected</button>
                 <button class="btn" id="daily cured" onclick="set_type(this)">Cured</button>
                 <button class="btn" id="daily deceased" onclick="set_type(this)">Deaths</button>
             </div>
-            <p>Wykresy</p>
             <div id="canvas-place">
                 <canvas id="predictions-graph" width="500" height="300"></canvas>
             </div>
@@ -132,11 +130,32 @@
                 var graph_data_raw = '{{graph_data}}';
                 var dates_raw = '{{dates}}';
             </script>
-            <script type="text/javascript" src="../static/js/prediction.js"></script>
-
         </div>
+        <div id="pred-summary">
+            <table id="summary-tab">
+                <tr>
+                    <th></th>
+                    <th>Speculated infected</th>
+                    <th>Speculated cured</th>
+                    <th>Speculated deaths</th>
+                </tr>
+                <tr>
+                    <th> Poland</th>
+                    <th id="polska-infected"></th>
+                    <th id="polska-cured"></th>
+                    <th id="polska-deaths"></th>
+                </tr>
+                <tr>
+                    <td id="summary-last-clicked"> </td>
+                    <td id="woj-infected"></td>
+                    <td id="woj-cured"></td>
+                    <td id="woj-deaths"></td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript" src="../static/js/prediction.js"></script>
     </div>
+
     <script src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js'></script>
     <link rel="stylesheet" type="text/css" href="../static/css/prediction.css"/>
-    </body>
-{% endblock %}
+{% endblock content %}

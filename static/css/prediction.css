@@ -1,7 +1,7 @@
 .page-content {
     padding: 5px;
     display: flex;
-    height: 100%;
+    height: 85%;
 }
 
 .side-content {
@@ -38,7 +38,7 @@
 
 #date-div {
     position: absolute;
-    top: 10%;
+    top: 6%;
     left: 10%;
 }
 
@@ -50,9 +50,35 @@
     cursor: pointer;
 }
 
-#pred-options {
-    margin: auto auto;
+#cases-switcher {
     align-items: center;
     text-align: center;
-    margin-right: 120px;
+    margin: auto 120px auto auto;
+}
+
+#pred-summary {
+    display: flex;
+    align-items: center;
+    color: white;
+    position: fixed;
+    height: 15%;
+    width: 100%;
+    margin-bottom: 3%;
+    margin-left: 6%;
+    bottom: 3%;
+    padding: 0;
+}
+
+#summary-tab {
+    font-size: 30px;
+    color: white;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#summary-tab th {
+    font-size: 30px;
+    white-space: normal;
+    word-wrap: break-word;
 }

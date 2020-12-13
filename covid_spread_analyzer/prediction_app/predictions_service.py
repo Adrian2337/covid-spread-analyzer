@@ -40,7 +40,7 @@ def get_predictions(filtered_data, x_train, single=True):
         if single:
             predicted_values[k] = int(list(predictioner.predict(asarray([x_train[-1] + 1]))[0])[0])
         else:
-            predicted_values[k] = [int(x) for x in
+            predicted_values[k] = [int(x) if x > 0 else 0 for x in
                                    predictioner.predict(asarray(x_new)).reshape(1, len(x_new)).tolist()[0]]
     return predicted_values
 
