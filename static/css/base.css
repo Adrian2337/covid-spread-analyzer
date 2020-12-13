@@ -81,7 +81,7 @@ body, html {
         zoom: 1;
         position: fixed;
         background: linear-gradient(rgba(12, 28, 33, 0.9),
-        rgba(255, 0, 0, 0.95));
+        rgba(3, 75, 35, 0.95));
         height: 100%;
         width: 100%;
         flex-direction: column;

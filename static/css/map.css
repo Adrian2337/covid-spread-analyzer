@@ -62,7 +62,7 @@ body {
     color: blanchedalmond;
     background-color: black;
     text-align: center;
-    border: 25px solid #004414;
+    border: 25px solid rgba(3, 75, 35, 0.95);
     opacity: 0.8;
     border-radius: 25px;
     float: left;
@@ -157,7 +157,7 @@ body {
     position: fixed;
     height: 100%;
     width: 500px;
-    background-color: rgb(4, 95, 27);
+    background-color: rgba(3, 75, 35, 0.95);
     right: -500px;
     top: 0;
     padding-left: 15px;
