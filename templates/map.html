@@ -172,10 +172,12 @@
                     $(function () {
                        
                         $(".knob").knob({
+                            height:150,
+                            width:150,
                             'min':0,
                             'max':days,                            
                         release: function (value) {
-                            hide_general_info()
+                            
                             if( document.getElementById("daily infected").value == "True"){
                                 paint_areas(map_data, value)                             
                             }
@@ -186,7 +188,7 @@
                                 paint_areas_cured(map_data, value)                             
                             }
                             get_date_from_knob(map_data, value)
-                            
+                            hide_general_info()
                             },
                         });                                             
                     
