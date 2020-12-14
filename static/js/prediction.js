@@ -34,7 +34,6 @@ function color_picker(value, sum) {
         return "#9f6060"
 }
 
-
 function paint_areas(data) {
     let areas = document.getElementsByClassName("area")
 
@@ -44,7 +43,7 @@ function paint_areas(data) {
 
     for (let x of areas) {
 
-        average_val = average(data[x.id])
+        average_val = average(data[x.id].slice(((data[x.id].length)- 7), ((data[x.id].length)-1)))
         cases.push(average_val)
 
     }
@@ -53,12 +52,20 @@ function paint_areas(data) {
 
 
     for (let x of areas) {
+            
+        week = 7
+        mean_sum = 0
+        for (week; week >= 1; week--) {
+
+            mean_sum += data[x.id][(data[x.id].length) - week]
+
+        }
+        mean = parseInt(mean_sum/7)
         // below sum all predicted cases as input value
-        x.style.fill = color_picker(data[x.id][data[x.id].length - 1], sum);
+        x.style.fill = color_picker(mean, sum);
 
     }
 }
-
 
 function draw_chart(dates, total_cases, cured_cases, deaths) {
     var ctx = document.getElementById('predictions-graph').getContext('2d');
