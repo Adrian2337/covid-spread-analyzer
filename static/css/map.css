@@ -146,11 +146,11 @@ h5 {
 
     float: left;
     position: relative;
-    top: -1;
+    top: -1px;
     margin-top: 30px;
     left: 100px;
     bottom: 50px;
-
+}
 .general-voivodeship-info {
     margin-left: 0;
     -webkit-transition: 1s;
@@ -219,7 +219,7 @@ h5 {
 #statistics-link:hover {
     background-image: none;
     background-color: lightblue;
-
+}
 
 #components{
 
@@ -239,7 +239,7 @@ h5 {
     position: relative;
 }
 
-#container{
+#container {
     /*container position should be absolute*/
-    position:absolute;
-    
+    position: absolute;
+}
