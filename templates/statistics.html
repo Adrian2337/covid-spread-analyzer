@@ -16,7 +16,7 @@
 
 <body>
     <div class="side-menu">
-     <ul>
+     <ul id="links">
          <li><a href="../Polska">Polska</a></li>
          <li><a href="../Dolnośląskie">dolnośląskie</a></li>
          <li><a href="../Lubelskie">kujawsko-pomorskie</a></li>
@@ -36,10 +36,6 @@
          <li><a href="../Zachodniopomorskie">zachodniopomorskie</a></li>
     </ul>
     </div>
-<div class="table-class">
-     <table style="width:100%" id="data-table">
-</table>
-</div>
     <div class="daily-chart-class">
     <div id="daily-canvas">
                 <canvas id="daily-chart" width="500" height="300"></canvas>
@@ -82,27 +78,36 @@
         </div>
 
 
-
-<div class="pie-daily-class">
-        <div id="pie-daily-canvas">
-            <canvas id="pie-daily-chart" width="500" height="300"></canvas>
-    </div>
-    </div>
-
     <div class="pie-chart-class">
         <div id="pie-canvas">
             <canvas id="pie-chart" width="500" height="300"></canvas>
     </div>
     </div>
 
+    <div class="pie-week-class">
+        <div id="pie-week-canvas">
+            <canvas id="pie-week-chart" width="500" height="300"></canvas>
+    </div>
+    </div>
 
-     <div class="pie-tests-class">
+
+
+    <div class="pie-daily-class">
+        <div id="pie-daily-canvas">
+            <canvas id="pie-daily-chart" width="500" height="300"></canvas>
+    </div>
+    </div>
+
+    <div class="pie-tests-class">
         <div id="pie-tests-canvas">
             <canvas id="pie-tests-chart" width="500" height="300"></canvas>
     </div>
     </div>
 
-    
+<div class="table-class">
+     <table style="width:100%" id="data-table">
+</table>
+</div>
 
     <script type="text/javascript" src="/static/js/statistics.js"></script>
 </body>

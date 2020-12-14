@@ -29,6 +29,7 @@ var infected_delta=[]
 var currDate_index=0
 var dates=[]
 var respirator_pie_data=[]
+var week_respirator_pie_data=[]
 var respirators_last_data=0
 var tests_pie_data=[]
 var tests_pie_last_data=0
@@ -363,6 +364,53 @@ function draw_respirator_pieChart(){
     });
 }
 
+function get_week_respirator_pie_data(){
+  var i=0
+    for(i=free_respirators.length-1; i--; i>0){
+        if(free_respirators[i]!=undefined && used_respirators[i]!=undefined){
+            respirators_last_data=i;
+            break;
+        }
+    }
+
+    week_respirator_pie_data = {
+        datasets: [{
+            backgroundColor: ["rgb(255,251,47)", "rgb(138,255,73)","rgb(255,253,122)"],
+            data: [respiratorWeekAvg(free_respirators), respiratorWeekAvg(used_respirators)]
+        }],
+
+        labels: [
+            'Free',
+            'Occupied',
+        ]
+    };
+}
+function respiratorWeekAvg(data){
+    if(respirators_last_data<6){
+        return data[respirators_last_data]
+    } else{
+        var sum=0;
+        for(var i=respirators_last_data; i>respirators_last_data-6; i--){
+            sum+=data[i];
+        }
+        return sum/7
+    }
+}
+function draw_respirator_week_pie(){
+ var ctx = document.getElementById('pie-week-chart').getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: week_respirator_pie_data,
+
+        options: {
+        title:{
+            display: true,
+            text: 'Respirators week avg'
+        }
+    }
+    });
+}
+
 function get_tests_vs_infected_pie_Data(){
     var i=0;
     for(i=daily_tests.length-1; i--; i>0){
@@ -565,6 +613,7 @@ function populateTable(){
 
 }
 
+
 function initiate(){
    document.title="Statistics";
     getData()
@@ -577,6 +626,7 @@ function initiate(){
     }
     get_respirator_pie_Data()
     get_tests_vs_infected_pie_Data()
+    get_week_respirator_pie_data()
     get_dailypieData()
     draw_daily_Chart()
     draw_total_Chart()
@@ -590,11 +640,15 @@ function initiate(){
     drawInfected100k()
     drawInfected100ktoday()
     draw_respirator_pieChart()
+    draw_respirator_week_pie()
     if(tests_pie_last_data!=0){
 draw_testpieChart()} else {
         document.getElementById('pie-tests-canvas').style.display = 'none'
     }
-    draw_dailypie()
+    if(daily_cured[daily_pie_last_data]!=0){
+    draw_dailypie()}else {
+        document.getElementById("pie-daily-canvas").style.display = 'none'
+    }
 }
 
 
