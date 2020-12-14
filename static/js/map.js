@@ -71,7 +71,6 @@ function show_general_info(element) {
     panel.querySelector("#voivodeship").innerHTML = check_undefined(txt);
     panel.style.transform = "translateX(-500px)";
     let v = document.getElementById("date-div").value
-    console.log(document.getElementById("date-div").value)
     document.getElementById('total-val').innerText = check_undefined(voivodes[txt][v]['daily infected'])
     document.getElementById('cured-val').innerText = check_undefined(voivodes[txt][v]['daily cured'])
     document.getElementById('deaths-val').innerText = check_undefined(voivodes[txt][v]['daily deceased'])
@@ -274,26 +273,6 @@ function paint_areas_cured(data_json, index) {
 
 }
 
-
-function get_date_from_knob(data_json, index) {
-    date = data_json[dates[index]]['date']
-    document.getElementById("date-div").value = date;
-}
-
-function get_sum_all_casses(data, type) {
-    data_json[dates[index]]['Voivodeships'][x.id]['daily infected']
-}
-
-
-paint_areas(map_data, 0)
-
-function render_template() {
-    let val = document.getElementById('voivodeship')
-    let el = document.getElementById('statistics-link')
-    el.href = '/statistics/' + val.innerHTML
-    el.click()
-}
-
 function get_max_case(data, idx) {
     let max = 0
     for (let x in data) {
@@ -305,3 +284,27 @@ function get_max_case(data, idx) {
     return max
 }
 
+function get_sum(data) {
+    let sum_pred = 0
+    console.log(data)
+    for (let x in data) {
+        sum_pred += data[x][data[x].length - 1]
+    }
+    return sum_pred
+}
+
+
+function get_date_from_knob(data_json, index) {
+    date = data_json[dates[index]]['date']
+    document.getElementById("date-div").value = date;
+}
+
+
+paint_areas(map_data, 0)
+
+function render_template() {
+    let val = document.getElementById('voivodeship')
+    let el = document.getElementById('statistics-link')
+    el.href = '/statistics/' + val.innerHTML
+    el.click()
+}
