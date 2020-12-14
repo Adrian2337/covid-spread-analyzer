@@ -96,6 +96,18 @@ function draw_daily_Chart() {
                 borderWidth: 3,
                 label: "Cured",
                 name: "Daily Cured"
+            },
+                {
+
+                data: daily_deceased,
+                borderColor: "rgb(86,231,85)",
+               // backgroundColor: "rgba(0, 255, 0, 1)",
+                pointBackgroundColor: "rgb(86,231,85)",
+                pointBorderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 3,
+                label: "Deceased",
+                name: "Daily Deceased"
+
             }
             ]
         };
@@ -120,6 +132,18 @@ function draw_daily_Chart() {
                 borderWidth: 3,
                 label: "Cured",
                 name: "Daily Cured"
+            },
+                {
+
+                data: daily_deceased,
+                borderColor: "rgb(86,231,85)",
+               // backgroundColor: "rgba(0, 255, 0, 1)",
+                pointBackgroundColor: "rgb(86,231,85)",
+                pointBorderColor: "rgba(0, 0, 0, 1)",
+                borderWidth: 3,
+                label: "Deceased",
+                name: "Daily Deceased"
+
             }
             ]
         };
