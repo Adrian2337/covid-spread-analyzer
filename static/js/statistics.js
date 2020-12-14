@@ -541,7 +541,7 @@ function draw_dailypie(){
         options: {
         title:{
             display: true,
-            text: dates[daily_pie_last_data],
+            text: 'Infected vs Cured '+dates[daily_pie_last_data],
             fontColor: "white",
                 fontSize: "18",
         },
