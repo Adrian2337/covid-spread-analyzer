@@ -56,13 +56,6 @@ h5 {
 }
 
 
-#components {
-
-    width: min-content;
-    position: fixed;
-    float: left;
-    height: max-content;
-}
 
 #date-div {
     background-image: url("/static/img/bcg.jpg");
@@ -152,13 +145,11 @@ h5 {
 .knob-container {
 
     float: left;
-    position: fixed;
+    position: relative;
+    top: -1;
     margin-top: 30px;
     left: 100px;
     bottom: 50px;
-
-
-}
 
 .general-voivodeship-info {
     margin-left: 0;
@@ -224,7 +215,31 @@ h5 {
     border-radius: 7px;
 }
 
+
 #statistics-link:hover {
     background-image: none;
     background-color: lightblue;
+
+
+#components{
+
+    width:min-content;
+    position: absolute;   
+    height: max-content;
+    display: inline;
+    height: max-content;
+    float: left;
+
+    
 }
+
+#set-up-panel{
+    height: 70%;
+    float: left;
+    position: relative;
+}
+
+#container{
+    /*container position should be absolute*/
+    position:absolute;
+    

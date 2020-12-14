@@ -479,7 +479,7 @@ function get_tests_vs_infected_pie_Data(){
     tests_pie_data = {
         datasets: [{
             backgroundColor: ["rgb(149,41,62)","rgb(49,214,155)"],
-            data: [daily_infected[5], negative]
+            data: [daily_infected[tests_pie_last_data], negative]
         }],
 
         labels: [
@@ -630,7 +630,7 @@ function drawInfected100ktoday(){
         options: {
             title: {
             display: true,
-            text: 'Daily infected per 100.000 citizens',
+            text: 'Infected per 100.000 citizens',
                 fontColor: "white",
                 fontSize: "18",
             },
