@@ -15,13 +15,16 @@ def predict_and_save_(data_voivodeships=None):
     if not data_voivodeships:
         data_voivodeships = load_data('Voivodeships')
     for case_type in ['daily infected', 'daily deceased', 'daily cured']:
-        voi_names_list = list(data_voivodeships.keys())
-        dates = list(data_voivodeships[voi_names_list[0]].keys())
-        filtered_data = filter_data(data_voivodeships, dates, voi_names_list, case_type)
-        dates.append(add_days_to_date(dates[-1], 1))
-        x_train = asarray(list(arange(len(filtered_data[list(filtered_data.keys())[0]]))))
-        predictions = get_predictions(filtered_data, x_train, single=False)
-        save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions", case_type)
+        try:
+            voi_names_list = list(data_voivodeships.keys())
+            dates = list(data_voivodeships[voi_names_list[0]].keys())
+            filtered_data = filter_data(data_voivodeships, dates, voi_names_list, case_type)
+            dates.append(add_days_to_date(dates[-1], 1))
+            x_train = asarray(list(arange(len(filtered_data[list(filtered_data.keys())[0]]))))
+            predictions = get_predictions(filtered_data, x_train, single=False)
+            save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions", case_type)
+        except KeyError:
+            pass
 
 
 def fill_data_with_predictions(filtered_data, predicted_values):
@@ -47,9 +50,12 @@ def get_predictions(filtered_data, x_train, single=True):
 
 def filter_data(data_voiv, dates, voivodes, cases='daily infected'):
     prediction_dict = dict()
-    for voi in voivodes:
-        inf_cases = []
-        for dat in dates:
-            inf_cases.append(data_voiv[voi][dat][cases])
-        prediction_dict[voi] = inf_cases
-    return prediction_dict
+    try:
+        for voi in voivodes:
+            inf_cases = []
+            for dat in dates:
+                inf_cases.append(data_voiv[voi][dat][cases])
+            prediction_dict[voi] = inf_cases
+        return prediction_dict
+    except KeyError:
+        raise KeyError
