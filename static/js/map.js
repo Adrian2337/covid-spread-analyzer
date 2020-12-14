@@ -59,14 +59,15 @@ function color_picker3(value, pred_max) {
 }
 
 
-
-
 function show_general_info(element) {
     let panel = document.getElementById('general-voivodeship-info')
     let txt = element.getAttribute("xlink:title");
+    console.log(txt)
+    console.log(voivodes)
     panel.querySelector("#voivodeship").innerHTML = txt;
     panel.style.transform = "translateX(-500px)";
     let v = document.getElementById("date-div").value
+    console.log(document.getElementById("date-div").value)
     document.getElementById('total-val').innerText = voivodes[txt][v]['daily infected']
     document.getElementById('cured-val').innerText = voivodes[txt][v]['daily cured']
     document.getElementById('deaths-val').innerText = voivodes[txt][v]['daily deceased']
@@ -93,7 +94,7 @@ function paint_areas(data_json, index) {
         count_from = week + index
 
         for (count_from; count_from >= index; count_from--) {
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected'])
         }
 
@@ -108,29 +109,29 @@ function paint_areas(data_json, index) {
         count_from = week + index
 
         till_today_infected = 0
-        
+
         for (count_from; count_from >= index; count_from--) {
             till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected']
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily infected'])
         }
-        
-        mid = till_today_infected/week
+
+        mid = till_today_infected / week
         x.style.fill = color_picker(mid, sum)
 
 
     }
 
     let areasII = document.getElementsByClassName("scale-table")
-    
+
     for (let xII of areasII) {
-        xII.value =  String(parseInt(xII.id*sum))
+        xII.value = String(parseInt(xII.id * sum))
         xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
     }
 
 }
 
-function btn_infected(){
+function btn_infected() {
 
     document.getElementById("daily infected").value = "True"
     document.getElementById("daily infected").style.backgroundColor = "rgba(3, 75, 35, 0.95)"
@@ -138,14 +139,14 @@ function btn_infected(){
     document.getElementById("daily cured").style.backgroundColor = "black"
     document.getElementById("daily deceased").value = "False"
     document.getElementById("daily deceased").style.backgroundColor = "black"
-    
+
     $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 
 }
 
 
-function btn_cured(){
+function btn_cured() {
 
     document.getElementById("daily infected").value = "False"
     document.getElementById("daily infected").style.backgroundColor = "black"
@@ -159,14 +160,14 @@ function btn_cured(){
 }
 
 
-function btn_deceased(){
+function btn_deceased() {
 
     document.getElementById("daily infected").value = "False"
     document.getElementById("daily infected").style.backgroundColor = "black"
     document.getElementById("daily cured").value = "False"
     document.getElementById("daily cured").style.backgroundColor = "black"
     document.getElementById("daily deceased").value = "True"
-    document.getElementById("daily deceased").style .backgroundColor = "rgba(3, 75, 35, 0.95)"
+    document.getElementById("daily deceased").style.backgroundColor = "rgba(3, 75, 35, 0.95)"
     $('.knob').val(1).trigger('change')
     $('.knob').val(0).trigger('change')
 }
@@ -183,7 +184,7 @@ function paint_areas_death(data_json, index) {
         count_from = week + index
 
         for (count_from; count_from >= index; count_from--) {
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased'])
         }
 
@@ -198,23 +199,23 @@ function paint_areas_death(data_json, index) {
         count_from = week + index
 
         till_today_infected = 0
-        
+
         for (count_from; count_from >= index; count_from--) {
             till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased']
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily deceased'])
         }
-        
-        mid = till_today_infected/week
+
+        mid = till_today_infected / week
         x.style.fill = color_picker(mid, sum)
 
 
     }
 
     let areasII = document.getElementsByClassName("scale-table")
-    
+
     for (let xII of areasII) {
-        xII.value =  String(parseInt(xII.id*sum))
+        xII.value = String(parseInt(xII.id * sum))
         xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
     }
 
@@ -232,7 +233,7 @@ function paint_areas_cured(data_json, index) {
         count_from = week + index
 
         for (count_from; count_from >= index; count_from--) {
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured'])
         }
 
@@ -247,29 +248,27 @@ function paint_areas_cured(data_json, index) {
         count_from = week + index
 
         till_today_infected = 0
-        
+
         for (count_from; count_from >= index; count_from--) {
             till_today_infected += data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured']
-            
+
             cases.push(data_json[dates[count_from]]['Voivodeships'][x.id]['daily cured'])
         }
-        
-        mid = till_today_infected/week
+
+        mid = till_today_infected / week
         x.style.fill = color_picker(mid, sum)
 
 
     }
 
     let areasII = document.getElementsByClassName("scale-table")
-    
+
     for (let xII of areasII) {
-        xII.value =  String(parseInt(xII.id*sum))
+        xII.value = String(parseInt(xII.id * sum))
         xII.style.backgroundColor = color_picker(parseInt(xII.value), sum);
     }
 
 }
-
-
 
 
 function get_date_from_knob(data_json, index) {
@@ -280,7 +279,6 @@ function get_date_from_knob(data_json, index) {
 function get_sum_all_casses(data, type) {
     data_json[dates[index]]['Voivodeships'][x.id]['daily infected']
 }
-
 
 
 paint_areas(map_data, 0)
