@@ -5,16 +5,16 @@ body {
     height: 100%;
 }
 
-h5{
+h5 {
     text-align: center;
     color: blanchedalmond;
-    border:solid;
+    border: solid;
     padding: 5px;
     border-radius: 10px;
 }
 
 .btn {
-    border:solid;
+    border: solid;
     border-radius: 20px;
     color: blanchedalmond;
     border-color: blanchedalmond;
@@ -24,15 +24,15 @@ h5{
     cursor: pointer;
     margin-top: 10px;
     margin-left: 40px;
-    opacity:0.9;
-    
-    
+    opacity: 0.9;
+
+
 }
 
-.val{
+.val {
 
     font-size: large;
-    font-style:normal;
+    font-style: normal;
     color: white;
     border-color: black;
     text-align: center;
@@ -43,9 +43,9 @@ h5{
     border-top: thick;
 }
 
-.info{
+.info {
     font-size: medium;
-    font-style:normal;
+    font-style: normal;
     color: white;
     border-color: black;
     text-align: center;
@@ -56,35 +56,35 @@ h5{
 }
 
 
-#components{
+#components {
 
-    width:min-content;
+    width: min-content;
     position: fixed;
     float: left;
     height: max-content;
 }
 
 #date-div {
+    background-image: url("/static/img/bcg.jpg");
     margin: 10px;
     margin-left: 35px;
     font-size: large;
     font-weight: 700;
     color: blanchedalmond;
-    background-color: black;
     text-align: center;
     border: 25px solid rgba(3, 75, 35, 0.95);
     opacity: 0.8;
     border-radius: 25px;
     float: left;
     margin-bottom: auto;
-    
+
 }
 
-.legend{
-    
+.legend {
+
     width: min-content;
     font-size: medium;
-    font-style:oblique;
+    font-style: oblique;
     color: black;
     text-align: center;
     margin-top: 40px;
@@ -92,7 +92,7 @@ h5{
     float: left;
 }
 
-.scale-table{
+.scale-table {
     font-weight: 700;
     opacity: 0.6;
     float: left;
@@ -116,6 +116,7 @@ h5{
     padding: 0;
 
 }
+
 #svg-div {
     position: fixed;
     margin: 0 auto;
@@ -149,18 +150,17 @@ h5{
 }
 
 .knob-container {
-    
+
     float: left;
     position: fixed;
     margin-top: 30px;
     left: 100px;
     bottom: 50px;
-    
-    
+
+
 }
 
 .general-voivodeship-info {
-    
     margin-left: 0;
     -webkit-transition: 1s;
     transition: 1s;
@@ -177,22 +177,54 @@ h5{
     font-weight: 900;
     border: solid;
     border-color: black;
-    
+
 }
 
-
-.general-voivodeship-info p {
-
-    padding: 10px;
-    width: 50%;
-}
 
 #general-voivodeship-info-items {
-    text-align: center;
-    height: 300px;
-    display: table-cell;
-    vertical-align: middle;
+    width: 100%;
     position: fixed;
-    margin-top: 20%;
+    margin-top: 30%;
+    display: block;
+}
 
+#label-inf {
+    color: white;
+    background-image: url("/static/img/bcg.jpg");
+    box-shadow: 5px 4px 2px -2px black;
+    text-align: center;
+    width: 93%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+#cases-tab {
+    min-height: 400px;
+    height: auto;
+    position: fixed;
+    font-size: 24px;
+    color: white;
+    table-layout: fixed;
+    width: 100%;
+    margin-right: 12%;
+}
+
+#statistics-link {
+    background-image: url('/static/img/bcg.jpg');
+    opacity: 1;
+    text-align: center;
+    top: 80%;
+    position: fixed;
+    height: 50px;
+    width: 93%;
+    margin: 0 auto;
+    vertical-align: middle;
+    border-radius: 7px;
+}
+
+#statistics-link:hover {
+    background-image: none;
+    background-color: lightblue;
 }

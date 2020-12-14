@@ -59,21 +59,35 @@ function color_picker3(value, pred_max) {
 }
 
 function check_undefined(value) {
-    if (value === undefined)
+    if (value === undefined || isNaN(value))
         return 'no data'
     else
         return value
 }
 
+function get_sum(data, day, type) {
+    let result = 0
+    for (let x in data) {
+        result += data[x][day][type]
+    }
+    return result
+}
+
+
 function show_general_info(element) {
     let panel = document.getElementById('general-voivodeship-info')
     let txt = element.getAttribute("xlink:title");
-    panel.querySelector("#voivodeship").innerHTML = check_undefined(txt);
+    panel.querySelector("#voivodeship").innerHTML = txt
     panel.style.transform = "translateX(-500px)";
     let v = document.getElementById("date-div").value
+    document.getElementById('label-inf').innerText = v + " overall statistics"
     document.getElementById('total-val').innerText = check_undefined(voivodes[txt][v]['daily infected'])
     document.getElementById('cured-val').innerText = check_undefined(voivodes[txt][v]['daily cured'])
     document.getElementById('deaths-val').innerText = check_undefined(voivodes[txt][v]['daily deceased'])
+
+    document.getElementById('total-val-pol').innerText = check_undefined(get_sum(voivodes, v, 'daily infected'))
+    document.getElementById('cured-val-pol').innerText = check_undefined(get_sum(voivodes, v, 'daily cured'))
+    document.getElementById('deaths-val-pol').innerText = check_undefined(get_sum(voivodes, v, 'daily deceased'))
 }
 
 function hide_general_info() {
@@ -284,16 +298,6 @@ function get_max_case(data, idx) {
     return max
 }
 
-function get_sum(data) {
-    //test
-    let sum_pred = 0
-    console.log(data)
-    for (let x in data) {
-        sum_pred += data[x][data[x].length - 1]
-    }
-    return sum_pred
-}
-
 
 function get_date_from_knob(data_json, index) {
     date = data_json[dates[index]]['date']
@@ -309,3 +313,5 @@ function render_template() {
     el.href = '/statistics/' + val.innerHTML
     el.click()
 }
+
+document.getElementById('statistics-link').style.opacity=1
