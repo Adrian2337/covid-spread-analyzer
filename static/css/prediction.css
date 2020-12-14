@@ -77,7 +77,7 @@
     height: 100%;
 }
 
-#summary-tab th {
+#summary-tab td {
     font-size: 30px;
     white-space: normal;
     word-wrap: break-word;
