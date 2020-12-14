@@ -143,13 +143,12 @@ h5 {
 }
 
 .knob-container {
-
     float: left;
-    position: relative;
-    top: -1px;
-    margin-top: 30px;
+    position: fixed;
+    margin-bottom: -180%;
     left: 100px;
-    bottom: 50px;
+    bottom: 100px;
+    margin: auto;
 }
 .general-voivodeship-info {
     margin-left: 0;
