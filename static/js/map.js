@@ -285,6 +285,7 @@ function get_max_case(data, idx) {
 }
 
 function get_sum(data) {
+    //test
     let sum_pred = 0
     console.log(data)
     for (let x in data) {
