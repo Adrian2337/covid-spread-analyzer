@@ -58,7 +58,7 @@ h5 {
 
 
 #date-div {
-    background-image: url("/static/img/bcg.jpg");
+    background-color: rgb(2, 15, 7);
     margin: 10px;
     margin-left: 35px;
     font-size: large;
@@ -176,34 +176,46 @@ h5 {
     width: 100%;
     position: fixed;
     margin-top: 30%;
-    display: block;
+    
 }
 
 #label-inf {
     color: white;
-    background-image: url("/static/img/bcg.jpg");
+    border-style:solid;
+    border-color: black ;
+    background-color:  rgb(1, 59, 30);
     box-shadow: 5px 4px 2px -2px black;
     text-align: center;
     width: 93%;
     height: 50px;
     font-size: 20px;
-    border-radius: 3px;
+    border-radius: 7px;
     vertical-align: middle;
+    font-size:x-large;
 }
 
 #cases-tab {
-    min-height: 400px;
-    height: auto;
+
+    min-height: max-content;
+    height: 50%;
     position: fixed;
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 800;
     color: white;
     table-layout: fixed;
     width: 100%;
     margin-right: 12%;
 }
 
+
+
 #statistics-link {
-    background-image: url('/static/img/bcg.jpg');
+    border-style:solid;
+    border-color: black;
+    color: black;
+    font-size:x-large;
+    background-color: rgb(36, 167, 101);
+    box-shadow: 5px 4px 2px -2px black;
     opacity: 1;
     text-align: center;
     top: 80%;
@@ -219,6 +231,21 @@ h5 {
 #statistics-link:hover {
     background-image: none;
     background-color: lightblue;
+}
+
+tr{
+
+    text-align: center;
+    min-width: max-content;
+    margin-right: 30px;
+    word-break: break-all;
+}
+
+td{
+
+    position: relative;
+    word-break: break-all;
+    min-width: max-content;
 }
 
 #components{
