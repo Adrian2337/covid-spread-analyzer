@@ -11,8 +11,11 @@ def prediction_view(request):
     dates = list(data_voiv[voivodes[0]].keys())
     results = dict()
     for case_type in ['daily infected', 'daily deceased', 'daily cured']:
-        filtered_data = filter_data(data_voiv, dates, voivodes, case_type)
-        results[case_type] = filtered_data
+        try:
+            filtered_data = filter_data(data_voiv, dates, voivodes, case_type)
+            results[case_type] = filtered_data
+        except KeyError:
+            pass
     dates.append(add_days_to_date(dates[-1], 1))
     predicted_values = load_data('Predictions')
 

@@ -4,6 +4,12 @@
     height: 85%;
 }
 
+@media only screen and (max-device-width: 580px) {
+    .page-content {
+        display: inline
+    }
+}
+
 .side-content {
     flex: none;
     margin: auto;
@@ -60,17 +66,16 @@
     display: flex;
     align-items: center;
     color: white;
-    position: fixed;
+    position: absolute;
     height: 15%;
-    width: 100%;
+    width: auto;
     margin-bottom: 3%;
-    margin-left: 6%;
+    margin-left: 3%;
     bottom: 3%;
-    padding: 0;
+    padding: 15px;
 }
 
 #summary-tab {
-    font-size: 30px;
     color: white;
     table-layout: fixed;
     width: 100%;
@@ -78,6 +83,12 @@
 }
 
 #summary-tab td {
+    font-size: 22px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+#summary-tab th {
     font-size: 30px;
     white-space: normal;
     word-wrap: break-word;

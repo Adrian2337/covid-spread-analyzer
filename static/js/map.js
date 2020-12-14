@@ -58,19 +58,23 @@ function color_picker3(value, pred_max) {
         return "Navy"
 }
 
+function check_undefined(value) {
+    if (value === undefined)
+        return 'no data'
+    else
+        return value
+}
 
 function show_general_info(element) {
     let panel = document.getElementById('general-voivodeship-info')
     let txt = element.getAttribute("xlink:title");
-    console.log(txt)
-    console.log(voivodes)
-    panel.querySelector("#voivodeship").innerHTML = txt;
+    panel.querySelector("#voivodeship").innerHTML = check_undefined(txt);
     panel.style.transform = "translateX(-500px)";
     let v = document.getElementById("date-div").value
     console.log(document.getElementById("date-div").value)
-    document.getElementById('total-val').innerText = voivodes[txt][v]['daily infected']
-    document.getElementById('cured-val').innerText = voivodes[txt][v]['daily cured']
-    document.getElementById('deaths-val').innerText = voivodes[txt][v]['daily deceased']
+    document.getElementById('total-val').innerText = check_undefined(voivodes[txt][v]['daily infected'])
+    document.getElementById('cured-val').innerText = check_undefined(voivodes[txt][v]['daily cured'])
+    document.getElementById('deaths-val').innerText = check_undefined(voivodes[txt][v]['daily deceased'])
 }
 
 function hide_general_info() {

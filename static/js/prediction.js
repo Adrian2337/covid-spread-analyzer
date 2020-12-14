@@ -215,10 +215,16 @@ function get_sum(data) {
     let sum_pred = 0
     console.log(data)
     for (let x in data) {
-        console.log(x)
         sum_pred += data[x][data[x].length - 1]
     }
     return sum_pred
+}
+
+function check_undefined(value) {
+    if (value === undefined)
+        return 'no data'
+    else
+        return value
 }
 
 function fill_region_summary(preds) {
@@ -226,11 +232,11 @@ function fill_region_summary(preds) {
     let woj = last_clicked.getAttribute('xlink:title')
     let part = preds['daily infected']['Voivodeships'][woj]
     let ind = part.length - 1
-    el.innerText = part[ind]
+    el.innerText = check_undefined(part[ind])
     el = document.getElementById('woj-cured')
-    el.innerText = preds['daily cured']['Voivodeships'][woj][ind]
+    el.innerText = check_undefined(preds['daily cured']['Voivodeships'][woj][ind])
     el = document.getElementById('woj-deaths')
-    el.innerText = preds['daily deceased']['Voivodeships'][woj][ind]
+    el.innerText = check_undefined(preds['daily deceased']['Voivodeships'][woj][ind])
     document.getElementById('summary-last-clicked').innerText = woj
 }
 
@@ -244,9 +250,6 @@ function fill_poland_summary(preds) {
     fill_region_summary(preds)
 }
 
-function setup_table() {
-    let el = document.getElementById('summary-tab')
-}
 
 var predicted_values = jsonify(predicted_values_raw)
 var graph_data = jsonify(graph_data_raw)
@@ -260,4 +263,3 @@ paint_areas(predicted_values[type]['Voivodeships'])
 fill_date()
 set_type(document.getElementById(type))
 fill_poland_summary(predicted_values)
-setup_table()

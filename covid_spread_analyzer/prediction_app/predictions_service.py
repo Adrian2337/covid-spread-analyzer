@@ -50,12 +50,12 @@ def get_predictions(filtered_data, x_train, single=True):
 
 def filter_data(data_voiv, dates, voivodes, cases='daily infected'):
     prediction_dict = dict()
-    try:
-        for voi in voivodes:
-            inf_cases = []
-            for dat in dates:
+    for voi in voivodes:
+        inf_cases = []
+        for dat in dates:
+            try:
                 inf_cases.append(data_voiv[voi][dat][cases])
-            prediction_dict[voi] = inf_cases
-        return prediction_dict
-    except KeyError:
-        raise KeyError
+            except KeyError:
+                pass
+        prediction_dict[voi] = inf_cases
+    return prediction_dict

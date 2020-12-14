@@ -44,15 +44,16 @@ class Predictioner:
         self.model.add(Dense(99, input_dim=1, activation='softmax', kernel_initializer='he_uniform'))
         self.model.add(Dense(256, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(90, activation='tanh', kernel_initializer='he_uniform'))
+        self.model.add(Dense(45, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(20, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(10, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(1))
+        self.model.add(Dense(1, activation='tanh'))
 
     def compile_model(self):
         self.model.compile(loss='mse', optimizer='adam')
 
     def fit_model(self):
-        self.model.fit(self.train_x, self.train_y, epochs=300, batch_size=10, verbose=0)
+        self.model.fit(self.train_x, self.train_y, epochs=500, batch_size=10, verbose=0)
 
     def predict(self, prediction_interval_x):
         prediction_interval_x = reshaper(prediction_interval_x)
