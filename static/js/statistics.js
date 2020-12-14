@@ -370,7 +370,7 @@ function draw_daily_diseased_Chart(){
 
 function get_respirator_pie_Data() {
     var i=0
-    for(i=free_respirators.length-1; i--; i>0){
+    for(i=free_respirators.length-1; i>0; i--){
         if(free_respirators[i]!=undefined && used_respirators[i]!=undefined){
             respirators_last_data=i;
             break;
@@ -414,7 +414,7 @@ function draw_respirator_pieChart(){
 
 function get_week_respirator_pie_data(){
   var i=0
-    for(i=free_respirators.length-1; i--; i>0){
+    for(i=free_respirators.length-1; i>0; i--){
         if(free_respirators[i]!=undefined && used_respirators[i]!=undefined){
             respirators_last_data=i;
             break;
@@ -469,7 +469,7 @@ function draw_respirator_week_pie(){
 
 function get_tests_vs_infected_pie_Data(){
     var i=0;
-    for(i=daily_tests.length-1; i--; i>0){
+    for(i=daily_tests.length-1; i>0; i--){
         if(daily_tests[i]!=undefined && daily_infected[i]!=undefined){
             tests_pie_last_data=i;
             break
@@ -513,7 +513,7 @@ function draw_testpieChart(){
 
 function get_dailypieData(){
     var i=0;
-    for(i=daily_cured.length-1; i--; i>0){
+    for(i=daily_cured.length-1; i>0; i--){
         if(daily_infected[i]!=undefined && daily_cured[i]!=undefined){
             daily_pie_last_data=i;
             break;
