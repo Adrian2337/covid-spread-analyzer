@@ -148,7 +148,7 @@ function draw_daily_Chart() {
             }
             ]
         };
-    let data
+    var data
     if(draw_daily_tests){
     data=data_with_tests;}else {
         data=data_without_tests
@@ -159,7 +159,9 @@ function draw_daily_Chart() {
         options: {
             title: {
             display: true,
-            text: 'Daily',
+                fontColor: "white",
+                fontSize: "18",
+                text: 'Daily',
             },
             scales: {
                 xAxes: [{
@@ -169,8 +171,13 @@ function draw_daily_Chart() {
                         minRotation: 90
                     }
                 }]
+            },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
             }
-        }
+        }}
     });
 }
 function draw_total_Chart() {
@@ -205,7 +212,16 @@ function draw_total_Chart() {
             title: {
             display: true,
             text: 'Total',
+                fontColor: "white",
+                fontSize: "18",
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
+
             scales: {
                 xAxes: [{
                     ticks: {
@@ -240,7 +256,15 @@ function draw_total_tests_Chart(){
             title: {
             display: true,
             text: 'Total tests',
+                fontColor: "white",
+                fontSize: "18",
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
             scales: {
                 xAxes: [{
                     ticks: {
@@ -277,7 +301,15 @@ function draw_total_diseased_Chart(){
             title: {
             display: true,
             text: 'Total',
+                fontColor: "white",
+                fontSize: "18",
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
             scales: {
                 xAxes: [{
                     ticks: {
@@ -314,7 +346,15 @@ function draw_daily_diseased_Chart(){
             title: {
             display: true,
             text: 'Daily',
+                fontColor: "white",
+                fontSize: "18",
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
             scales: {
                 xAxes: [{
                     ticks: {
@@ -359,6 +399,14 @@ function draw_respirator_pieChart(){
         title:{
             display: true,
             text: 'Respirators ' + dates[respirators_last_data],
+            fontColor: "white",
+                fontSize: "18",
+        },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
         }
     }
     });
@@ -405,7 +453,15 @@ function draw_respirator_week_pie(){
         options: {
         title:{
             display: true,
-            text: 'Respirators week avg'
+            text: 'Respirators week avg',
+            fontColor: "white",
+                fontSize: "18",
+        },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
         }
     }
     });
@@ -442,6 +498,14 @@ function draw_testpieChart(){
         title:{
             display: true,
             text: 'Tests '+dates[tests_pie_last_data],
+            fontColor: "white",
+                fontSize: "18",
+        },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
         }
     }
     });
@@ -478,6 +542,14 @@ function draw_dailypie(){
         title:{
             display: true,
             text: dates[daily_pie_last_data],
+            fontColor: "white",
+                fontSize: "18",
+        },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
         }
     }
     });
@@ -505,8 +577,16 @@ function drawInfected100k(){
         options: {
             title: {
             display: true,
+                fontColor: "white",
+                fontSize: "18",
             text: 'Total infected per 100.000 citizens',
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
             scales: {
                 xAxes: [{
                     ticks: {
@@ -551,7 +631,15 @@ function drawInfected100ktoday(){
             title: {
             display: true,
             text: 'Daily infected per 100.000 citizens',
+                fontColor: "white",
+                fontSize: "18",
             },
+            legend: {
+            display: true,
+            labels: {
+                fontColor: 'white'
+            }
+        },
             scales: {
                 xAxes: [{
                     ticks: {
