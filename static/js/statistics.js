@@ -496,7 +496,10 @@ function drawInfected100ktoday(){
 function populateRow(row, data){
     for(var i=1; i<8; i++){
        var cell=row.insertCell(i);
-        cell.innerHTML=data[currDate_index+1-i].toString().slice(0,8)
+       if(data[currDate_index+1-i]!=undefined){
+        cell.innerHTML=data[currDate_index+1-i].toString().slice(0,8)}else{
+           cell.innerHTML="-"
+       }
     }
 }
 function populateTable(){

@@ -24,15 +24,18 @@ body{
 .pie-chart-class{
     max-width: 20%;
     float: left;
+    min-width: 20%;
 }
 .pie-tests-class{
     max-width: 20%;
     float: left;
+    min-width: 20%;
 }
 .pie-daily-class{
     margin-left: 20%;
     max-width: 20%;
     float: left;
+    min-width: 20%;
 }
 .infected100k-class{
     margin-left: 20%;
