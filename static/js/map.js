@@ -92,7 +92,7 @@ function show_general_info(element) {
 
 function hide_general_info() {
     let panel = document.getElementById('general-voivodeship-info')
-    panel.style.transform = "translateX(+500px)";
+    panel.style.transform = "translateX(+25vw)";
 }
 
 function jsonify(variable) {
