@@ -4,9 +4,58 @@
     height: 85%;
 }
 
-@media only screen and (max-device-width: 580px) {
+@media only screen and (max-width: 800px) {
+    .body, .html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     .page-content {
-        display: inline
+        display: inline-table;
+        text-align: center;
+        position: fixed;
+        margin-top: 30%;
+    }
+
+    .side-content {
+        position: relative;
+    }
+
+    #pred-summary {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    #date-div {
+        position: absolute;
+        padding-top: 15%;
+        margin-top: -35%;
+    }
+
+    .map-container {
+        position: relative;
+        left: -35%;
+        width: 180%;
+        height: 70%;
+    }
+
+    #cases-switcher {
+        position: relative;
+        width: 100%;
+    }
+
+    #canvas-place {
+        position: relative;
+        left: -35%;
+        width: 160%;
+        height: 70%;
+    }
+    #mapdiv{
+        position: relative;
+        left: -15%;
     }
 }
 
