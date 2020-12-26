@@ -7,12 +7,15 @@
 * [Installation](#installation)
 * [General info](#general-info)
 * [Code Example](#code-example)
+* [Statistics](#statistics)
 * [Artificial Intelligence](#artificial-intelligence)
 * [Technologies](#technologies)
 
 ## Introduction
 
-App created for those difficult times, helps people in Poland stay tuned for news about Covid-19. When you become user
+App created for those difficult times, 
+helps people in Poland stay tuned for news about Covid-19. 
+When you become user
 of this program you'll get access to:
 
 * Responsive Poland map
@@ -23,7 +26,7 @@ of this program you'll get access to:
 * Overall statistics
 * Details (history of deaths/ cured/ infected daily cases )for each voivodeship in Poland
 
-And much more, are You interested?
+And much more, we hope you are interested :).
 
 ## Installation
 
@@ -43,7 +46,7 @@ That's it.
 To run server type in command line:
 
 ```shell
- python manage.py runserver
+ python manage.py runserver --noreload
  ```
 
 ## General info
@@ -113,9 +116,13 @@ function draw_chart(dates, total_cases, cured_cases, deaths) {
 }
 ```
 
-## Artificial Intelligence
+## Statistics
+Example diagrams in statistics (details section).
+![](static/img/screenshots/stats1.png)
+![](static/img/screenshots/stats2.png)
 
-Sample predictions vs real data below for 13 December. 
+## Artificial Intelligence
+Sample predictions vs real data below for 27 December. 
 You could notice our team put a lot of 
 effort to make predictions most efficient and
 almost real.
@@ -123,6 +130,7 @@ almost real.
 
 #### Structure of used neural network
 ![](static/img/screenshots/cnn.png)
+
 ## Technologies
 - Python 3.8
 - Django 3.0+
