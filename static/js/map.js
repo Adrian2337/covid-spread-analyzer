@@ -139,7 +139,7 @@ function paint_areas(data_json, index) {
 
     }
 
-    let areasII = document.getElementsByClassName("scale-table")
+    let areasII = document.getElementsByClassName("legend-element")
 
     for (let xII of areasII) {
         xII.value = String(parseInt(xII.id * sum))
@@ -229,7 +229,7 @@ function paint_areas_death(data_json, index) {
 
     }
 
-    let areasII = document.getElementsByClassName("scale-table")
+    let areasII = document.getElementsByClassName("legend-element")
 
     for (let xII of areasII) {
         xII.value = String(parseInt(xII.id * sum))
@@ -278,7 +278,7 @@ function paint_areas_cured(data_json, index) {
 
     }
 
-    let areasII = document.getElementsByClassName("scale-table")
+    let areasII = document.getElementsByClassName("legend-element")
 
     for (let xII of areasII) {
         xII.value = String(parseInt(xII.id * sum))

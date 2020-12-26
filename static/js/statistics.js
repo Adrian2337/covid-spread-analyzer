@@ -741,3 +741,13 @@ draw_testpieChart()} else {
 
 
 initiate()
+
+
+/* side menu */
+function openNav() {
+  document.getElementById("side-menu").style.width = "22%";
+}
+
+function closeNav() {
+  document.getElementById("side-menu").style.width = "0";
+}

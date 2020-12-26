@@ -1,73 +1,77 @@
-body{
+body {
     color: white;
     display: block;
 }
-.side-menu{
-    position: fixed;
-    top: 0;
-    left: 0;
-    float: left;
-    padding: 20px;
-    font-size: 16px;
-}
-.daily-chart-class{
+
+.daily-chart-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.total-chart-class{
+
+.total-chart-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.pie-chart-class{
+
+.pie-chart-class {
     margin-left: 20%;
     max-width: 30%;
     float: left;
     min-width: 30%;
 }
-.pie-tests-class{
+
+.pie-tests-class {
     max-width: 30%;
     float: left;
     min-width: 30%;
 }
-.pie-daily-class{
+
+.pie-daily-class {
     margin-left: 20%;
     max-width: 30%;
     float: left;
     min-width: 30%;
 }
-.pie-week-class{
+
+.pie-week-class {
     max-width: 30%;
     float: left;
     min-width: 30%;
 }
-.infected100k-class{
+
+.infected100k-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.total-tests-class{
-   margin-left: 20%;
-    padding: 20px;
-    width: 60%;
-}
-.infected100ktoday-class{
+
+.total-tests-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.total-diseased-class{
+
+.infected100ktoday-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.daily-diseased-class{
+
+.total-diseased-class {
     margin-left: 20%;
     padding: 20px;
     width: 60%;
 }
-.table-class{
+
+.daily-diseased-class {
+    margin-left: 20%;
+    padding: 20px;
+    width: 60%;
+}
+
+.table-class {
     margin-left: 20%;
     max-width: 60%;
     width: 60%;
@@ -77,13 +81,51 @@ body{
 }
 
 
-#links{
-  font-size: 18px;
-}
-a:link{
-    color: white;
-}
-a:visited{
-    color: white;
+
+.sidepanel {
+    height: 60%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
 }
 
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    width: 22%;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
