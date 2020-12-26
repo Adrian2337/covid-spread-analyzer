@@ -15,27 +15,27 @@
     <link rel="stylesheet" type="text/css" href="/static/css/statistics.css"/>
 
 <body>
-    <div class="side-menu">
-     <ul id="links">
-         <li><a href="../Polska">Polska</a></li>
-         <li><a href="../Dolnośląskie">dolnośląskie</a></li>
-         <li><a href="../Lubelskie">kujawsko-pomorskie</a></li>
-         <li><a href="../Kujawsko-pomorskie">lubelskie</a></li>
-         <li><a href="../Lubuskie">lubuskie</a></li>
-         <li><a href="../Łódzkie">łódzkie</a></li>
-         <li><a href="../Małopolskie">małopolskie</a></li>
-         <li><a href="../Mazowieckie">mazowieckie</a></li>
-         <li><a href="../Opolskie">opolskie</a></li>
-         <li><a href="../Podkarpackie">podkarpackie</a></li>
-         <li><a href="../Podlaskie">podlaskie</a></li>
-         <li><a href="../Pomorskie">pomorskie</a></li>
-         <li><a href="../Śląskie">śląskie</a></li>
-         <li><a href="../Świętokrzyskie">świętokrzyskie</a></li>
-         <li><a href="../Warmińsko-mazurskie">warmińsko-mazurskie</a></li>
-         <li><a href="../Wielkopolskie">wielkopolskie</a></li>
-         <li><a href="../Zachodniopomorskie">zachodniopomorskie</a></li>
-    </ul>
+    <div id="side-menu" class="sidepanel">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a href="../Polska">Polska</a>
+         <a href="../Dolnośląskie">dolnośląskie</a>
+         <a href="../Lubelskie">kujawsko-pomorskie</a>
+         <a href="../Kujawsko-pomorskie">lubelskie</a>
+         <a href="../Lubuskie">lubuskie</a>
+         <a href="../Łódzkie">łódzkie</a>
+         <a href="../Małopolskie">małopolskie</a>
+         <a href="../Mazowieckie">mazowieckie</a>
+         <a href="../Opolskie">opolskie</a>
+         <a href="../Podkarpackie">podkarpackie</a>
+         <a href="../Podlaskie">podlaskie</a>
+         <a href="../Pomorskie">pomorskie</a>
+         <a href="../Śląskie">śląskie</a>
+         <a href="../Świętokrzyskie">świętokrzyskie</a>
+         <a href="../Warmińsko-mazurskie">warmińsko-mazurskie</a>
+         <a href="../Wielkopolskie">wielkopolskie</a>
+         <a href="../Zachodniopomorskie">zachodniopomorskie</a>
     </div>
+    <button class="openbtn" onclick="openNav()">&#9776; Toggle Navigation</button>
     <div class="daily-chart-class">
     <div id="daily-canvas">
                 <canvas id="daily-chart" width="500" height="300"></canvas>

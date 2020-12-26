@@ -12,7 +12,6 @@
     <body>
     <h1>{{ data.d1 }}</h1>
 
-        <div class = "container">        
             <div class="map-container">
                 <div class="mapdiv" id="mapdiv">
 
@@ -111,7 +110,7 @@
                         <circle cx="117.2" cy="233.1" id="0"></circle>
                         <circle cx="611.2" cy="696.4" id="1"></circle>
                         <circle cx="678" cy="712.1" id="2"></circle>
-                    </svg>                
+                    </svg>
                     <script>
                         var map_data_raw = '{{ map_data }}'
                         var dates_raw = '{{ dates }}'
@@ -122,7 +121,7 @@
                 </div>
             </div>
             <div class = "components" id="components">
-            
+
                 <div class="date-out">
                     <input type="text" value="" id="date-div" readonly>
                     <script type="text/javascript">
@@ -143,32 +142,32 @@
                     <button class="btn" value="True" id="daily infected" onclick="btn_infected()">Infected</button>
                     <button class="btn" value="False" id="daily cured" onclick="btn_cured()">Cured</button>
                     <button class="btn" value="False" id="daily deceased" onclick="btn_deceased()">Deaths</button>
-                    
+
                     <script type="text/javascript">
                         document.getElementById("daily infected").style.backgroundColor = "rgba(3, 75, 35, 0.95)";
                     </script>
-                
+
                 </div>
                 <div class="legend">
-                    <input type="text" class="scale-table" value="" id="0.1"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.2"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.3"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.4"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.5"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.6"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.7"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.8"  readonly>
-                    <input type="text" class="scale-table" value="" id="0.9"  readonly>
-                    <input type="text" class="scale-table" value="" id="1.0"  readonly>
-                    
+                    <input type="text" class="legend-element" value="" id="0.1"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.2"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.3"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.4"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.5"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.6"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.7"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.8"  readonly>
+                    <input type="text" class="legend-element" value="" id="0.9"  readonly>
+                    <input type="text" class="legend-element" value="" id="1.0"  readonly>
+
                     <script type="text/javascript">
                     paint_areas(map_data, 0)
                     </script>
                 </div>
-            
-    
+
+
                 <div class="knob-container">
-                    <h5>Change Date</h5>
+                    <h5 style="color: white;">Change Date</h5>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
                     <input type="hidden" value="0" class="knob" min="0" max="30" id="knob">
                     <script type="text/javascript">
@@ -204,12 +203,10 @@
                     </script>
                 </div>
            </div>
-        </div>
 
-    
+
     </body>
     <div class="general-voivodeship-info" id="general-voivodeship-info" onclick="hide_general_info()">
-        
             <p id="label-inf"></p>
             <table id="cases-tab">
                 <tr>
@@ -235,7 +232,7 @@
                 </tr>
             </table>
             <a  href="" id="statistics-link" onclick="render_template()">Details...</a>
-        
+
     </div>
 {% endblock content %}
 
