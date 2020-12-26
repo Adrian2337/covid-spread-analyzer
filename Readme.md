@@ -55,7 +55,9 @@ When server is running,
 you have access to responsive map of Poland (as mentioned before). Each of voivodeships in map,
 can be checked for Covid-19 info.
 Also, you have access to predictions about upcoming days.
-![](static/img/screenshots/main_page.png)
+
+![IMG](static/img/screenshots/main_page.png)
+
 Above is an example main page for 12 December.
 Map is interactive and after clicking on chosen 
  voivodeship the right general info panel appears and here
