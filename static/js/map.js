@@ -314,4 +314,4 @@ function render_template() {
     el.click()
 }
 
-document.getElementById('statistics-link').style.opacity=1
+document.getElementById('statistics-link').style.opacity = 1
