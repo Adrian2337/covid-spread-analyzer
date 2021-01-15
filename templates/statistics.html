@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+
 <head>
     <title> Statistics </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -35,80 +36,90 @@
          <a href="../Wielkopolskie">wielkopolskie</a>
          <a href="../Zachodniopomorskie">zachodniopomorskie</a>
     </div>
+
     <button class="openbtn" onclick="openNav()">&#9776; Toggle Navigation</button>
-    <div class="daily-chart-class">
-    <div id="daily-canvas">
+
+
+    <div class="charts">
+
+         <div class="daily-chart-class">
+             <div id="daily-canvas">
                 <canvas id="daily-chart" width="500" height="300"></canvas>
             </div>
-    </div>
-
-    <div class="total-chart-class">
-        <div id="total-canvas">
-            <canvas id="total-chart" width="500" height="300"></canvas>
         </div>
-    </div>
 
-    <div class="total-diseased-class">
-        <div id="totald-canvas">
-            <canvas id="totald-chart" width="500" height="300"></canvas>
-        </div>
-    </div>
-    <div class="daily-diseased-class">
-        <div id="dailyd-canvas">
-            <canvas id="dailyd-chart" width="500" height="300"></canvas>
-        </div>
-    </div>
-
-    <div class="total-tests-class">
-        <div id="total-canvas">
-            <canvas id="total-tests-chart" width="500" height="300"></canvas>
-        </div>
-    </div>
-
-    <div class="infected100ktoday-class">
-            <div id="infected100ktoday-canvas">
-                <canvas id="infected100ktoday-graph" width="500" height="300"></canvas>
+        <div class="total-chart-class">
+            <div id="total-canvas">
+                <canvas id="total-chart" width="500" height="300"></canvas>
             </div>
         </div>
 
-    <div class="infected100k-class">
-            <div id="infected100k-canvas">
-                <canvas id="infected100k-graph" width="500" height="300"></canvas>
+        <div class="total-diseased-class">
+            <div id="totald-canvas">
+                <canvas id="totald-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="daily-diseased-class">
+            <div id="dailyd-canvas">
+                <canvas id="dailyd-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="total-tests-class">
+            <div id="total-canvas">
+                <canvas id="total-tests-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="infected100ktoday-class">
+                <div id="infected100ktoday-canvas">
+                    <canvas id="infected100ktoday-graph" width="500" height="300"></canvas>
+                </div>
+            </div>
+
+        <div class="infected100k-class">
+                <div id="infected100k-canvas">
+                    <canvas id="infected100k-graph" width="500" height="300"></canvas>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="pies">
+        <div class="pie-chart-class">
+            <div id="pie-canvas">
+                <canvas id="pie-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="pie-week-class">
+            <div id="pie-week-canvas">
+                <canvas id="pie-week-chart" width="500" height="300"></canvas>
             </div>
         </div>
 
 
-    <div class="pie-chart-class">
-        <div id="pie-canvas">
-            <canvas id="pie-chart" width="500" height="300"></canvas>
-    </div>
+
+        <div class="pie-daily-class">
+            <div id="pie-daily-canvas">
+                <canvas id="pie-daily-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
+
+        <div class="pie-tests-class">
+            <div id="pie-tests-canvas">
+                <canvas id="pie-tests-chart" width="500" height="300"></canvas>
+            </div>
+        </div>
     </div>
 
-    <div class="pie-week-class">
-        <div id="pie-week-canvas">
-            <canvas id="pie-week-chart" width="500" height="300"></canvas>
-    </div>
-    </div>
 
-
-
-    <div class="pie-daily-class">
-        <div id="pie-daily-canvas">
-            <canvas id="pie-daily-chart" width="500" height="300"></canvas>
+    <div class="table-class">
+        <table style="width:100%" id="data-table"></table>
     </div>
-    </div>
-
-    <div class="pie-tests-class">
-        <div id="pie-tests-canvas">
-            <canvas id="pie-tests-chart" width="500" height="300"></canvas>
-    </div>
-    </div>
-
-<div class="table-class">
-     <table style="width:100%" id="data-table">
-</table>
-</div>
 
     <script type="text/javascript" src="/static/js/statistics.js"></script>
 </body>
+
 {% endblock content %}
