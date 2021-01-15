@@ -140,6 +140,7 @@ function draw_chart_onclick(element) {
     let voi = element.getAttribute("xlink:title")
     let data_array = graph_data[type][voi]
     let pred_arr = predicted_values[type]['Voivodeships'][voi]
+    console.log(data_array)
     fill_region_summary(predicted_values)
     if (myChart !== null)
         myChart.destroy()

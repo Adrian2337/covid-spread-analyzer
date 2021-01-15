@@ -2,7 +2,7 @@ from matplotlib import pyplot
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 from tensorflow.python.keras import Sequential
-from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.layers import Dense, Dropout
 
 
 def reshaper(x):
@@ -41,24 +41,40 @@ class Predictioner:
         self.train_y = self.y_scaler.fit_transform(self.train_y)
 
     def setup_model(self):
-        self.model.add(Dense(99, input_dim=1, activation='softmax', kernel_initializer='he_uniform'))
+        self.model.add(Dense(99, input_dim=1, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(256, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(90, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(45, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(20, activation='tanh', kernel_initializer='he_uniform'))
         self.model.add(Dense(10, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(1, activation='tanh'))
+        self.model.add(Dense(1, activation='tanh', kernel_initializer='he_uniform'))
 
     def compile_model(self):
-        self.model.compile(loss='mse', optimizer='adam')
+        self.model.compile(
+            optimizer=keras.optimizers.Adam(),  # Optimizer
+            loss=keras.losses.mean_squared_error,
+            metrics=[
+                keras.metrics.mean_squared_error,
+                keras.metrics.mean_squared_logarithmic_error,
+                keras.metrics.mean_absolute_percentage_error,
+                keras.metrics.mean_absolute_error,
+            ]
+        )
 
-    def fit_model(self):
-        self.model.fit(
-            self.train_x,
-            self.train_y,
-            epochs=500,
+    def fit_model(self, verbose=0):
+        return self.model.fit(
+            self.train_x[:int(len(self.train_x) * 0.66)],
+            self.train_y[:int(len(self.train_x) * 0.66)],
+            epochs=900,
+            # steps_per_epoch=10,
             batch_size=10,
-            verbose=0)
+            verbose=verbose,
+            validation_data=(self.train_y[int(len(self.train_x) * 0.66):],
+                             self.train_x[int(len(self.train_x) * 0.66):])
+        ).history
+
+    def evaluate(self, x_test, y_test):
+        return self.model.evaluate(x_test, y_test, batch_size=12, verbose=1)
 
     def predict(self, prediction_interval_x):
         prediction_interval_x = reshaper(prediction_interval_x)
@@ -73,7 +89,7 @@ class Predictioner:
 
     def visualize(self):
         pyplot.scatter(self.x_pred_plot, self.y_pred_plot, label='Predicted')
-        pyplot.scatter(self.x_plot, self.y_plot, label='Actual', s=0.1)
+        pyplot.scatter(self.x_plot, self.y_plot, label='Actual')
         pyplot.title('Input (x) versus Output (y)')
         pyplot.xlabel('Input Variable (x)')
         pyplot.ylabel('Output Variable (y)')

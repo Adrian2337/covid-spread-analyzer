@@ -1,4 +1,6 @@
-# from covid_spread_analyzer.prediction_app.predictioner import Predictioner
+from numpy.ma import arange, asarray
+
+from covid_spread_analyzer.prediction_app.predictioner import Predictioner
 import re
 from sklearn.model_selection import train_test_split
 
@@ -11,13 +13,17 @@ def read_data(file='temp.txt'):
 
 
 def test_neural_network(data):
-    y = data
-    x = range(len(data))
-    y_train, y_test, x_train, x_test = train_test_split(y, x, test_size=0.33, shuffle=False)
-    print(x_train)
-    print(x_test)
-    print(y_train)
-    print(y_test)
+    y = asarray(data)
+    x = arange(len(data))
+    y_train, y_test, x_train, x_test = train_test_split(y, x, test_size=0.33)
+    guesser = Predictioner()
+    guesser.update_input(train_x=x_train, train_y=y_train)
+    history = guesser.fit_model(verbose=0)
+    eva = guesser.evaluate(y_test, x_test)
+    guesser.predict(x)
+    guesser.visualize()
+    print(eva, history)
 
 
-test_neural_network(read_data())
+d = read_data()
+test_neural_network(d)
