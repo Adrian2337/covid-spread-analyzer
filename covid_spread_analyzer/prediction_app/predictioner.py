@@ -1,6 +1,8 @@
+import numpy
 from matplotlib import pyplot
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
+from tensorflow.python.framework.random_seed import set_seed
 from tensorflow.python.keras import Sequential
 from tensorflow.python.keras.layers import Dense, Dropout
 
@@ -10,9 +12,14 @@ def reshaper(x):
 
 
 class Predictioner:
-    def __init__(self):
-        self.model = Sequential()
-        self.setup_model()
+    numpy.random.seed(1234)
+    set_seed(1234)
+
+    def __init__(self, model_input=None):
+        self.model = model_input
+        if model_input is None:
+            self.model = Sequential()
+            self.setup_default_model()
         self.compile_model()
 
     def save_model(self, path):
@@ -40,14 +47,13 @@ class Predictioner:
         self.train_x = self.x_scaler.fit_transform(self.train_x)
         self.train_y = self.y_scaler.fit_transform(self.train_y)
 
-    def setup_model(self):
-        self.model.add(Dense(99, input_dim=1, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(256, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(90, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(45, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(20, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(10, activation='tanh', kernel_initializer='he_uniform'))
-        self.model.add(Dense(1, activation='tanh', kernel_initializer='he_uniform'))
+    def setup_default_model(self):
+        self.model.add(Dense(1))
+        self.model.add(Dense(90, activation='relu'))
+        self.model.add(Dense(45, activation='relu'))
+        self.model.add(Dense(20, activation='relu'))
+        self.model.add(Dense(10, activation='relu'))
+        self.model.add(Dense(1))
 
     def compile_model(self):
         self.model.compile(
@@ -65,8 +71,8 @@ class Predictioner:
         return self.model.fit(
             self.train_x[:int(len(self.train_x) * 0.66)],
             self.train_y[:int(len(self.train_x) * 0.66)],
-            epochs=900,
-            # steps_per_epoch=10,
+            epochs=800,
+            # steps_per_epoch=200,
             batch_size=10,
             verbose=verbose,
             validation_data=(self.train_y[int(len(self.train_x) * 0.66):],
