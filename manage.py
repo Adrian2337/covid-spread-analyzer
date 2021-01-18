@@ -32,15 +32,7 @@ def main():
     PredictionService.initialize()
 
     DataYieldService.initialize()
-    try:
-        UpdateService.start()
-    except ValueError:
-        log_message = 'Update failed in: \n```python\n' + \
-                      traceback.format_exc() + '\n```\n'
-    else:
-        log_message = 'Update success or not needed.'
-    finally:
-        save_log(log_message)
+    UpdateService.start()
 
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'covid_spread_analyzer.settings')

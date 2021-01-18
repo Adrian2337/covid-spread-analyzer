@@ -32,8 +32,7 @@ class DataMiner:
         "daily_deaths_direct": "Z powodu COVID-19 zmarł{suffix} {deaths} os",
         "daily_deaths_linked": "z powodu współistnienia COVID-19 z innymi schorzeniami zmarł{suffix} {deaths} os",
         "daily_tests": "W ciągu doby wykonano ponad {} testów",
-        "total_cases": "Liczba zakażonych koronawirusem: {}/",
-        "total_deaths": "/{} (wszystkie pozytywne przypadki/w tym osoby zmarłe)."
+        "totals": "Liczba zakażonych koronawirusem: {cases}/{deaths} (wszystkie pozytywne przypadki/w tym osoby zmarłe)."
     }
 
     @staticmethod
@@ -45,8 +44,8 @@ class DataMiner:
             NumberParser.int_with_space(
             search(DataMiner.patterns["daily_deaths_linked"], info_bundle.text)["deaths"])
         daily_tests = NumberParser.int_with_modifier(search(DataMiner.patterns["daily_tests"], info_bundle.text)[0])
-        total_cases = NumberParser.int_with_space(search(DataMiner.patterns["total_cases"], info_bundle.text)[0])
-        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["total_deaths"], info_bundle.text)[0])
+        total_cases = NumberParser.int_with_space(search(DataMiner.patterns["totals"], info_bundle.text)["cases"])
+        total_deaths = NumberParser.int_with_space(search(DataMiner.patterns["totals"], info_bundle.text)["deaths"])
 
         voivodeship_stats = {}
         for v in DataMiner.voivodeships:
