@@ -1,5 +1,5 @@
 import covid_spread_analyzer.database_operations as db
-from covid_spread_analyzer.prediction_app.predictions_service import predict_and_save_
+from covid_spread_analyzer.prediction_app.predictions_handler import predict_and_save_
 from data_fetch.twitter.DataYieldService import DataYieldService
 
 

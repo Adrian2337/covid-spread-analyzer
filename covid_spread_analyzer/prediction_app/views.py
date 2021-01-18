@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from covid_spread_analyzer.database_operations import load_data, save_data
-from covid_spread_analyzer.prediction_app.predictions_service import filter_data, add_days_to_date, \
+from covid_spread_analyzer.prediction_app.predictions_handler import filter_data, add_days_to_date, \
     fill_data_with_predictions, predict_and_save_
 
 

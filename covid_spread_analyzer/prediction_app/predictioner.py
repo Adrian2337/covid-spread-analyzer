@@ -53,7 +53,12 @@ class Predictioner:
         self.model.compile(loss='mse', optimizer='adam')
 
     def fit_model(self):
-        self.model.fit(self.train_x, self.train_y, epochs=500, batch_size=10, verbose=0)
+        self.model.fit(
+            self.train_x,
+            self.train_y,
+            epochs=500,
+            batch_size=10,
+            verbose=0)
 
     def predict(self, prediction_interval_x):
         prediction_interval_x = reshaper(prediction_interval_x)
