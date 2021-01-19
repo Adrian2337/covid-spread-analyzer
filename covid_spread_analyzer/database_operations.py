@@ -22,3 +22,11 @@ def save_data(data, *args):
 
 def save_data_all(dictionary):
     db.reference().child(root).update(dictionary)
+
+
+def delete_data(*args):
+    ref = db.reference().child(root)
+    for x in args:
+        ref = ref.child(x)
+    ref.delete()
+    print("deleted", "/".join(args))

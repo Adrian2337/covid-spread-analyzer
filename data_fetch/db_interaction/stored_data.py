@@ -87,7 +87,7 @@ patterns = {
             "date": "dzien: \"{}\"",
             "data entries": {
                 "total infected": ",woj_zar: {},",
-                "total cured": ",woj_wyl: {},",
+                # "total cured": ",woj_wyl: {},",
                 "total deceased": ",woj_zgo: {},",
                 "infected now": ",woj_chor: {},"
             }
@@ -97,7 +97,7 @@ patterns = {
             "date": "arg: \"{}\"",
             "data entries": {
                 "daily infected": ",p_chorzy: {},",
-                "daily cured": ",p_wyleczeni: {},",
+                # "daily cured": ",p_wyleczeni: {},",
                 "daily deceased": ",p_zgony: {},"
             }
         },
