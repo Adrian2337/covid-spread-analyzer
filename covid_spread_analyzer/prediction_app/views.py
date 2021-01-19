@@ -18,7 +18,6 @@ def prediction_view(request):
             pass
     dates.append(add_days_to_date(dates[-1], 1))
     predicted_values = load_data('Predictions')
-
     # fill_data_with_predictions(filtered_data, predicted_values)
 
     return render(request=request, template_name='prediction.html',

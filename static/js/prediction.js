@@ -43,7 +43,7 @@ function paint_areas(data) {
 
     for (let x of areas) {
 
-        average_val = average(data[x.id].slice(((data[x.id].length)- 7), ((data[x.id].length)-1)))
+        average_val = average(data[x.id].slice(((data[x.id].length) - 7), ((data[x.id].length) - 1)))
         cases.push(average_val)
 
     }
@@ -52,7 +52,7 @@ function paint_areas(data) {
 
 
     for (let x of areas) {
-            
+
         week = 7
         mean_sum = 0
         for (week; week >= 1; week--) {
@@ -60,63 +60,11 @@ function paint_areas(data) {
             mean_sum += data[x.id][(data[x.id].length) - week]
 
         }
-        mean = parseInt(mean_sum/7)
+        mean = parseInt(mean_sum / 7)
         // below sum all predicted cases as input value
         x.style.fill = color_picker(mean, sum);
 
     }
-}
-
-function draw_chart(dates, total_cases, cured_cases, deaths) {
-    var ctx = document.getElementById('predictions-graph').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: dates,
-            datasets: [{
-                data: total_cases,
-                backgroundColor: "rgba(202, 201, 197, 0.5)",
-                borderColor: "rgba(202, 201, 197, 1)",
-                pointBackgroundColor: "rgba(202, 201, 197, 1)",
-                pointBorderColor: "#fff",
-                borderWidth: 1,
-                label: "Total Cases",
-                name: "Total Cases"
-
-            }, {
-                data: cured_cases,
-                backgroundColor: "rgba(171, 9, 0, 0.5)",
-                borderColor: "rgba(171, 9, 0, 1)",
-                pointBackgroundColor: "rgba(171, 9, 0, 1)",
-                pointBorderColor: "#fff",
-                borderWidth: 1,
-                label: "Cured Cases",
-                name: "Cured Cases"
-
-            }, {
-                data: deaths,
-                backgroundColor: "rgba(166, 78, 46, 0.5)",
-                borderColor: "rgba(12, 74, 0, 1)",
-                pointBackgroundColor: "rgba(123, 76, 0, 1)",
-                pointBorderColor: "#fff",
-                borderWidth: 1,
-                label: "Deaths",
-                name: "Deaths"
-
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        autoSkip: false,
-                        maxRotation: 90,
-                        minRotation: 90
-                    }
-                }]
-            }
-        }
-    });
 }
 
 function jsonify(variable) {
@@ -124,15 +72,9 @@ function jsonify(variable) {
 
 }
 
-function clearCanvas(context, canvas) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    var w = canvas.width;
-    canvas.width = 1;
-    canvas.width = w;
-}
-
 var myChart = null;
 last_clicked = document.getElementById("Mazowieckie-a")
+
 
 function draw_chart_onclick(element) {
     last_clicked = element
@@ -140,7 +82,13 @@ function draw_chart_onclick(element) {
     let voi = element.getAttribute("xlink:title")
     let data_array = graph_data[type][voi]
     let pred_arr = predicted_values[type]['Voivodeships'][voi]
-    console.log(data_array)
+    let help_arr = []
+    for (let i = 0; i < 30; i++) {
+        help_arr.splice(0, 0, null)
+    }
+    Array.prototype.push.apply(help_arr, pred_arr)
+    console.log(pred_arr)
+    console.log(help_arr)
     fill_region_summary(predicted_values)
     if (myChart !== null)
         myChart.destroy()
@@ -149,7 +97,7 @@ function draw_chart_onclick(element) {
         data: {
             labels: dates,
             datasets: [{
-                data: pred_arr,
+                data: help_arr,
                 borderColor: "white",
                 backgroundColor: "rgba(86, 215, 152, 0.5)",
                 pointBackgroundColor: "rgba(202, 201, 197, 0.5)",
@@ -208,6 +156,7 @@ type = 'daily infected'
 
 function set_type(ele) {
     type = ele.id
+    console.log(type)
     ele.style.backgroundColor = 'green'
     let btns = document.getElementsByClassName('btn')
     for (let b of btns) {
@@ -215,7 +164,9 @@ function set_type(ele) {
             b.style.backgroundColor = 'white'
         }
     }
+    console.log(last_clicked)
     draw_chart_onclick(last_clicked)
+    console.log(type)
     paint_areas(predicted_values[type]['Voivodeships'])
 }
 
@@ -242,7 +193,11 @@ function fill_region_summary(preds) {
     let ind = part.length - 1
     el.innerText = check_undefined(part[ind])
     el = document.getElementById('woj-cured')
-    el.innerText = check_undefined(preds['daily cured']['Voivodeships'][woj][ind])
+    try {
+        el.innerText = check_undefined(preds['daily cured']['Voivodeships'][woj][ind])
+    } catch (TypeError) {
+        el.innerText = 'no data'
+    }
     el = document.getElementById('woj-deaths')
     el.innerText = check_undefined(preds['daily deceased']['Voivodeships'][woj][ind])
     document.getElementById('summary-last-clicked').innerText = woj
@@ -258,16 +213,13 @@ function fill_poland_summary(preds) {
     fill_region_summary(preds)
 }
 
-
 var predicted_values = jsonify(predicted_values_raw)
 var graph_data = jsonify(graph_data_raw)
 var dates = jsonify(dates_raw)
 
 pred_max = get_max_case(predicted_values)
-
 draw_chart_onclick(document.getElementById("Mazowieckie-a"))
 paint_areas(predicted_values[type]['Voivodeships'])
-
 fill_date()
-set_type(document.getElementById(type))
 fill_poland_summary(predicted_values)
+set_type(document.getElementById(type))
