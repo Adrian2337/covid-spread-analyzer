@@ -79,4 +79,6 @@ def local_search(secs, data):
 d = read_data()
 # local_search(1800, d)
 
-test_neural_network(d)
+test_neural_network(d[28:])
+
+# [1,2,3,4,5] = [[1, 2], [2, 3], [3, 4], [4,5]]

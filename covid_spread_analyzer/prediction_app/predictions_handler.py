@@ -4,6 +4,7 @@ from numpy import asarray, arange, insert
 
 from covid_spread_analyzer.database_operations import load_data, save_data
 from covid_spread_analyzer.prediction_app.PredictionService import PredictionService
+from covid_spread_analyzer.prediction_app.predictioner import convert_to_learning_set, get_prediction_set
 
 
 def add_days_to_date(date, days):
@@ -20,8 +21,12 @@ def predict_and_save_(data_voivodeships=None):
             dates = list(data_voivodeships[voi_names_list[0]].keys())
             filtered_data = filter_data(data_voivodeships, dates, voi_names_list, case_type)
             dates.append(add_days_to_date(dates[-1], 1))
-            x_train = asarray(list(arange(len(filtered_data[list(filtered_data.keys())[0]]))))
-            predictions = get_predictions(filtered_data, x_train, single=False)
+            predictions = dict()
+            try:
+                predictions = get_predictions(filtered_data, single=False)
+            except IndexError:
+                for k in filtered_data.keys():
+                    predictions[k] = []
             save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions", case_type)
         except KeyError:
             pass
@@ -32,19 +37,21 @@ def fill_data_with_predictions(filtered_data, predicted_values):
         filtered_data[k].extend([predicted_values[k]])
 
 
-def get_predictions(filtered_data, x_train, single=True):
+def get_predictions(filtered_data, single=True):
     predicted_values = dict()
     predictioner = PredictionService.get_predictioner()
-    if not single:
-        x_new = insert(x_train, len(x_train), len(x_train))
+    # if not single:
+    # x_new = insert(x_train, len(x_train), len(x_train))
     for k, v in filtered_data.items():
-        predictioner.update_input(x_train, asarray(v))
-        predictioner.fit_model()
-        if single:
-            predicted_values[k] = int(list(predictioner.predict(asarray([x_train[-1] + 1]))[0])[0])
-        else:
-            predicted_values[k] = [int(x) if x > 0 else 0 for x in
-                                   predictioner.predict(asarray(x_new)).reshape(1, len(x_new)).tolist()[0]]
+        print(f'{str(len(v))}update ' + k + str(v))
+        if len(v) > 29:
+            x_train, y_train = convert_to_learning_set(v)
+            predictioner.update_input(x_train, y_train)
+            predictioner.fit_model()
+            x_prediction_list = get_prediction_set(v)
+            y_predicted = predictioner.predict(x_prediction_list)
+            y_predicted = y_predicted.reshape(1, y_predicted.shape[0])[0]
+            predicted_values[k] = [int(p) for p in y_predicted]
     return predicted_values
 
 
