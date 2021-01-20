@@ -104,7 +104,7 @@ class Predictioner:
 def convert_to_learning_set(array):
     x_vector = []
     y_vector = []
-    for x in range(30, len(array) - 1):
+    for x in range(30, len(array)):
         x_vector.append(array[x - 30:x])
         y_vector.append(array[x])
     x_train = numpy.array(x_vector)
@@ -114,10 +114,11 @@ def convert_to_learning_set(array):
 
 def get_prediction_set(arr):
     rs = []
-    for x in range(len(arr), 30, -1):
+    for x in range(30, len(arr)+1):
         rs.append(arr[x - 30:x])
     rs = numpy.asarray(rs)
     return rs
+
 
 
 ##### Old one

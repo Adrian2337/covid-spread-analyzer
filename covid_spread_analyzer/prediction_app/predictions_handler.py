@@ -21,14 +21,9 @@ def predict_and_save_(data_voivodeships=None):
             dates = list(data_voivodeships[voi_names_list[0]].keys())
             filtered_data = filter_data(data_voivodeships, dates, voi_names_list, case_type)
             dates.append(add_days_to_date(dates[-1], 1))
-            predictions = dict()
-            try:
-                predictions = get_predictions(filtered_data, single=False)
-            except IndexError:
-                for k in filtered_data.keys():
-                    predictions[k] = []
+            predictions = get_predictions(filtered_data)
             save_data({"date": dates[-1], "Voivodeships": predictions}, "Predictions", case_type)
-        except KeyError:
+        except IndexError or KeyError:
             pass
 
 
@@ -37,13 +32,11 @@ def fill_data_with_predictions(filtered_data, predicted_values):
         filtered_data[k].extend([predicted_values[k]])
 
 
-def get_predictions(filtered_data, single=True):
+def get_predictions(filtered_data):
     predicted_values = dict()
     predictioner = PredictionService.get_predictioner()
-    # if not single:
-    # x_new = insert(x_train, len(x_train), len(x_train))
     for k, v in filtered_data.items():
-        print(f'{str(len(v))}update ' + k + str(v))
+        print(f'{str(len(v))} update {k} {str(v)}')
         if len(v) > 29:
             x_train, y_train = convert_to_learning_set(v)
             predictioner.update_input(x_train, y_train)

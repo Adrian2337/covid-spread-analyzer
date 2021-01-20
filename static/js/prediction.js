@@ -83,12 +83,9 @@ function draw_chart_onclick(element) {
     let data_array = graph_data[type][voi]
     let pred_arr = predicted_values[type]['Voivodeships'][voi]
     let help_arr = []
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 30; i++)
         help_arr.splice(0, 0, null)
-    }
     Array.prototype.push.apply(help_arr, pred_arr)
-    console.log(pred_arr)
-    console.log(help_arr)
     fill_region_summary(predicted_values)
     if (myChart !== null)
         myChart.destroy()
@@ -164,9 +161,7 @@ function set_type(ele) {
             b.style.backgroundColor = 'white'
         }
     }
-    console.log(last_clicked)
     draw_chart_onclick(last_clicked)
-    console.log(type)
     paint_areas(predicted_values[type]['Voivodeships'])
 }
 
@@ -199,6 +194,7 @@ function fill_region_summary(preds) {
         el.innerText = 'no data'
     }
     el = document.getElementById('woj-deaths')
+    ind = preds['daily deceased']['Voivodeships'][woj].length - 1
     el.innerText = check_undefined(preds['daily deceased']['Voivodeships'][woj][ind])
     document.getElementById('summary-last-clicked').innerText = woj
 }

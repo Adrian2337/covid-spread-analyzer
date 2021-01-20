@@ -2,6 +2,23 @@
     padding: 5px;
     display: flex;
     height: 85%;
+    width: 100%;
+}
+
+@media only screen and (max-width: 401px) {
+    #date-div {
+        display: none;
+    }
+
+    #summary-tab {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 715px) {
+    #summary-tab {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -12,10 +29,12 @@
     }
 
     .page-content {
+        height: 100%;
+        position: absolute;
+        overflow: auto;;
         display: inline-table;
         text-align: center;
         align-items: center;
-        position: fixed;
         margin-top: 30%;
     }
 
@@ -23,12 +42,10 @@
         position: relative;
     }
 
-    #pred-summary {
-        position: absolute;
-        bottom: 0;
-        margin-bottom: 0;
-        width: 100%;
+    #summary-tab {
+        display: none;
     }
+
 
     #date-div {
         position: absolute;
@@ -54,7 +71,8 @@
         width: 160%;
         height: 70%;
     }
-    #mapdiv{
+
+    #mapdiv {
         position: relative;
         left: -15%;
     }
@@ -142,4 +160,8 @@
     font-size: 30px;
     white-space: normal;
     word-wrap: break-word;
+}
+
+#daily\ cured{
+    display: none;
 }
