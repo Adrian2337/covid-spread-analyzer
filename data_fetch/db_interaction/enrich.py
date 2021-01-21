@@ -1,5 +1,5 @@
 from interact import main as interact
-from update_from_source import main as update
+from data_fetch.db_interaction.update_from_source import main as update
 import sys
 from firebase_admin import credentials, initialize_app
 

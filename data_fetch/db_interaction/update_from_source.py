@@ -1,5 +1,5 @@
 import sys
-from data_interaction import update_data
+from data_fetch.db_interaction.data_interaction import update_data
 
 
 def main(argv):

@@ -1,4 +1,3 @@
-from data_fetch.twitter.CovidDataYielder import CovidDataYielder
 from data_fetch.twitter.ApiWrapper import ApiWrapper
 from data_fetch.twitter.TweetCollector import TweetCollector
 from data_fetch.twitter.CovidDataYielder import CovidDataYielder

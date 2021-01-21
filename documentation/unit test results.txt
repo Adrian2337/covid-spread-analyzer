@@ -1,0 +1,35 @@
+Name                                                     Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------
+data_fetch/twitter/ApiWrapper.py                            10      6    40%   8-10, 13-20
+data_fetch/twitter/CovidDataYielder.py                      18      0   100%
+data_fetch/twitter/DataMiner.py                             25      0   100%
+data_fetch/twitter/DataPack.py                               9      0   100%
+data_fetch/twitter/DictPackager.py                          20      0   100%
+data_fetch/twitter/InfoBundle.py                             4      0   100%
+data_fetch/twitter/NumberParser.py                          12      0   100%
+data_fetch/twitter/TweetBundler.py                          23      0   100%
+data_fetch/twitter/TweetCollector.py                        14      0   100%
+data_fetch/twitter/unit_tests/test_CovidDataYielder.py      33      0   100%
+data_fetch/twitter/unit_tests/test_DataMiner.py             35      0   100%
+data_fetch/twitter/unit_tests/test_DictPackager.py          10      0   100%
+data_fetch/twitter/unit_tests/test_InfoBundle.py            14      0   100%
+data_fetch/twitter/unit_tests/test_NumberParser.py          12      0   100%
+data_fetch/twitter/unit_tests/test_TweetBundler.py          26      0   100%
+data_fetch/twitter/unit_tests/test_TweetCollector.py        26      0   100%
+--------------------------------------------------------------------------------------
+TOTAL                                                      291      6    98%
+
+
+Name                                                            Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------------------
+data_fetch/db_interaction/data_interaction.py                      36      9    75%   8-11, 15-17, 21-22
+data_fetch/db_interaction/data_parse.py                            77      3    96%   14, 102-103
+data_fetch/db_interaction/data_preparation.py                      32      4    88%   8-11
+data_fetch/db_interaction/site_fetch.py                             9      5    44%   6, 10-17
+data_fetch/db_interaction/stored_data.py                            5      0   100%
+data_fetch/db_interaction/unit_tests/test_data_interaction.py      11      0   100%
+data_fetch/db_interaction/unit_tests/test_data_parse.py            15      0   100%
+data_fetch/db_interaction/unit_tests/test_data_preparation.py      20      0   100%
+---------------------------------------------------------------------------------------------
+TOTAL                                                             205     21    90%
+

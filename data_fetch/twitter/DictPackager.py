@@ -11,14 +11,11 @@ class DictPackager:
             for voivodeship, data_v in dp.voivodeship_stats.items():
                 simpler_voivodeships[voivodeship] = {
                     "daily infected": data_v["daily infected"],
-                    "daily cured": None,
-                    "daily deceased": None
                 }
 
             data["Map Data"][dp.date] = {
                 "date": dp.date,
                 "daily infected": dp.daily_cases,
-                "daily cured": None,
                 "daily deceased": dp.daily_deaths,
                 "Voivodeships": simpler_voivodeships
             }
@@ -29,24 +26,13 @@ class DictPackager:
                 "date": dp.date,
 
                 "daily infected": dp.daily_cases,
-                "daily cured": None,
                 "daily deceased": dp.daily_deaths,
                 "daily tests": dp.daily_tests,
 
                 "total infected": dp.total_cases,
-                "total cured": None,
                 "total deceased": dp.total_deaths,
-                "total tests": None,
 
-                "infected now": None,
-                "occupied respirators": None,
-                "free respirators": None,
-
-                "infections 7d100k": None,
-                "deaths 7d100k": None,
-                "infected now 100k": None,
-
-                "positive tests percent": dp.daily_cases / dp.daily_tests,
+                "positive tests percent": dp.daily_cases / dp.daily_tests
             }
 
         data["Voivodeships"] = dict()
