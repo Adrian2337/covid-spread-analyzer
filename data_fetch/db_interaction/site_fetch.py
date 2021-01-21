@@ -1,5 +1,5 @@
 import requests
-import stored_data
+from data_fetch.db_interaction import stored_data
 
 
 def fetch_url(url: str):

@@ -32,7 +32,8 @@ class DataMiner:
         "daily_deaths_direct": "Z powodu COVID-19 zmarł{suffix} {deaths} os",
         "daily_deaths_linked": "z powodu współistnienia COVID-19 z innymi schorzeniami zmarł{suffix} {deaths} os",
         "daily_tests": "W ciągu doby wykonano ponad {} testów",
-        "totals": "Liczba zakażonych koronawirusem: {cases}/{deaths} (wszystkie pozytywne przypadki/w tym osoby zmarłe)."
+        "totals":
+            "Liczba zakażonych koronawirusem: {cases}/{deaths} (wszystkie pozytywne przypadki/w tym osoby zmarłe)."
     }
 
     @staticmethod
@@ -50,27 +51,13 @@ class DataMiner:
         voivodeship_stats = {}
         for v in DataMiner.voivodeships:
             v_cases = 0
-            v_match = search(v + "go ({})", info_bundle.text)
+            v_match = search(" " + v + "go ({})", info_bundle.text)
             if v_match:
                 v_cases = v_match[0]
+                v_cases = NumberParser.int_with_space(v_cases)
             voivodeship_stats[v.capitalize()] = {
                 "date": date,
-
-                "daily infected": NumberParser.int_with_space(v_cases),
-                "daily cured": flag,
-                "daily deceased": flag,
-
-                "total infected": flag,
-                "total cured": flag,
-                "total deceased": flag,
-
-                "infected now": flag,
-                "occupied respirators": flag,
-                "free respirators": flag,
-
-                "infections 7d100k": flag,
-                "deaths 7d100k": flag,
-                "infected now 100k": flag
+                "daily infected": v_cases
             }
 
         return DataPack(date, daily_cases, daily_deaths, daily_tests, total_cases, total_deaths, voivodeship_stats)

@@ -1,7 +1,7 @@
-import site_fetch
-import data_parse
+from data_fetch.db_interaction import site_fetch
+from data_fetch.db_interaction import data_parse
 from datetime import datetime
-import stored_data
+from data_fetch.db_interaction import stored_data
 
 
 def prepare_new_data(start_date, end_date=datetime.now().strftime("%Y-%m-%d")):

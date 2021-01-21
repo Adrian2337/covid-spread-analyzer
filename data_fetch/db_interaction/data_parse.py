@@ -1,4 +1,4 @@
-import stored_data
+from data_fetch.db_interaction import stored_data
 import parse
 from datetime import datetime, timedelta
 

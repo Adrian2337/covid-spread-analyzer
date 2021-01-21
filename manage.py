@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import traceback
 
 from covid_spread_analyzer.prediction_app.PredictionService import PredictionService
 

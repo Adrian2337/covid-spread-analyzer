@@ -1,16 +1,25 @@
-import data_preparation
+from data_fetch.db_interaction import data_preparation
 import json
 from datetime import datetime
 from copy import deepcopy
 
 
 def update_data(start_date, end_date=datetime.now().strftime("%Y-%m-%d")):
-    with open("data.json", "r") as f:
-        old_data = json.load(f)
+    old_data = load_data()
     new_data = data_preparation.prepare_new_data(start_date, end_date)
     mix = merge(old_data, new_data)
+    save_data(mix)
+
+
+def load_data():
+    with open("data.json", "r") as f:
+        data = json.load(f)
+    return data
+
+
+def save_data(data):
     with open("data.json", "w") as f:
-        json.dump(mix, f, indent=4, ensure_ascii=False)
+        json.dump(data, f, indent=4, ensure_ascii=False)
 
 
 def merge(old_data, new_data):
