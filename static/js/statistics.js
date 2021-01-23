@@ -6,6 +6,7 @@ var voi_data = jsonify(data_raw)
 console.log(voi_data)
 var draw_total_tests=true;
 var draw_daily_tests=true;
+
 var daily_infected=[]
 var daily_deceased=[]
 var daily_cured=[]
@@ -63,7 +64,6 @@ function getData() {
         used_respirators.push(voi_data[date]["occupied respirators"])
     }
 }
-
 function draw_daily_Chart() {
     var ctx = document.getElementById('daily-chart').getContext('2d');
     var data_with_tests = {
@@ -71,7 +71,6 @@ function draw_daily_Chart() {
             datasets: [{
                 data: daily_infected,
                 borderColor: "rgba(255, 0, 255, 1)",
-               // backgroundColor: "rgba(255, 0, 255, 1)",
                 pointBackgroundColor: "rgba(255, 0, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -81,7 +80,6 @@ function draw_daily_Chart() {
             ,{
                 data: daily_tests,
                 borderColor: "rgba(0, 0, 255, 1)",
-              //  backgroundColor: "rgba(0, 0, 255, 1)",
                 pointBackgroundColor: "rgba(0, 0, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -91,7 +89,6 @@ function draw_daily_Chart() {
             ,{
                 data: daily_cured,
                 borderColor: "rgba(255, 255, 0, 1)",
-                //backgroundColor: "rgba(255, 255, 0, 1)",
                 pointBackgroundColor: "rgba(255, 255, 0, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -102,7 +99,6 @@ function draw_daily_Chart() {
 
                 data: daily_deceased,
                 borderColor: "rgb(86,231,85)",
-               // backgroundColor: "rgba(0, 255, 0, 1)",
                 pointBackgroundColor: "rgb(86,231,85)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -117,7 +113,6 @@ function draw_daily_Chart() {
             datasets: [{
                 data: daily_infected,
                 borderColor: "rgba(255, 0, 255, 1)",
-               // backgroundColor: "rgba(255, 0, 255, 1)",
                 pointBackgroundColor: "rgba(255, 0, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -127,7 +122,6 @@ function draw_daily_Chart() {
             ,{
                 data: daily_cured,
                 borderColor: "rgba(255, 255, 0, 1)",
-                //backgroundColor: "rgba(255, 255, 0, 1)",
                 pointBackgroundColor: "rgba(255, 255, 0, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -138,7 +132,6 @@ function draw_daily_Chart() {
 
                 data: daily_deceased,
                 borderColor: "rgb(86,231,85)",
-               // backgroundColor: "rgba(0, 255, 0, 1)",
                 pointBackgroundColor: "rgb(86,231,85)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -189,7 +182,6 @@ function draw_total_Chart() {
             datasets: [{
                 data: total_infected,
                 borderColor: "rgba(255, 0, 255, 1)",
-               // backgroundColor: "rgba(255, 0, 255, 1)",
                 pointBackgroundColor: "rgba(255, 0, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -199,7 +191,6 @@ function draw_total_Chart() {
             ,{
                 data: total_cured,
                 borderColor: "rgba(255, 255, 0, 1)",
-                //backgroundColor: "rgba(255, 255, 0, 1)",
                 pointBackgroundColor: "rgba(255, 255, 0, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -244,7 +235,6 @@ function draw_total_tests_Chart(){
             datasets: [{
                 data: total_tests,
                 borderColor: "rgb(246,177,255)",
-              //  backgroundColor: "rgba(0, 0, 255, 1)",
                 pointBackgroundColor: "rgb(246,177,255)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -288,7 +278,6 @@ function draw_total_diseased_Chart(){
 
                 data: total_deceased,
                 borderColor: "rgba(0, 125, 255, 1)",
-                //backgroundColor: "rgba(0, 125, 255, 1)",
                 pointBackgroundColor: "rgba(0, 125, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -332,7 +321,6 @@ function draw_daily_diseased_Chart(){
 
                 data: daily_deceased,
                 borderColor: "rgb(86,231,85)",
-               // backgroundColor: "rgba(0, 255, 0, 1)",
                 pointBackgroundColor: "rgb(86,231,85)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -565,7 +553,6 @@ function drawInfected100k(){
 
                 data: total_infected_100k,
                 borderColor: "rgba(0, 255, 0, 1)",
-               // backgroundColor: "rgba(0, 255, 0, 1)",
                 pointBackgroundColor: "rgba(0, 255, 0, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -608,7 +595,6 @@ function drawInfected100ktoday(){
             datasets: [{
                 data: daily_infected_100k,
                 borderColor: "rgba(0, 0, 255, 1)",
-              //  backgroundColor: "rgba(0, 0, 255, 1)",
                 pointBackgroundColor: "rgba(0, 0, 255, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -618,7 +604,6 @@ function drawInfected100ktoday(){
                 {
                 data: weekavg_infected_100k,
                 borderColor: "rgba(255, 0, 0, 1)",
-              //  backgroundColor: "rgba(0, 0, 255, 1)",
                 pointBackgroundColor: "rgba(255, 0, 0, 1)",
                 pointBorderColor: "rgba(0, 0, 0, 1)",
                 borderWidth: 3,
@@ -741,7 +726,6 @@ draw_testpieChart()} else {
 
 
 initiate()
-
 
 /* side menu */
 function openNav() {
